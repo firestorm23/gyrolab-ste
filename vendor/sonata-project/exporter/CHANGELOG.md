@@ -1,22 +1,24 @@
-CHANGELOG
-=========
+# Change Log
+All notable changes to this project will be documented in this file.
+This project adheres to [Semantic Versioning](http://semver.org/).
 
-A [BC BREAK] means the update will break the project for many reasons:
+## [1.5.0](https://github.com/sonata-project/exporter/compare/1.4.1...1.5.0) - 2016-06-16
+### Added
+- `MimeTypedWriterInterface` can be implemented to indicate the suitable `Content-Type` header and format for a writer.
 
-* new mandatory configuration
-* new dependencies
-* class refactoring
+### Changed
+- Rename `lib` folder to `src` and make this project PSR-4 compliant.
 
-### 2015-06-29
+## [1.4.0](https://github.com/sonata-project/exporter/compare/1.3.4...1.4.0) - 2015-06-09
+### Added
+- Add possibility to set custom tag names on `XmlSourceIterator`
 
-* [XmlSourceIterator] Add possibility to set custom tag names
+### Changed
+- Replaced deprecated `PropertyAccess::getPropertyAccessor()` method `PropertyAccess::createPropertyAccessor()`.
 
-### 2015-06-09
+### Removed
+- Symfony 2.2 support dropped.
 
-* [BC BREAK] Replaced deprecated `PropertyAccess::getPropertyAccessor()` method `PropertyAccess::createPropertyAccessor()`.
-             Symfony 2.2 support dropped.
-
-### 2013-05-02
-
-* [BC BREAK] New argument in method \Exporter\Writer\SitemapWriter::generateSitemapIndex
-             to handle absolute URL.
+## [1.2.2](https://github.com/sonata-project/exporter/compare/1.2.1...1.2.2) - 2013-05-02
+### Added
+- Add new argument in method \Exporter\Writer\SitemapWriter::generateSitemapIndex to handle absolute URL.

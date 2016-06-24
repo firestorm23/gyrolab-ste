@@ -23,7 +23,6 @@ return array(
     'Iphp\\FileStoreBundle' => array($vendorDir . '/iphp/filestore-bundle'),
     'Genemu\\Bundle\\FormBundle' => array($vendorDir . '/genemu/form-bundle'),
     'Gedmo\\' => array($vendorDir . '/gedmo/doctrine-extensions/lib'),
-    'Exporter' => array($vendorDir . '/sonata-project/exporter/lib'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
     'Doctrine\\DBAL\\' => array($vendorDir . '/doctrine/dbal/lib'),
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),

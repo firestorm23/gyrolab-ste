@@ -21,6 +21,8 @@ class ClearCacheCommand extends ContainerAwareCommand
     {
         global $kernel;
         $app_dir = $kernel->getRootDir();
+        $user = $this->getContainer()->getParameter('web_user');
+        $group = $this->getContainer()->getParameter('web_group');
 
 
         exec("echo 'wtpt8sspib' | sudo rm -rf $app_dir/cache && echo 'wtpt8sspib' | sudo rm -rf $app_dir/logs");
@@ -35,7 +37,7 @@ class ClearCacheCommand extends ContainerAwareCommand
         $time_end = microtime(true);
         $execution_time = number_format($time_end - $time_start + 1, 2);//+1 sec for correction
 
-        exec("echo 'wtpt8sspib' | sudo chmod -R 775 $app_dir/../ && echo 'wtpt8sspib' | sudo chown -R vu2003:vu2003 $app_dir/../");
+        exec("echo 'wtpt8sspib' | sudo chmod -R 775 $app_dir/../ && echo 'wtpt8sspib' | sudo chown -R ".$user.":".$group." $app_dir/../");
         exec("echo 'wtpt8sspib' | sudo chmod -R 777 $app_dir/logs");
         exec("echo 'wtpt8sspib' | sudo chmod -R 777 $app_dir/cache");
 

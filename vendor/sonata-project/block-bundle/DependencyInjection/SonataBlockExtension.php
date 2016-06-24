@@ -20,17 +20,14 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
- * PageExtension.
- *
- *
- * @author     Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
 class SonataBlockExtension extends Extension
 {
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    final public function getConfiguration(array $config, ContainerBuilder $container)
     {
         $bundles = $container->getParameter('kernel.bundles');
 
@@ -45,8 +42,18 @@ class SonataBlockExtension extends Extension
             $defaultTemplates['SonataSeoBundle:Block:block_social_container.html.twig'] = 'SonataSeoBundle (to contain social buttons)';
         }
 
+        return new Configuration($defaultTemplates);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function load(array $configs, ContainerBuilder $container)
+    {
+        $bundles = $container->getParameter('kernel.bundles');
+
         $processor = new Processor();
-        $configuration = new Configuration($defaultTemplates);
+        $configuration = $this->getConfiguration($configs, $container);
         $config = $processor->processConfiguration($configuration, $configs);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
@@ -69,10 +76,10 @@ class SonataBlockExtension extends Extension
 
         if ($config['templates']['block_base'] === null) {
             if (isset($bundles['SonataPageBundle'])) {
-                $config['templates']['block_base']      = 'SonataPageBundle:Block:block_base.html.twig';
+                $config['templates']['block_base'] = 'SonataPageBundle:Block:block_base.html.twig';
                 $config['templates']['block_container'] = 'SonataPageBundle:Block:block_container.html.twig';
             } else {
-                $config['templates']['block_base']      = 'SonataBlockBundle:Block:block_base.html.twig';
+                $config['templates']['block_base'] = 'SonataBlockBundle:Block:block_base.html.twig';
                 $config['templates']['block_container'] = 'SonataBlockBundle:Block:block_container.html.twig';
             }
         }

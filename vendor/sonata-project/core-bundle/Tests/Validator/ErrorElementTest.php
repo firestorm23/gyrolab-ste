@@ -18,8 +18,6 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\Validator\ExecutionContextInterface as LegacyExecutionContextInterface;
 
 /**
- * Test for ErrorElement.
- *
  * @author Andrej Hudec <pulzarraider@gmail.com>
  */
 class ErrorElementTest extends \PHPUnit_Framework_TestCase
@@ -196,5 +194,19 @@ class ErrorElementTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($this->errorElement, $this->errorElement->addViolation('Foo error message', array('bar_param' => 'bar_param_lvalue'), 'BAR'));
         $this->assertSame($this->errorElement, $this->errorElement->addConstraint($constraint));
         $this->assertSame($this->errorElement, $this->errorElement->assertNotNull());
+    }
+
+    public function testExceptionIsThrownWhenContextIsString()
+    {
+        $constraintValidatorFactory = $this->getMock('Symfony\Component\Validator\ConstraintValidatorFactoryInterface');
+
+        $this->setExpectedException(
+            'InvalidArgumentException',
+            'Argument 3 passed to Sonata\CoreBundle\Validator\ErrorElement::__construct() must be an instance of '.
+            'Symfony\Component\Validator\ExecutionContextInterface or '.
+            'Symfony\Component\Validator\Context\ExecutionContextInterface.'
+        );
+
+        $this->errorElement = new ErrorElement($this->subject, $constraintValidatorFactory, 'foo', 'foo_core');
     }
 }

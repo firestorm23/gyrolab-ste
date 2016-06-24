@@ -66,7 +66,7 @@ If you skip this step, these defaults will be used.
             # the renderer to use, list is also available by default
             default_renderer: twig
 
-    .. code-bock:: xml
+    .. code-block:: xml
 
         <!-- app/config/config.xml -->
         <?xml version="1.0" charset="UTF-8" ?>
@@ -125,10 +125,13 @@ An example builder class would look like this:
     namespace AppBundle\Menu;
 
     use Knp\Menu\FactoryInterface;
-    use Symfony\Component\DependencyInjection\ContainerAware;
+    use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+    use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-    class Builder extends ContainerAware
+    class Builder implements ContainerAwareInterface
     {
+        use ContainerAwareTrait;
+
         public function mainMenu(FactoryInterface $factory, array $options)
         {
             $menu = $factory->createItem('root');
@@ -177,9 +180,9 @@ With the standard ``knp_menu.html.twig`` template and your current page being
 
 .. note::
 
-    You only need to extend ``ContainerAware`` if you need the service
-    container to be available via ``$this->container``. You can also implement
-    ``ContainerAwareInterface`` instead of extending this class.
+    You only need to implement ``ContainerAwareInterface`` if you need the
+    service container. The more elegant way to handle your dependencies is to
+    inject them in the constructor. If you want to do that, see method below.
 
 .. note::
 
@@ -195,7 +198,7 @@ To actually render the menu, just do the following from anywhere in any template
 
     .. code-block:: html+php
 
-        <?php $view['knp_menu']->render('AppBundle:Builder:mainMenu') ?>
+        <?php echo $view['knp_menu']->render('AppBundle:Builder:mainMenu') ?>
 
 With this method, you refer to the menu using a three-part string:
 **bundle**:**class**:**method**.
@@ -238,7 +241,7 @@ way, then do the following:
 
     .. code-block:: html+php
 
-        <?php $view['knp_menu']->render('AppBundle:Builder:mainMenu') ?>
+        <?php echo $view['knp_menu']->render('AppBundle:Builder:mainMenu') ?>
 
 Additionally, you can pass some options to the renderer:
 
@@ -250,7 +253,7 @@ Additionally, you can pass some options to the renderer:
 
     .. code-block:: html+php
 
-        <?php $view['knp_menu']->render('AppBundle:Builder:mainMenu', array(
+        <?php echo $view['knp_menu']->render('AppBundle:Builder:mainMenu', array(
             'depth'         => 2,
             'currentAsLink' => false,
         )) ?>
@@ -270,7 +273,7 @@ You can also "get" a menu, which you can use to render later:
     .. code-block:: html+php
 
         <?php $menuItem = $view['knp_menu']->get('AppBundle:Builder:mainMenu') ?>
-        <?php $view['knp_menu']->render($menuItem) ?>
+        <?php echo $view['knp_menu']->render($menuItem) ?>
 
 If you want to only retrieve a certain branch of the menu, you can do the
 following, where 'Contact' is one of the root menu items and has children
@@ -286,7 +289,7 @@ beneath it.
     .. code-block:: html+php
 
         <?php $menuItem = $view['knp_menu']->get('AppBundle:Builder:mainMenu', array('Contact')) ?>
-        <?php $view['knp_menu']->render(array('AppBundle:Builder:mainMenu', 'Contact')) ?>
+        <?php echo $view['knp_menu']->render(array('AppBundle:Builder:mainMenu', 'Contact')) ?>
 
 If you want to pass some options to the builder, you can use the third parameter
 of the ``knp_menu_get`` function:
@@ -303,16 +306,21 @@ of the ``knp_menu_get`` function:
         <?php $menuItem = $view['knp_menu']->get('AppBundle:Builder:mainMenu', array(), array(
             'some_option' => 'my_value'
         )) ?>
-        <?php $view['knp_menu']->render($menuItem) ?>
+        <?php echo $view['knp_menu']->render($menuItem) ?>
 
 More Advanced Stuff
 -------------------
 
-* :doc:`Menus as Services <menu_service>`
-* :doc:`Custom Menu Renderer <custom_renderer>`
-* :doc:`Custom Menu Provider <custom_provider>`
-* :doc:`I18n for your menu labels <i18n>`
-* :doc:`Using events to allow extending the menu <events>`
+.. toctree::
+    :maxdepth: 1
+
+    menu_service
+    menu_builder_service
+    i18n
+    events
+    custom_renderer
+    custom_provider
+    disabling_providers
 
 .. _`installation chapter`: https://getcomposer.org/doc/00-intro.md
 .. _`KnpMenu documentation`: https://github.com/KnpLabs/KnpMenu/blob/master/doc/01-Basic-Menus.markdown

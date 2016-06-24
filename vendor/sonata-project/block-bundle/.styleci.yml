@@ -7,8 +7,8 @@
 preset: symfony
 
 enabled:
-  - align_double_arrow
   - newline_after_open_tag
+  - ordered_class_elements
   - ordered_use
   - long_array_syntax
 # Comment strict rules for the moment. Should be uncomment later to see StyleCI PR results
@@ -16,10 +16,6 @@ enabled:
 #  - strict_param
 #  - php_unit_construct
 #  - php_unit_strict
-
-disabled:
-  - unalign_double_arrow
-  - unalign_equals
 
 finder:
   exclude:

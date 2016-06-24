@@ -54,7 +54,7 @@ class MenuBlockService extends BaseBlockService
         parent::__construct($name, $templating);
 
         $this->menuProvider = $menuProvider;
-        $this->menus        = $menus;
+        $this->menus = $menus;
     }
 
     /**
@@ -63,10 +63,10 @@ class MenuBlockService extends BaseBlockService
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $responseSettings = array(
-            'menu'         => $this->getMenu($blockContext),
+            'menu' => $this->getMenu($blockContext),
             'menu_options' => $this->getMenuOptions($blockContext->getSettings()),
-            'block'        => $blockContext->getBlock(),
-            'context'      => $blockContext,
+            'block' => $blockContext->getBlock(),
+            'context' => $blockContext,
         );
 
         if ('private' === $blockContext->getSettings('cache_policy')) {
@@ -105,18 +105,28 @@ class MenuBlockService extends BaseBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'title'          => $this->getName(),
-            'cache_policy'   => 'public',
-            'template'       => 'SonataBlockBundle:Block:block_core_menu.html.twig',
-            'menu_name'      => '',
-            'safe_labels'    => false,
-            'current_class'  => 'active',
-            'first_class'    => false,
-            'last_class'     => false,
-            'current_uri'    => null,
-            'menu_class'     => 'list-group',
+            'title' => $this->getName(),
+            'cache_policy' => 'public',
+            'template' => 'SonataBlockBundle:Block:block_core_menu.html.twig',
+            'menu_name' => '',
+            'safe_labels' => false,
+            'current_class' => 'active',
+            'first_class' => false,
+            'last_class' => false,
+            'current_uri' => null,
+            'menu_class' => 'list-group',
             'children_class' => 'list-group-item',
-            'menu_template'  => null,
+            'menu_template' => null,
+        ));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockMetadata($code = null)
+    {
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataBlockBundle', array(
+            'class' => 'fa fa-bars',
         ));
     }
 
@@ -164,9 +174,9 @@ class MenuBlockService extends BaseBlockService
     {
         $mapping = array(
             'current_class' => 'currentClass',
-            'first_class'   => 'firstClass',
-            'last_class'    => 'lastClass',
-            'safe_labels'   => 'allow_safe_labels',
+            'first_class' => 'firstClass',
+            'last_class' => 'lastClass',
+            'safe_labels' => 'allow_safe_labels',
             'menu_template' => 'template',
         );
 
@@ -179,15 +189,5 @@ class MenuBlockService extends BaseBlockService
         }
 
         return $options;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockMetadata($code = null)
-    {
-        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataBlockBundle', array(
-            'class' => 'fa fa-bars',
-        ));
     }
 }

@@ -62,10 +62,10 @@ class BlockRenderer implements BlockRendererInterface
      */
     public function __construct(BlockServiceManagerInterface $blockServiceManager, StrategyManagerInterface $exceptionStrategyManager, LoggerInterface $logger = null, $debug = false)
     {
-        $this->blockServiceManager      = $blockServiceManager;
+        $this->blockServiceManager = $blockServiceManager;
         $this->exceptionStrategyManager = $exceptionStrategyManager;
-        $this->logger                   = $logger;
-        $this->debug                    = $debug;
+        $this->logger = $logger;
+        $this->debug = $debug;
     }
 
     /**
@@ -93,7 +93,11 @@ class BlockRenderer implements BlockRendererInterface
             $response = $this->addMetaInformation($response, $blockContext, $service);
         } catch (\Exception $exception) {
             if ($this->logger) {
-                $this->logger->critical(sprintf('[cms::renderBlock] block.id=%d - error while rendering block - %s', $block->getId(), $exception->getMessage()));
+                $this->logger->error(sprintf(
+                    '[cms::renderBlock] block.id=%d - error while rendering block - %s',
+                    $block->getId(),
+                    $exception->getMessage()
+                ), compact('exception'));
             }
 
             // reseting the state object

@@ -2,6 +2,27 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.3.2](https://github.com/sonata-project/SonataAdminBundle/compare/3.3.1...3.3.2) - 2016-06-23
+### Fixed
+ - Reverted [#3961](https://github.com/sonata-project/SonataAdminBundle/pull/3961) to fix a regression concerning child admins on edit route
+
+## [3.3.1](https://github.com/sonata-project/SonataAdminBundle/compare/3.3.0...3.3.1) - 2016-06-17
+### Fixed
+- Fixes broken extractor service
+- Make CRUDController::editAction respect optional parameter
+- Not aligned checkbox and radio on horizontal form
+
+## [3.3.0](https://github.com/sonata-project/SonataAdminBundle/compare/3.2.0...3.3.0) - 2016-06-13
+### Changed
+- The `Select` button is always visible and has a primary check style in `sonata_type_model_list` popups
+
+### Deprecated
+- The `$context` argument of `AdminInterface::createQuery` was deprecated
+
+### Fixed
+- Fix wrong view role check on `AbstractAdmin::getSearchResultLink`
+- Eternal deprecation warning because of old class on compilation
+
 ## [3.2.0](https://github.com/sonata-project/SonataAdminBundle/compare/3.1.0...3.2.0) - 2016-06-04
 ### Added
 - Added new field type `email` on the list

@@ -1321,6 +1321,12 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
      */
     public function createQuery($context = 'list')
     {
+        if (func_num_args() > 0) {
+            @trigger_error(
+                'The $context argument of '.__METHOD__.' is deprecated since 3.3, to be removed in 4.0.',
+                E_USER_DEPRECATED
+            );
+        }
         $query = $this->getModelManager()->createQuery($this->class);
 
         foreach ($this->extensions as $extension) {
@@ -2873,7 +2879,7 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
     final public function getSearchResultLink($object)
     {
         foreach ($this->searchResultActions as $action) {
-            if ($this->hasRoute($action) && $this->isGranted(strtoupper($action), $object)) {
+            if ($this->hasRoute($action) && $this->hasAccess($action, $object)) {
                 return $this->generateObjectUrl($action, $object);
             }
         }

@@ -72,8 +72,16 @@ abstract class BaseBlock implements BlockInterface
     public function __construct()
     {
         $this->settings = array();
-        $this->enabled  = false;
+        $this->enabled = false;
         $this->children = array();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+    {
+        return sprintf('%s ~ #%s', $this->getname(), $this->getId());
     }
 
     /**
@@ -244,14 +252,6 @@ abstract class BaseBlock implements BlockInterface
     public function hasParent()
     {
         return $this->getParent() instanceof self;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        return sprintf('%s ~ #%s', $this->getname(), $this->getId());
     }
 
     /**
