@@ -10,3 +10,7 @@
 .git/
 /bin/
 /composer.phar
+/web/upload
+composer.lock
+.idea/
+dump.html

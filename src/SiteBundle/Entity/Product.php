@@ -84,6 +84,14 @@ class Product
     /**
      * @ORM\OneToMany(targetEntity="File", mappedBy="galleryProduct", cascade={"persist", "remove"})
      */
+
+    /**
+     * @ORM\ManyToMany(targetEntity="File", cascade={"persist", "remove"})
+     * @ORM\JoinTable(name="gallery_product_images",
+     *      joinColumns={@ORM\JoinColumn(name="gallery_product_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="gallery_image_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
     private $galleryImages;
     /**
      * @var integer

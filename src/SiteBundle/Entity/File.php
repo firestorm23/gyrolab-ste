@@ -79,34 +79,34 @@ class File
 
     private $resizes;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="galleryImages")
-     * @ORM\JoinColumn(name="gallery_product_id", referencedColumnName="id")
-     */
-
-    private $galleryProduct;
+//    /**
+//     * @ORM\ManyToOne(targetEntity="Product", inversedBy="galleryImages")
+//     * @ORM\JoinColumn(name="gallery_product_id", referencedColumnName="id")
+//     */
+//
+//    private $galleryProduct;
 
     function __construct()
     {
-        $this->resizes = new ArrayCollection();
+        $this->resizes = array();
     }
 
-    /**
-     * @return mixed
-     */
-    public function getGalleryProduct()
-    {
-        return $this->galleryProduct;
-    }
-
-    /**
-     * @param mixed $galleryProduct
-     */
-    public function setGalleryProduct($galleryProduct)
-    {
-        $this->galleryProduct = $galleryProduct;
-        return $this;
-    }
+//    /**
+//     * @return mixed
+//     */
+//    public function getGalleryProduct()
+//    {
+//        return $this->galleryProduct;
+//    }
+//
+//    /**
+//     * @param mixed $galleryProduct
+//     */
+//    public function setGalleryProduct($galleryProduct)
+//    {
+//        $this->galleryProduct = $galleryProduct;
+//        return $this;
+//    }
 
     /**
      * @return array

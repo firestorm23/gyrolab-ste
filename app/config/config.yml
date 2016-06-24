@@ -202,11 +202,11 @@ stfalcon_tinymce:
                  menubar: false
                  relative_urls: false
 
-#stof_doctrine_extensions:
-#   default_locale: en
-#   translation_fallback: true
-#   orm:
-#       default:
-#           tree: true
-#           timestampable: true
-#           sluggable: true
+stof_doctrine_extensions:
+   default_locale: en
+   translation_fallback: true
+   orm:
+       default:
+           tree: true
+           timestampable: true
+           sluggable: true
