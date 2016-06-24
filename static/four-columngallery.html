@@ -1,0 +1,680 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">	
+	<title>4ColumnGallery Fontaine</title>
+		
+	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon"/>
+	<link href="libraries/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+	<link href="libraries/fonts/font-awesome.min.css" rel="stylesheet"/>
+	<link href="libraries/animate/animate.min.css" rel="stylesheet"/>
+	<link href="libraries/audio/mediaelementplayer.min.css" rel="stylesheet"/>
+	<link href="libraries/flex-slider/flexslider.css" rel="stylesheet"/>
+	<link href="libraries/owl-carousel/owl.carousel.css" rel="stylesheet"/>
+	<link href="libraries/lightbox/lightbox.css" rel="stylesheet"/>
+	<link href="libraries/magnific-popup.css" rel="stylesheet"/>
+	<link href="libraries/uikit/css/uikit.min.css" rel="stylesheet"/>
+	<link href="libraries/uikit/css/components/sticky.min.css" rel="stylesheet"/>
+	<link href="css/fonts/pe-icon-7-stroke.css" rel="stylesheet"/>
+	<link href="css/style.css" rel="stylesheet"/>
+	<link href="css/media.css" rel="stylesheet"/>
+	<link href="css/custom.css" rel="stylesheet"/>
+	
+	<!--[if IE 8]>
+		<link rel="stylesheet" href="css/ie8.css">
+	<![endif]-->
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5/html5shiv.min.js"></script>
+      <script src="js/html5/respond.min.js"></script>
+    <![endif]-->
+
+	<!-- Font -->
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round|Lato:300,400,700' rel='stylesheet' type='text/css'>
+	
+</head>
+<body>
+	<div class="container no-bg">
+		<div class="row">
+			<!-- Header Top -->
+			<div class="header-top container-fluid padding_zero">
+				<div class="col-md-6 col-sm-6 col-xs-6 padding_zero">
+					<ul class="login-info">
+						<li>
+							<a href="#" data-toggle="modal" data-target="#myModal">Log In</a>
+							<!-- Modal -->
+							<div class="modal fade model-login" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+								<div class="modal-dialog modal-sm" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="fa fa-close"></span></button>
+										</div>
+										<div class="modal-body">
+											<!-- Login Form -->
+											<div class="login-form">
+												<h2>Member Login</h2>
+												<form class="form-horizontal">
+													<div class="form-group">
+														<input type="text" class="form-control" id="username" placeholder="Username">
+													</div>
+													<div class="form-group">
+														<input type="password" class="form-control" id="password" placeholder="Password">
+													</div>
+													<div class="form-group">
+														<div class="checkbox">
+															<label>Remember me</label>
+															<input type="checkbox">
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-md-12 col-sm-12 padding_zero">
+															<input type="submit" class="btn btn-default login-btn" value="Log In">
+														</div>
+													</div>
+												</form>
+												<ul>
+													<li><a href="forgotpassword.html">Forgot your password?</a></li>
+													<li><a href="forgot-username.html">Forgot your username?</a></li>
+													<li><a href="registration.html">Don't have an account?</a></li>
+												</ul>
+											</div><!-- Login Form /- -->
+										</div>
+									</div>
+								</div>
+							</div><!-- Login Model /- -->
+						</li>
+						<li><a href="login.html">My Account</a></li>
+					</ul>
+				</div><!-- Col-md-6 /- -->
+				<div class="col-md-6 col-sm-6 col-xs-6 pull-right contact-info padding_zero">
+					<p><span>Call Us</span>(800) 755 1000</p>
+				</div><!-- Col-md-6 /- -->
+			</div><!-- Header Top /- -->
+		</div><!-- Row /- -->
+	</div><!-- Container /- -->
+	
+	<!-- Header Section -->
+	<header id="header-section" class="header-section">
+		<div class="container">
+			<div class="row">
+				<div class="header-logo">
+					<div class="col-md-7 col-sm-7 col-xs-8 logo-block">
+						<a href="index.html">
+							<img src="images/logo.png" alt="Fontaine HTML Template" width="198" height="42">
+						</a>
+						<p>clean. subtle. responsive.</p>
+					</div>
+					<div class="col-md-5 col-sm-5 padding_right search-social">
+						<span id="canvas-bar" class="fa fa-bars"></span>
+						<div class="social-icon col-md-7 col-sm-9">
+							<ul>
+								<li><a target="_blank" href="https://www.twitter.com/arrowthemes"><i class="fa fa-twitter"></i></a></li>
+								<li><a target="_blank" href="https://www.dribbble.com/arrowthemes"><i class="fa fa-dribbble"></i></a></li>
+								<li><a target="_blank" href="https://www.facebook.com/arrowthemes"><i class="fa fa-facebook"></i></a></li>
+								<li><a target="_blank" href="https://www.vk.com/arrowthemes"><i class="fa fa-vk"></i></a></li>
+							</ul>
+						</div>
+						<div class="search-box col-md-5 col-sm-6 col-xs-4">
+							<form class="form-search">
+								<div class="input-group">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+									</span>
+									<input type="text" class="form-control" placeholder="Search...">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="menu-block" data-uk-sticky>
+					<nav class="navbar navbar-default">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+						  </button>
+						</div>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse padding_zero" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+									<i class="responsive-caret fa fa-angle-down"></i>
+									<ul class="dropdown-menu">
+										<li><a href="index.html">Home - Business Layout</a></li>
+										<li><a href="modular-layout.html">Home - Modular Layout</a></li>
+										<li><a href="creative-layout.html">Home - Creative Layout</a></li>
+										<li><a href="portfolio-layout.html">Home - Portfolio Layout</a></li>
+										<li><a href="home-blog-layout.html">Home - Blog Layout</a></li>
+										<li><a href="minimal-layout.html">Home - Minimal Layout</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Features</a>
+									<i class="responsive-caret fa fa-angle-down"></i>
+									<ul class="dropdown-menu">
+										<li><a href="module-variations.html">Module Layouts</a></li>
+										<li><a href="icon-fonts.html">Icon Fonts</a></li>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mega Menu</a>
+											<ul class="dropdown-menu menu-right mega-menu">
+												<li>
+													<div class="col-md-4 padding_zero">
+														<ul>
+															<li>Child Item<span>subtitle</span></li>
+															<li>Child Item</li>
+															<li>Child Item</li>
+															<li>Child Item</li>
+														</ul>
+													</div>
+												</li>
+												<li>
+													<div class="col-md-4 padding_zero">
+														<ul>
+															<li>Child Item<span>subtitle</span></li>
+															<li>Child Item</li>
+															<li>Child Item</li>
+															<li>Child Item</li>
+														</ul>
+													</div>
+												</li>
+												<li>
+													<div class="col-md-4 padding_zero">
+														<h4>Module</h4>
+														<p>Our themes are built on a responsive framework, which gives them a <a href="#">friendly, adaptive layout</a></p>
+													</div>
+												</li>
+											</ul>
+										</li>
+										<li><a href="pricing-tables.html">Pricing Tables</a></li>
+										<li><a href="unlimitedcolors.html">Unlimited Colors</a></li>
+										<li><a href="dark-lightscreen.html">Dark & Light Skins</a></li>
+										<li><a href="rtl-language-ready.html">RTL Language Ready</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shortcodes</a>
+									<i class="responsive-caret fa fa-angle-down"></i>
+									<ul class="dropdown-menu menu-inner">
+										<li>
+											<div class="col-md-3 padding_zero">
+												<ul>
+													<li><a href="headings.html">Headings</a></li>
+													<li><a href="columnblocks.html">Column Blocks</a></li>
+													<li><a href="blocks.html">Blocks</a></li>
+													<li><a href="blockquotes.html">Blockquotes</a></li>
+													<li><a href="list.html">Lists</a></li>
+												</ul>
+											</div>
+										</li>
+										<li>
+											<div class="col-md-3 padding_zero">
+												<ul>
+													<li><a href="buttons.html">Buttons</a></li>
+													<li><a href="dropdown.html">Dropdowns</a></li>
+													<li><a href="alerts.html">Alerts</a></li>
+													<li><a href="panel.html">Panels</a></li>
+													<li><a href="badgs.html">Badges</a></li>
+												</ul>
+											</div>
+										</li>
+										<li>
+											<div class="col-md-3 padding_zero">
+												<ul>
+													<li><a href="toggle.html">Toggles</a></li>
+													<li><a href="tooltip.html">Tooltips</a></li>
+													<li><a href="progressbar.html">Progress bar</a></li>
+													<li><a href="tabs.html">Tabs</a></li>
+													<li><a href="tags.html">Tags</a></li>
+												</ul>
+											</div>
+										</li>
+										<li>
+											<div class="col-md-3 padding_zero">
+												<ul>
+													<li><a href="table.html">Tables</a></li>
+													<li><a href="image.html">Images</a></li>
+													<li><a href="modelbox.html">Modal box</a></li>
+													<li><a href="audio-video.html">Audio / Video</a></li>
+													<li><a href="semantics.html">Semantics</a></li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+									<i class="responsive-caret fa fa-angle-down"></i>
+									<ul class="dropdown-menu">
+										<li><a href="about.html">About Us</a></li>
+										<li><a href="our-team.html">Our Team</a></li>
+										<li><a href="services.html">Our Services</a></li>
+										<li><a href="testimonials.html">Testimonials</a></li>
+										<li><a href="faq-page.html">FAQ Page</a></li>
+										<li><a href="contacts.html">Contact Us</a></li>
+									</ul>
+								</li>
+								<li class="dropdown active">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Portfolio</a>
+									<i class="responsive-caret fa fa-angle-down"></i>
+									<ul class="dropdown-menu">
+										<li><a href="two-columngallery.html">2 Column Gallery</a></li>
+										<li><a href="three-columngallery.html">3 Column Gallery</a></li>
+										<li><a href="four-columngallery.html">4 Column Gallery</a></li>
+										<li><a href="five-columngallery.html">5 Column Gallery</a></li>
+										<li><a href="portfolioblocks.html">Portfolio in Blocks</a></li>
+										<li><a href="portfoliocatagory.html">Portfolio Category</a></li>
+										<li><a href="audio-portfolio.html">Audio Portfolio</a></li>
+										<li><a href="video-portfolio.html">Video Portfolio</a></li>
+										<li><a href="filterableportfolio.html">Filterable Portfolio</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+									<i class="responsive-caret fa fa-angle-down"></i>
+									<ul class="dropdown-menu">
+										<li><a href="blog-item.html">Blog Item</a></li>									
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog Category</a>
+											<ul class="dropdown-menu menu-right">
+												<li><a href="category-wordpress.html">WordPress</a></li>
+												<li><a href="category-notes.html">Notes</a></li>
+												<li><a href="category-news.html">News</a></li>
+												<li><a href="category-media.html">Media</a></li>
+											</ul>
+										</li>
+										<li><a href="user-page-blog.html">User Page Blog</a></li>
+										<li><a href="blog-tag.html">Blog Items by Tag</a></li>
+										<li><a href="latest-items-by-users.html">Latest Items by Users</a></li>
+										<li><a href="latest-items-by-category.html">Latest Items by Category</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Wordpress</a>
+									<i class="responsive-caret fa fa-angle-down"></i>
+									<ul class="dropdown-menu">
+										<li><a href="single-article.html">Single Article</a></li>
+										<li><a href="category-blog.html">Category Blog</a></li>
+										<li><a href="category-list.html">Category List</a></li>
+										<li><a href="contact-category.html">Contact Category</a></li>
+										<li><a href="contact-item.html">Contact Item</a></li>
+										<li><a href="login.html">Login</a></li>
+										<li><a href="registration.html">Registration</a></li>
+										<li><a href="frame-wrapper.html">Iframe Wrapper</a></li>
+									</ul>
+								</li>
+								<li><a href="contacts.html">Contacts</a></li>
+							</ul>
+						</div><!-- /.navbar-collapse -->
+					</nav>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Offcanvas Menu -->
+		<div id="offcanvas" class="offcanvas-box">
+			<div class="offcanvas-bars">
+				<div class="canvas-search">
+					<form class="form-search">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+							</span>
+							<input type="text" class="form-control" placeholder="Search...">
+						</div>
+					</form>
+				</div>
+				<div class="offcanvas-menu">
+					<ul class="main-menu">
+						<li>
+							<a href="#">Home</a>					
+							<ul class="sub-menu">
+								<li><a href="index.html">Home - Business Layout</a></li>
+								<li><a href="modular-layout.html">Home - Modular Layout</a></li>
+								<li><a href="creative-layout.html">Home - Creative Layout</a></li>
+								<li><a href="portfolio-layout.html">Home - Portfolio Layout</a></li>
+								<li><a href="home-blog-layout.html">Home - Blog Layout</a></li>
+								<li><a href="minimal-layout.html">Home - Minimal Layout</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Features</a>
+							<ul class="sub-menu">
+								<li><a href="module-variations.html">Module Layouts</a></li>
+								<li><a href="icon-fonts.html">Icon Fonts</a></li>
+								<li>
+									<a href="#">Mega Menu</a>
+									<ul class="child-menu">
+										<li><a href="#">Child Item</a></li>
+										<li><a href="#">Child Item</a></li>
+										<li><a href="#">Child Item</a></li>
+										<li><a href="#">Child Item</a></li>
+										<li><a href="#">Child Item</a></li>
+										<li><a href="#">Child Item</a></li>
+										<li>
+											<a href="#">Parent Item</a>
+											<ul class="child-menu">
+												<li><a href="#">Child Item</a></li>
+												<li><a href="#">Child Item</a></li>
+												<li><a href="#">Child Item</a></li>
+												<li><a href="#">Child Item</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Child Item</a></li>
+									</ul>
+								</li>
+								<li><a href="pricing-tables.html">Pricing Tables</a></li>
+								<li><a href="unlimitedcolors.html">Unlimited Colors</a></li>
+								<li><a href="dark-lightscreen.html">Dark & Light Skins</a></li>
+								<li><a href="rtl-language-ready.html">RTL Language Ready</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Shortcodes</a>					
+							<ul class="sub-menu">
+								<li><a href="headings.html">Headings</a></li>
+								<li><a href="columnblocks.html">Column Blocks</a></li>
+								<li><a href="blocks.html">Blocks</a></li>
+								<li><a href="blockquotes.html">Blockquotes</a></li>
+								<li><a href="list.html">Lists</a></li>			
+								<li><a href="buttons.html">Buttons</a></li>
+								<li><a href="dropdown.html">Dropdowns</a></li>
+								<li><a href="alerts.html">Alerts</a></li>
+								<li><a href="panel.html">Panels</a></li>
+								<li><a href="badgs.html">Badges</a></li>
+								<li><a href="toggle.html">Toggles</a></li>
+								<li><a href="tooltip.html">Tooltips</a></li>
+								<li><a href="progressbar.html">Progress bar</a></li>
+								<li><a href="tabs.html">Tabs</a></li>
+								<li><a href="tags.html">Tags</a></li>
+								<li><a href="table.html">Tables</a></li>
+								<li><a href="image.html">Images</a></li>
+								<li><a href="modelbox.html">Modal box</a></li>
+								<li><a href="audio-video.html">Audio / Video</a></li>
+								<li><a href="semantics.html">Semantics</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Pages</a>
+							<ul class="sub-menu">
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="our-team.html">Our Team</a></li>
+								<li><a href="services.html">Our Services</a></li>
+								<li><a href="testimonials.html">Testimonials</a></li>
+								<li><a href="faq-page.html">FAQ Page</a></li>
+								<li><a href="contacts.html">Contact Us</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Portfolio</a>
+							<ul class="sub-menu">
+								<li><a href="two-columngallery.html">2 Column Gallery</a></li>
+								<li><a href="three-columngallery.html">3 Column Gallery</a></li>
+								<li><a href="four-columngallery.html">4 Column Gallery</a></li>
+								<li><a href="five-columngallery.html">5 Column Gallery</a></li>
+								<li><a href="portfolioblocks.html">Portfolio in Blocks</a></li>
+								<li><a href="portfoliocatagory.html">Portfolio Category</a></li>
+								<li><a href="audio-portfolio.html">Audio Portfolio</a></li>
+								<li><a href="video-portfolio.html">Video Portfolio</a></li>
+								<li><a href="filterableportfolio.html">Filterable Portfolio</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Blog</a>
+							<ul class="sub-menu">
+								<li><a href="blog-item.html">Blog Item</a></li>									
+								<li>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog Category</a>
+									<ul class="child-menu">
+										<li><a href="category-wordpress.html">WordPress</a></li>
+										<li><a href="category-notes.html">Notes</a></li>
+										<li><a href="category-news.html">News</a></li>
+										<li><a href="category-media.html">Media</a></li>
+									</ul>
+								</li>
+								<li><a href="user-page-blog.html">User Page Blog</a></li>
+								<li><a href="blog-tag.html">Blog Items by Tag</a></li>
+								<li><a href="latest-items-by-users.html">Latest Items by Users</a></li>
+								<li><a href="latest-items-by-category.html">Latest Items by Category</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Wordpress</a>
+							<ul class="sub-menu">
+								<li><a href="single-article.html">Single Article</a></li>
+								<li><a href="category-blog.html">Category Blog</a></li>
+								<li><a href="category-list.html">Category List</a></li>
+								<li><a href="contact-category.html">Contact Category</a></li>
+								<li><a href="contact-item.html">Contact Item</a></li>
+								<li><a href="login.html">Login</a></li>
+								<li><a href="registration.html">Registration</a></li>
+								<li><a href="frame-wrapper.html">Iframe Wrapper</a></li>
+							</ul>
+						</li>
+						<li><a href="contacts.html">Contacts</a></li>
+					</ul>
+				</div>
+				<div class="module-block">
+					<h3>Offcanvas Module</h3>
+					<p>Our themes are built on a responsive framework, which gives them a <a href="#">friendly, adaptive layout</a></p>
+				</div>
+			</div>
+		</div><!-- Offcanvas Menu -->
+	</header><!-- Header Section /- -->
+	
+	<div class="container">
+		<div class="row">
+			<!-- PageTitle Section -->
+			<div id="page-title" class="page-title">
+				<h2>Our Portfolio</h2>
+			</div>
+			<!-- PageTitle Section /- -->
+	
+			<!-- PageBreadcrumb Section -->
+			<div class="page-breadcrumb">
+				<ol class="breadcrumb">
+					<li class="active"><a title="Home" href="index.html">Home</a></li>
+					<li class="active"><a title="Home" href="#">Portfolio</a></li>
+					<li>4 Column Gallery</li>
+				</ol>
+			</div><!-- PageBreadcrumb Section /- -->
+			
+			<div class="column-layout">
+				<h2>4 Column Gallery</h2>
+				<ul class="row">
+					<li class="col-md-3 col-sm-3 col-xs-12">
+						<div class="gallery-images-box">
+							<a href="images/gallery/1_big.jpg" data-lightbox="example-set" data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."><img  src="images/gallery/1_big.jpg" alt="images1">
+							<i class="hover-icon pe-7s-plus"></i>
+							</a>
+						</div>
+					</li>
+					<li class="col-md-3 col-sm-3 col-xs-12">
+						<div class="gallery-images-box">
+							<a href="images/gallery/5_big.jpg" data-lightbox="example-set" data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."><img  src="images/gallery/5_big.jpg" alt="images2">
+							<i class="hover-icon pe-7s-plus"></i>
+							</a>
+						</div>
+					</li>
+					<li class="col-md-3 col-sm-3 col-xs-12">
+						<div class="gallery-images-box">
+							<a href="images/gallery/2_big.jpg" data-lightbox="example-set" data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."><img  src="images/gallery/2_big.jpg" alt="images3">
+							<i class="hover-icon pe-7s-plus"></i>
+							</a>
+						</div>
+					</li>
+					<li class="col-md-3 col-sm-3 col-xs-12">
+						<div class="gallery-images-box">
+							<a href="images/gallery/3_big.jpg" data-lightbox="example-set" data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."><img  src="images/gallery/3_big.jpg" alt="images4">
+							<i class="hover-icon pe-7s-plus"></i>
+							</a>
+						</div>
+					</li>
+					<li class="col-md-3 col-sm-3 col-xs-12">
+						<div class="gallery-images-box">
+							<a href="images/gallery/7_big.jpg" data-lightbox="example-set" data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."><img  src="images/gallery/7_big.jpg" alt="images5">
+							<i class="hover-icon pe-7s-plus"></i>
+							</a>
+						</div>
+					</li>
+					<li class="col-md-3 col-sm-3 col-xs-12">
+						<div class="gallery-images-box">
+							<a href="images/gallery/6_big.jpg" data-lightbox="example-set" data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."><img  src="images/gallery/6_big.jpg" alt="images6">
+							<i class="hover-icon pe-7s-plus"></i>
+							</a>
+						</div>
+					</li>
+					<li class="col-md-3 col-sm-3 col-xs-12">
+						<div class="gallery-images-box">
+							<a href="images/gallery/4_big.jpg" data-lightbox="example-set" data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."><img  src="images/gallery/4_big.jpg" alt="images7">
+							<i class="hover-icon pe-7s-plus"></i>
+							</a>
+						</div>
+					</li>
+					<li class="col-md-3 col-sm-3 col-xs-12">
+						<div class="gallery-images-box">
+							<a href="images/gallery/8_big.jpg" data-lightbox="example-set" data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."><img  src="images/gallery/8_big.jpg" alt="images8">
+							<i class="hover-icon pe-7s-plus"></i>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>								
+		</div>
+	</div>
+	
+	<!-- Subscribe Section -->
+	<div id="subscribe-section" class="subscribe-section">
+		<div class="container">
+			<div class="row">
+				<div class="news-subscribe">
+					<form>
+						<label class="col-md-7 col-sm-6 padding_zero col-xs-12">Drop us your email address and stay connected with us</label>
+						<div class="form-group col-md-5 col-sm-6 col-xs-12">
+							<input type="email" name="email" class="form-control" placeholder="Your email address">
+							<input type="submit" value="Go">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div><!-- Container -->
+	</div><!-- Subscribe Section /- -->	
+		
+	<!-- Footer Section -->
+	<footer id="footer-section" class="footer-section">
+		<div class="container">
+			<div class="row">
+				<div class="footer-widget-area padding_zero container-fluid">
+					<div class="col-md-3 col-sm-6 col-xs-6">
+						<div class="widget widget-categories">
+							<h2 class="widget-title">Our Work</h2>
+							<ul>
+								<li><a href="http://themeforest.net/item/vantage-clean-responsive-joomla-theme/3649706/?ref=arrowthemes">Vantage Theme</a></li>
+								<li><a href="http://themeforest.net/item/lighthouse-responsive-joomla-template/3266101/?ref=arrowthemes">Lighthouse Theme</a></li>
+								<li><a href="http://themeforest.net/item/fidelity-clean-responsive-joomla-template/2999986/?ref=arrowthemes">Sauna Theme</a></li>
+								<li><a href="http://themeforest.net/item/sauna-responsive-jooma-template/2678298/?ref=arrowthemes">Sauna Theme</a></li>
+								<li><a href="http://themeforest.net/item/saffron-responsive-joomla-template/9696343/?ref=arrowthemes">Saffron Theme</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-6">
+						<div class="widget widget-vision">
+							<h2 class="widget-title">Our Vision</h2>
+							<div class="vision-inner">
+								<div class="col-md-3 col-sm-3 col-xs-3 vision-img padding_left">
+									<img src="images/footer/small_1.png" alt="small">
+								</div>
+								<div class="col-md-9 col-sm-9 col-xs-9 vision-content padding_zero">
+									<a href="#">We build the web</a>
+									<p>Believe that life is worth living and your belief will help create the fact </p>
+								</div>
+							</div>
+							<div class="vision-inner">
+								<div class="col-md-3 col-sm-3 col-xs-3 vision-img padding_left">
+									<img src="images/footer/small_2.png" alt="small">
+								</div>
+								<div class="col-md-9 col-sm-9 col-xs-9 vision-content padding_zero">
+									<a href="#">We strive to excel</a>
+									<p>The world owes you nothing. It was here first. If you don't like, change it</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-6">
+						<div class="widget widget-tag">
+							<h2 class="widget-title">Blog Tags</h2>
+							<ul class="tag-list">
+								<li><a href="tag-arrowthemes.html">arrowthemes</a></li>
+								<li><a href="tag-arrowthemes.html">audiojungle</a></li>
+								<li><a href="tag-arrowthemes.html">css3</a></li>
+								<li><a href="tag-arrowthemes.html">envato</a></li>
+								<li><a href="tag-arrowthemes.html">Fontaine</a></li>
+								<li><a href="tag-arrowthemes.html">HTML5</a></li>
+								<li><a href="tag-arrowthemes.html">Lighthouse</a></li>
+								<li><a href="tag-arrowthemes.html">media</a></li>
+								<li><a href="tag-arrowthemes.html">music</a></li>
+								<li><a href="tag-arrowthemes.html">responsive</a></li>
+								<li><a href="tag-arrowthemes.html">theme</a></li>
+								<li><a href="tag-arrowthemes.html">Themeforest</a></li>
+								<li><a href="tag-arrowthemes.html">WordPress</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-6">
+						<div class="widget widget-address">
+							<h2 class="widget-title">Our Location</h2>
+							<div class="col-md-12 col-sm-12 col-xs-12 padding_left">
+								<p><img src="images/footer/world.svg" alt="world" class="align-right" />Our offices are located all over the globe with multi-lingual assistants to help you out</p>
+								<p>Life is a series of natural and spontaneous changes. Don't resist them - that only creates sorrow. Let reality be reality.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-block padding_zero container-fluid">
+					<div class="col-md-6 col-sm-6 footer-menu-block">
+						<nav class="navbar navbar-default">
+							<ul class="nav navbar-nav">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="about.html">AboutUs</a></li>
+								<li><a href="our-team.html">Our Team</a></li>
+								<li><a href="contacts.html">Contacts Us</a></li>
+							</ul>
+						</nav>
+					</div>
+					<div class="col-md-6 col-sm-6">
+						<div class="copy-right-section">
+							<p>Copyright &copy; All rights reserved <a target="_blank" href="http://www.arrowthemes.com">arrowthemes</a>by design.</p>
+						</div>
+					</div>
+				</div>
+				<a id="back-to-top" title="" class="back-to-top" href="#back-to-top"><i class="fa fa-angle-up"></i></a>
+			</div>
+		</div><!-- container -->
+	</footer><!-- Footer Section /- -->
+	
+	<!-- jQuery Include -->
+	<script src="libraries/jquery.min.js"></script>
+	<script src="libraries/jquery.easing.min.js"></script>
+	<script src="libraries/bootstrap/bootstrap.min.js"></script>
+	<script src="libraries/jquery.animateNumber.min.js"></script>
+	<script src="libraries/jquery.appear.js"></script>
+	<script src="libraries/audio/mediaelement-and-player.min.js"></script>
+	<script src="libraries/flex-slider/jquery.flexslider-min.js"></script>
+	<script src="libraries/owl-carousel/owl.carousel.min.js"></script>
+	<script src="libraries/lightbox/lightbox.min.js"></script>
+	<script src="libraries/jquery.magnific-popup.min.js"></script>
+	<script src="libraries/uikit/js/uikit.min.js"></script>
+	<script src="libraries/uikit/js/components/sticky.min.js"></script>
+	<!-- Customized Scripts -->
+	<script src="js/functions.js"></script>	
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    twig.extension.debug:
+        class: Twig_Extension_Debug
+        tags:
+             - { name: 'twig.extension' }
+    memcached:
+        class: Memcached
+        calls:
+            - [ addServer, ['localhost', 11211] ]
+    memcached_cache:
+       class: Doctrine\Common\Cache\MemcachedCache
+       calls:
+           - [ setMemcached, [@memcached] ]
+
+    memcached_helper:
+       class: SiteBundle\Services\MemcachedHelper
+       calls:
+           - [setMemcached, [@memcached_cache]]
+
+    image_resize:
+       class: SiteBundle\Services\ImageResize
+       arguments: [@memcached_helper]

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload and insert an image</title>
+    <script type="text/javascript" src="dialog.js"></script>
+    <script type="text/javascript" src="config.js"></script>
+</head>
+<body>
+    <progress id="uploadProgress" style="display:none"></progress>
+    <p id="uploadError" style="display:none"></p>
+    <form onsubmit="window.imageUpload.handleSubmit(window.imageUploadConfig);return false;" id="uploadForm">
+        <input type="file" name="image" id="uploadFormFile">
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>

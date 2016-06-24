@@ -1,0 +1,16 @@
+{% extends 'SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig' %}
+
+{% block form_widget_simple %}
+    {% set type = type|default('text') %}
+    {% if type != 'file' %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control'}) %}
+    {% else %}
+        {% set filepath = getFileName(form.parent.vars.value) %}
+
+        {% if filepath is not empty %}
+            <img width="800" src="{{ filepath }}" />
+        {% endif %}
+
+    {% endif %}
+    {{ parent() }}
+{% endblock form_widget_simple %}

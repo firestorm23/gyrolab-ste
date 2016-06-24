@@ -1,0 +1,227 @@
+{% extends "SiteBundle::public.html.twig" %}
+
+
+{% block top_banner %}
+    <div class="grid_view">
+        <div class="row">
+            {% for article in topBannerArticles|slice(0,1) %}
+                <div class="column">
+                    <div class="post big">
+                        <a href="post.html" title="{{ article.name }}">
+                            <img src='{{ article.image.getResize("524x524x2")|relpath }}' alt='img'>
+                        </a>
+                        <div class="slider_content_box">
+                            <ul class="post_details">
+                                <li style="background-color: {{ rgba(article.mainTag.color, '0.65') }}" class="category"><a title="{{ article.mainTag|up }}" href="category_world.html">{{ article.mainTag|up }}</a></li>
+                            </ul>
+                            <h2><a href="post.html" title="{{ article.name }}">{{ article.name }}</a></h2>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="column">
+                {% for article in topBannerArticles|slice(1,1) %}
+                <div class="row">
+                    <div class="post medium">
+                        <a href="post.html" title="{{ article.name }}">
+                            <img src='{{ article.image.getResize("524x261x2")|relpath }}' alt='img'>
+                        </a>
+                        <div class="slider_content_box">
+                            <ul class="post_details">
+                                <li style="background-color: {{ rgba(article.mainTag.color, '0.65') }}" class="category"><a title="{{ article.mainTag|up }}" href="category_sports.html">{{ article.mainTag|up }}</a></li>
+                            </ul>
+                            <h2><a href="post.html" title="{{ article.name }}">{{ article.name }}</a></h2>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+                <div class="row">
+                {% for article in topBannerArticles|slice(2,4) %}
+                        <div class="post small">
+                            <a href="post.html" title="{{ article.name }}">
+                                <img src='{{ article.image.getResize("261x261x2")|relpath }}' alt='img'>
+                            </a>
+                            <div class="slider_content_box">
+                                <ul class="post_details">
+                                    <li style="background-color: {{ rgba(article.mainTag.color, '0.65') }}" class="category"><a title="{{ article.mainTag|up }}" href="category_sports.html">{{ article.mainTag|up }}</a></li>
+                                </ul>
+                                <h2><a href="post.html" title="{{ article.name }}">{{ article.name }}</a></h2>
+                            </div>
+                        </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slider_view">
+        <ul class="small_slider id-small_slider">
+            {% for article in topBannerArticles %}
+                <li class="slide">
+                    <a href="post.html" title="{{ article.name }}">
+                        <img src='{{ article.image.getResize("490x490x2")|relpath }}' alt='img'>
+                    </a>
+                    <div class="slider_content_box">
+                        <ul class="post_details">
+                            <li style="background-color: {{ rgba(article.mainTag.color, '0.65') }}" class="category"><a href="category_world.html" title="{{ article.mainTag|up }}">{{ article.mainTag|up }}</a></li>
+                        </ul>
+                        <h2><a href="post.html" title="{{ article.name }}">{{ article.name }}</a></h2>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <div id="small_slider" class='slider_posts_list_container small'></div>
+    </div>
+{% endblock top_banner %}
+
+{% block recommended %}
+    <h4 class="box_header">Рекомендуем</h4>
+    <div class="horizontal_carousel_container big page_margin_top">
+        <ul class="blog big horizontal_carousel autoplay-1 scroll-1 visible-3 navigation-1 easing-easeInOutQuint duration-750">
+            {% for article in recommendedArticles %}
+                <li class="post">
+                    <a href="post.html" title="{{ article.name }}" class="clearfix">
+                        <img src='{{ article.image.getResize("340x242x2")|relpath }}' alt='img'>
+                    </a>
+                    <h2 class="with_number">
+                        <a href="post.html" title="{{ article.name }}">{{ article.name }}</a>
+                        <a class="comments_number" href="post.html#comments_list" title="2 comments">2<span class="arrow_comments"></span></a>
+                    </h2>
+                    <ul class="post_details">
+                        <li style="background-color: {{ article.mainTag.color }}" class="category"><a href="category_world.html" title="{{ article.mainTag.name|up }}">{{ article.mainTag.name|up }}</a></li>
+                        <li class="date">
+                            {{ article.dateAdded | format_date(null, 'ru', 'Europe/Moscow', constant('IntlDateFormatter::LONG')) }}
+                        </li>
+                    </ul>
+                    <p>Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
+                    <a class="read_more" href="post.html" title="Read more"><span style="background-color: {{ article.mainTag.color }}" class="arrow"></span><span>READ MORE</span></a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock recommended %}
+
+{% block top %}
+    <h4 class="box_header page_margin_top_section">Лучшие статьи</h4>
+        <div class="horizontal_carousel_container page_margin_top">
+            <ul class="blog horizontal_carousel page_margin_top autoplay-0 visible-4 scroll-1 navigation-1 easing-easeInOutQuint duration-750">
+                {% for article in topArticles %}
+                <li class="post">
+                    <a href="post.html" title="{{ article.name }}">
+                        <img src='{{ article.image.getResize("240x176x2")|relpath }}' alt='img'>
+                    </a>
+                    <h5><a href="post.html" title="{{ article.name }}">{{ article.name }}</a></h5>
+                    <ul class="post_details simple">
+                        <li class="category"><a style="color: {{ article.mainTag.color }}" href="category_health.html" title="{{ article.mainTag|up }}">{{ article.mainTag|up }}</a></li>
+                        <li class="date">
+                            {{ article.dateAdded | format_date(null, 'ru', 'Europe/Moscow', constant('IntlDateFormatter::MEDIUM')) }}
+                        </li>
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+{% endblock top %}
+
+{% block tag_of_the_day %}
+    <h4 class="box_header">Тема дня: {{ tagOfTheDay.name }}</h4>
+    <div class="row">
+        {% for article in tagOfTheDay.articles|slice(0,1) %}
+            <ul class="blog column column_1_2">
+                <li class="post">
+                    <a href="post_gallery.html" title="{{ article.name }}">
+                        <span class="icon gallery"></span>
+                        <img src='{{ article.image.getResize("330x242x2")|relpath }}' alt='{{ article.name }}'>
+                    </a>
+                    <h2 class="with_number">
+                        <a href="post_gallery.html" title="{{ article.name }}">{{ article.name }}</a>
+                        <a class="comments_number" href="post_gallery.html#comments_list" title="2 comments">2<span class="arrow_comments"></span></a>
+                    </h2>
+                    <ul class="post_details">
+                        <li style="background-color: {{ article.mainTag.color }}" class="category"><a href="category_world.html" title="{{ article.mainTag.name }}">{{ article.mainTag.name }}</a></li>
+                        <li class="date">
+                            {{ article.dateAdded | format_date(null, 'ru', 'Europe/Moscow', constant('IntlDateFormatter::LONG')) }}
+                        </li>
+                    </ul>
+                    <p>Politicans have looked weak in the face of such natural disaster, with many facing criticism from local residents for doing little more than turning up as flood tourists at the side of disasters.</p>
+                    <a class="read_more" href="post_gallery.html" title="Read more"><span style="background-color: {{ article.mainTag.color }}" class="arrow"></span><span>READ MORE</span></a>
+                </li>
+            </ul>
+        {% endfor %}
+        <div class="column column_1_2">
+            <ul class="blog small clearfix">
+                {% for article in tagOfTheDay.articles|slice(1,4) %}
+                <li class="post">
+                    <a href="post.html" title="{{ article.name }}">
+                        <img src='{{ article.image.getResize("100x100x2")|relpath }}' alt='img'>
+                    </a>
+                    <div class="post_content">
+                        <h5>
+                            <a href="post.html" title="{{ article.name }}">{{ article.name }}</a>
+                        </h5>
+                        <ul class="post_details simple">
+                            <li class="category"><a style="color: {{ article.mainTag.color }}" href="category_health.html" title="{{ article.mainTag.name }}">{{ article.mainTag.name }}</a></li>
+                            <li class="date">
+                                {{ article.dateAdded | format_date(null, 'ru', 'Europe/Moscow', constant('IntlDateFormatter::SHORT')) }}
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            <a class="more page_margin_top" href="#">Еще про {{ tagOfTheDay.name }}</a>
+        </div>
+    </div>
+{% endblock tag_of_the_day %}
+
+
+{% block most_viewed %}
+<div class="row page_margin_top_section">
+    <div class="column column_1_1">
+        <h4 class="box_header">Популярные статьи</h4>
+        <div class="horizontal_carousel_container page_margin_top">
+            <ul class="blog horizontal_carousel autoplay-1 visible-4 scroll-1 navigation-1 easing-easeInOutQuint duration-750">
+                {% for article in mostViewArticles %}
+                    <li class="post">
+                        <a href="post.html" title="{{ article.name }}">
+                            <img src='{{ article.image.getResize("330x242x2")|relpath }}' alt='{{ article.name }}'>
+                        </a>
+                        <h5><a href="post.html" title="{{ article.name }}">{{ article.name }}</a></h5>
+                        <ul class="post_details simple">
+                            <li class="category"><a style="color: {{ article.mainTag.color }}" href="category_health.html" title="{{ article.mainTag|up }}">{{ article.mainTag|up }}</a></li>
+                            <li class="date">
+                                {{ article.dateAdded | format_date(null, 'ru', 'Europe/Moscow', constant('IntlDateFormatter::LONG')) }}
+                            </li>
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock most_viewed %}
+
+
+{% block last_commented %}
+    <h4 class="box_header">Science</h4>
+    <ul class="blog small clearfix">
+        {% for article in latestCommentedArticles %}
+            <li class="post">
+                <a href="post_small_image.html" title="{{ article.name }}">
+                    <img src='{{ article.image.getResize("100x100x2")|relpath }}' alt='{{ article.name }}'>
+                </a>
+                <div class="post_content">
+                    <h5>
+                        <a href="post_small_image.html" title="{{ article.name }}">{{ article.name }}</a>
+                    </h5>
+                    <ul class="post_details simple">
+                        <li class="category"><a style="color: {{ article.mainTag.color }}" href="category_science.html" title="{{ article.mainTag|up }}">{{ article.mainTag|up }}</a></li>
+                        <li class="date">
+                            {{ article.replies.last().dateCreated | format_date(null, 'ru', 'Europe/Moscow', constant('IntlDateFormatter::SHORT')) }}
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    {#<a class="more page_margin_top" href="#">MORE FROM SCIENCE</a>#}
+{% endblock last_commented %}

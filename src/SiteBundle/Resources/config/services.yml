@@ -1,0 +1,66 @@
+services:
+#    site.example:
+#        class: SiteBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+    site.admin.article:
+        class: SiteBundle\Admin\ArticleAdmin
+        arguments: [~, SiteBundle\Entity\Article, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Article }
+
+    helper_twig_extension:
+        class: HelperExtension
+        tags: [{ name: 'twig.extension' }]
+        arguments: [@service_container ]
+
+
+    site.upload.listener:
+        class: SiteBundle\EventListener\UploadListener
+        arguments: [@vich_uploader.metadata_reader, @jms_serializer]
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate, method: preUpdate, alias: site_pre_update, priority: -1 }
+            - { name: doctrine.event_listener, event: prePersist, method: prePersist, alias: site_pre_update, priority: -1 }
+
+    file.manager:
+        class: SiteBundle\Manager\FileManager
+        arguments: ["@service_container"]
+
+    article.manager:
+        class: SiteBundle\Manager\ArticleManager
+        arguments: ["@service_container"]
+
+#    site.upload.subscriber:
+#        class: SiteBundle\EventListener\UploadSubscriber
+#        arguments: [@iphp.filestore.annotation.driver, @jms_serializer]
+#        tags:
+#            - { name: doctrine.event_subscriber, connection: default, priority: -1
+
+    site.admin.tag:
+        class: SiteBundle\Admin\TagAdmin
+        arguments: [~, SiteBundle\Entity\Tag, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Tag }
+
+    site.admin.message:
+        class: SiteBundle\Admin\MessageAdmin
+        arguments: [~, SiteBundle\Entity\Message, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Message }
+
+    site.admin.product:
+        class: SiteBundle\Admin\ProductAdmin
+        arguments: [~, SiteBundle\Entity\Product, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Product }
+
+    site.admin.category:
+        class: SiteBundle\Admin\CategoryAdmin
+        arguments: [~, SiteBundle\Entity\Category, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Category }
+
+    # site.admin.file:
+    #     class: SiteBundle\Admin\FileAdmin
+    #     arguments: [~, SiteBundle\Entity\File, SonataAdminBundle:CRUD]
+    #     tags:
+    #         - { name: sonata.admin, manager_type: orm, group: admin, label: File }

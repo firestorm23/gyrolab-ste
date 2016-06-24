@@ -1,0 +1,7 @@
+photo_index:
+    pattern:      /
+    defaults:  { _controller: TestBundle:Default:index }
+
+photo_edit:
+    pattern:      /edit/{id}/
+    defaults:  { _controller: TestBundle:Default:edit }
