@@ -5,6 +5,7 @@ namespace SiteBundle\Manager;
 use SiteBundle\Entity\File;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use SiteBundle\Services\ImageResize;
+use SiteBundle\Model\ImageContainer;
 
 class FileManager extends Manager {
 
@@ -21,6 +22,24 @@ class FileManager extends Manager {
         $this->em = $this->getDoctrine()->getManager();
         $this->resize = $this->get('image_resize');
         $this->kernel = $this->get('kernel');
+    }
+
+    public function entitiesImageResize($articles, $resize_identifiers, &$resized_articles = array()) {
+
+        /** @var $article ImageContainer*/
+        foreach ($articles as $article) {
+            foreach ($resize_identifiers as $identifier) {
+                $this->resizeImage($article->getImage(), $identifier, false);
+            }
+            $resized_articles[$article->getId()] = $article;
+        }
+    }
+
+    public function singleEntityResizeImage(ImageContainer $article, $identifier, &$resized_articles = array()) {
+
+        $this->resizeImage($article->getImage(), $identifier, false);
+        $resized_articles[$article->getId()] = $article;
+
     }
 
     public function resizeImage(File $file, $sizekey, $saveFile = true) {

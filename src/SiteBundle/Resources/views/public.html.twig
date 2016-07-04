@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Pressroom - Responsive News &amp; Magazine Template</title>
+    <title>{{ block('title') }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     {#<link rel="stylesheet" type="text/css" href="style/reset.css">#}
     {#<link rel="stylesheet" type="text/css" href="style/superfish.css">#}
@@ -14,1160 +14,617 @@
     {#<link rel="stylesheet" type="text/css" href="style/responsive.css">#}
     {#<link rel="stylesheet" type="text/css" href="style/odometer-theme-default.css">#}
     {% stylesheets
-    'static/style/reset.css'
-    'static/style/superfish.css'
-    'static/style/prettyPhoto.css'
-    'static/style/jquery.qtip.css'
-    'static/style/style.css'
-    'static/style/menu_styles.css'
-    'static/style/animations.css'
-    'static/style/responsive.css'
-    'static/assets/css/custom_public.css'
-    'static/style/odometer-theme-default.css'
-    output="static/assets/css/public.css" filter="cssrewrite"
+    'static/libraries/bootstrap/bootstrap.min.css'
+    'static/libraries/bootstrap/bootstrap.min.css'
+    'static/libraries/animate/animate.min.css'
+    'static/libraries/audio/mediaelementplayer.min.css'
+    'static/libraries/flex-slider/flexslider.css'
+    'static/libraries/owl-carousel/owl.carousel.css'
+    'static/libraries/lightbox/lightbox.css'
+    'static/libraries/magnific-popup.css'
+    'static/libraries/uikit/css/uikit.min.css'
+    'static/libraries/uikit/css/components/sticky.min.css'
+    'static/css/fonts/pe-icon-7-stroke.css'
+    'static/libraries/fonts/font-awesome.min.css'
+    'static/css/style.css'
+    'static/css/media.css'
+    'static/css/custom.css'
+    'static/css/colors/salmon.css'
+    output="static/css/compilied.public.css" filter="cssrewrite"
     %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
     {#'@config_css'#}
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" href="/static/css/ie8.css">
+    <![endif]-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/static/js/html5/html5shiv.min.js"></script>
+    <script src="/static/js/html5/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round|Lato:300,400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<div class="site_container">
-    <!--<div class="header_top_bar_container style_2 clearfix">
-    <div class="header_top_bar_container style_2 border clearfix">
-    <div class="header_top_bar_container style_3 clearfix">
-    <div class="header_top_bar_container style_3 border clearfix">
-    <div class="header_top_bar_container style_4 clearfix">
-    <div class="header_top_bar_container style_4 border clearfix">
-    <div class="header_top_bar_container style_5 clearfix">
-    <div class="header_top_bar_container style_5 border clearfix"> -->
-    <div class="header_top_bar_container clearfix">
-        <div class="header_top_bar">
-            <form class="search" action="search.html" method="get">
-                <input type="text" name="s" placeholder="Search..." value="Search..." class="search_input hint">
-                <input type="submit" class="search_submit" value="">
-            </form>
-            <!--<ul class="social_icons dark clearfix">
-            <ul class="social_icons colors clearfix">-->
-            <ul class="social_icons clearfix">
-                <li>
-                    <a target="_blank" href="http://facebook.com/QuanticaLabs" class="social_icon facebook" title="facebook">
-                        &nbsp;
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" href="https://twitter.com/QuanticaLabs" class="social_icon twitter" title="twitter">
-                        &nbsp;
-                    </a>
-                </li>
-                <li>
-                    <a href="mailto:contact@pressroom.com" class="social_icon mail" title="mail">
-                        &nbsp;
-                    </a>
-                </li>
-                <li>
-                    <a href="http://themeforest.net/user/QuanticaLabs/portfolio" class="social_icon envato" title="envato">
-                        &nbsp;
-                    </a>
-                </li>
-            </ul>
-            <!--<div class="latest_news_scrolling_list_container">-->
-            <!--<ul>-->
-            <!--<li class="category">LATEST</li>-->
-            <!--<li class="left"><a href="#"></a></li>-->
-            <!--<li class="right"><a href="#"></a></li>-->
-            <!--<li class="posts">-->
-            <!--<ul class="latest_news_scrolling_list">-->
-            <!--<li>-->
-            <!--<a href="post.html" title="">Climate Change Debate While Britain Floods</a>-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<a href="post.html" title="">The Public Health Crisis Hiding in Our Food</a>-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<a href="post.html" title="">Nuclear Fusion Closer to Becoming a Reality</a>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</li>-->
-            <!--<li class="date">-->
-            <!--<abbr title="04 Apr 2014" class="timeago current">04 Apr 2014</abbr>-->
-            <!--<abbr title="04 May 2014" class="timeago">04 May 2014</abbr>-->
-            <!--<abbr title="04 June 2014" class="timeago">04 June 2014</abbr>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</div>-->
-        </div>
-    </div>
-    <!--<div class="header_container small">
-    <div class="header_container style_2">
-    <div class="header_container style_2 small">
-    <div class="header_container style_3">
-    <div class="header_container style_3 small">-->
-    <div class="header_container">
-        <div class="header clearfix">
-            <div class="logo">
-                <h1><a href="home.html" title="Pressroom">Pressroom</a></h1>
-                <h4>News and Magazine Template</h4>
-            </div>
-            <div class="placeholder">728 x 90</div>
-        </div>
-    </div>
-    <!-- <div class="menu_container style_2 clearfix">
-    <div class="menu_container style_3 clearfix">
-    <div class="menu_container style_... clearfix">
-    <div class="menu_container style_10 clearfix">
-    <div class="menu_container sticky clearfix">-->
-    <div class="menu_container clearfix">
-        <nav>
-            <ul class="sf-menu">
-                <li class="submenu mega_menu_parent">
-                    <a href="#" title="Mega Menu">
-                        Популярные статьи
-                    </a>
-                    <ul>
-                        <li class="submenu">
-                            <a href="blog.html" title="Latest Posts">
-                                Latest Posts
-                            </a>
-                            <ul class="mega_menu blog">
-                                <li class="post">
-                                    <a href="post.html" title="New Painkiller Rekindles Addiction Concerns">
-                                        <img src='/static/images/samples/330x242/image_08.jpg' alt='img'>
-                                    </a>
-                                    <h5><a href="post.html" title="New Painkiller Rekindles Addiction Concerns">New Painkiller Rekindles Addiction Concerns</a></h5>
-                                    <ul class="post_details simple">
-                                        <li class="category"><a title="HEALTH" href="category_health.html">HEALTH</a></li>
-                                        <li class="date">
-                                            10:11 PM, Feb 02
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="post">
-                                    <a href="post.html" title="High Altitudes May Aid Weight Control">
-                                        <img src='/static/images/samples/330x242/image_11.jpg' alt='img'>
-                                    </a>
-                                    <h5><a href="post.html" title="High Altitudes May Aid Weight Control">High Altitudes May Aid Weight Control</a></h5>
-                                    <ul class="post_details simple">
-                                        <li class="category"><a title="HEALTH" href="category_health.html">HEALTH</a></li>
-                                        <li class="date">
-                                            10:11 PM, Feb 02
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="post">
-                                    <a href="post.html" title="Build on Brotherhood, Club Lives Up to Name">
-                                        <img src='/static/images/samples/330x242/image_06.jpg' alt='img'>
-                                    </a>
-                                    <h5><a href="post.html" title="Build on Brotherhood, Club Lives Up to Name">Build on Brotherhood, Club Lives Up to Name</a></h5>
-                                    <ul class="post_details simple">
-                                        <li class="category"><a title="HEALTH" href="category_health.html">HEALTH</a></li>
-                                        <li class="date">
-                                            10:11 PM, Feb 02
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="submenu">
-                            <a href="blog.html" title="Recent Galleries">
-                                Recent Galleries
-                            </a>
-                            <ul class="mega_menu blog">
-                                <li class="post">
-                                    <a href="post_gallery.html" title="Build on Brotherhood, Club Lives Up to Name">
-                                        <span class="icon gallery"></span>
-                                        <img src='/static/images/samples/330x242/image_03.jpg' alt='img'>
-                                    </a>
-                                    <h5><a href="post_gallery.html" title="Build on Brotherhood, Club Lives Up to Name">Build on Brotherhood, Club Lives Up to Name</a></h5>
-                                    <ul class="post_details simple">
-                                        <li class="category"><a title="HEALTH" href="category_health.html">HEALTH</a></li>
-                                        <li class="date">
-                                            10:11 PM, Feb 02
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="post">
-                                    <a href="post_gallery.html" title="High Altitudes May Aid Weight Control">
-                                        <span class="icon gallery"></span>
-                                        <img src='/static/images/samples/330x242/image_05.jpg' alt='img'>
-                                    </a>
-                                    <h5><a href="post_gallery.html" title="High Altitudes May Aid Weight Control">High Altitudes May Aid Weight Control</a></h5>
-                                    <ul class="post_details simple">
-                                        <li class="category"><a title="HEALTH" href="category_health.html">HEALTH</a></li>
-                                        <li class="date">
-                                            10:11 PM, Feb 02
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="post">
-                                    <a href="post_gallery.html" title="New Painkiller Rekindles Addiction Concerns">
-                                        <span class="icon gallery"></span>
-                                        <img src='/static/images/samples/330x242/image_04.jpg' alt='img'>
-                                    </a>
-                                    <h5><a href="post_gallery.html" title="New Painkiller Rekindles Addiction Concerns">New Painkiller Rekindles Addiction Concerns</a></h5>
-                                    <ul class="post_details simple">
-                                        <li class="category"><a title="HEALTH" href="category_health.html">HEALTH</a></li>
-                                        <li class="date">
-                                            10:11 PM, Feb 02
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="submenu">
-                            <a href="blog.html" title="Recent Reviews">
-                                Recent Reviews
-                            </a>
-                            <ul class="mega_menu blog">
-                                <li class="post">
-                                    <a href="post_review.html" title="New Painkiller Rekindles Addiction Concerns">
-                                        <span class="icon"><span>8.7</span></span>
-                                        <img src='/static/images/samples/330x242/image_07.jpg' alt='img'>
-                                    </a>
-                                    <h5><a href="post_review.html" title="New Painkiller Rekindles Addiction Concerns">New Painkiller Rekindles Addiction Concerns</a></h5>
-                                    <ul class="post_details simple">
-                                        <li class="category"><a title="HEALTH" href="category_health.html">HEALTH</a></li>
-                                        <li class="date">
-                                            10:11 PM, Feb 02
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="post">
-                                    <a href="post_review_2.html" title="High Altitudes May Aid Weight Control">
-                                        <span class="icon"><span>9.5</span></span>
-                                        <img src='/static/images/samples/330x242/image_09.jpg' alt='img'>
-                                    </a>
-                                    <h5><a href="post_review_2.html" title="High Altitudes May Aid Weight Control">High Altitudes May Aid Weight Control</a></h5>
-                                    <ul class="post_details simple">
-                                        <li class="category"><a title="HEALTH" href="category_health.html">HEALTH</a></li>
-                                        <li class="date">
-                                            10:11 PM, Feb 02
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="post">
-                                    <a href="post_review.html" title="Build on Brotherhood, Club Lives Up to Name">
-                                        <span class="icon"><span>7.8</span></span>
-                                        <img src='/static/images/samples/330x242/image_14.jpg' alt='img'>
-                                    </a>
-                                    <h5><a href="post_review.html" title="Build on Brotherhood, Club Lives Up to Name">Build on Brotherhood, Club Lives Up to Name</a></h5>
-                                    <ul class="post_details simple">
-                                        <li class="category"><a title="HEALTH" href="category_health.html">HEALTH</a></li>
-                                        <li class="date">
-                                            10:11 PM, Feb 02
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="post first">
-                                    <a href="post_review.html" title="Nuclear Fusion Closer to Becoming a Reality">
-                                        <span class="icon"><span>8.0</span></span>
-                                        <img src='/static/images/samples/330x242/image_13.jpg' alt='img'>
-                                    </a>
-                                    <h5><a href="post_review.html" title="Nuclear Fusion Closer to Becoming a Reality">Nuclear Fusion Closer to Becoming a Reality</a></h5>
-                                    <ul class="post_details simple">
-                                        <li class="category"><a title="HEALTH" href="category_health.html">HEALTH</a></li>
-                                        <li class="date">
-                                            10:11 PM, Feb 02
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="post first">
-                                    <a href="post_review_2.html" title="The Public Health Crisis Hiding in Our Food">
-                                        <span class="icon"><span>9.1</span></span>
-                                        <img src='/static/images/samples/330x242/image_02.jpg' alt='img'>
-                                    </a>
-                                    <h5><a href="post_review_2.html" title="The Public Health Crisis Hiding in Our Food">The Public Health Crisis Hiding in Our Food</a></h5>
-                                    <ul class="post_details simple">
-                                        <li class="category"><a title="HEALTH" href="category_health.html">HEALTH</a></li>
-                                        <li class="date">
-                                            10:11 PM, Feb 02
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="post first">
-                                    <a href="post_review_2.html" title="Study Linking Illnes and Salt Leaves Researchers Doubtful">
-                                        <span class="icon"><span>6.7</span></span>
-                                        <img src='/static/images/samples/330x242/image_01.jpg' alt='img'>
-                                    </a>
-                                    <h5><a href="post_review_2.html" title="Study Linking Illnes and Salt Leaves Researchers Doubtful">Study Linking Illnes and Salt Leaves Researchers Doubtful</a></h5>
-                                    <ul class="post_details simple">
-                                        <li class="category"><a title="HEALTH" href="category_health.html">HEALTH</a></li>
-                                        <li class="date">
-                                            10:11 PM, Feb 02
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="submenu">
-                            <a href="blog.html" title="Most Read">
-                                Most Read
-                            </a>
-                            <div class="mega_menu row">
-                                <div class="column column_1_2">
-                                    <ul class="blog small">
-                                        <li class="post">
-                                            <a href="post.html" title="Study Linking Illnes and Salt Leaves Researchers Doubtful">
-                                                <img src='/static/images/samples/100x100/image_06.jpg' alt='img'>
-                                            </a>
-                                            <div class="post_content">
-                                                <h5>
-                                                    <a href="post.html" title="Study Linking Illnes and Salt Leaves Researchers Doubtful">Study Linking Illnes and Salt Leaves Researchers Doubtful</a>
-                                                </h5>
-                                                <ul class="post_details simple">
-                                                    <li class="category"><a href="category_health.html" title="HEALTH">HEALTH</a></li>
-                                                    <li class="date">
-                                                        10:11 PM, Feb 02
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="post">
-                                            <a href="post.html" title="Syrian Civilians Trapped For Months Continue To Be Evacuated">
-                                                <img src='/static/images/samples/100x100/image_12.jpg' alt='img'>
-                                            </a>
-                                            <div class="post_content">
-                                                <h5>
-                                                    <a href="post.html" title="Syrian Civilians Trapped For Months Continue To Be Evacuated">Syrian Civilians Trapped For Months Continue To Be Evacuated</a>
-                                                </h5>
-                                                <ul class="post_details simple">
-                                                    <li class="category"><a href="category_world.html" title="WORLD">WORLD</a></li>
-                                                    <li class="date">
-                                                        10:11 PM, Feb 02
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="post">
-                                            <a href="post.html" title="Built on Brotherhood, Club Lives Up to Name">
-                                                <img src='/static/images/samples/100x100/image_02.jpg' alt='img'>
-                                            </a>
-                                            <div class="post_content">
-                                                <h5>
-                                                    <a href="post.html" title="Built on Brotherhood, Club Lives Up to Name">Built on Brotherhood, Club Lives Up to Name</a>
-                                                </h5>
-                                                <ul class="post_details simple">
-                                                    <li class="category"><a href="category_sports.html" title="SPORTS">SPORTS</a></li>
-                                                    <li class="date">
-                                                        10:11 PM, Feb 02
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
+<div class="container no-bg">
+    <div class="row">
+        <!-- Header Top -->
+        <div class="header-top container-fluid padding_zero">
+            <div class="col-md-6 col-sm-6 col-xs-6 padding_zero">
+                <ul class="login-info">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#myModal">Log In</a>
+                        <!-- Modal -->
+                        <div class="modal fade model-login" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span class="fa fa-close"></span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Login Form -->
+                                        <div class="login-form">
+                                            <h2>Member Login</h2>
+                                            <form class="form-horizontal">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="username" placeholder="Username">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="checkbox">
+                                                        <label>Remember me</label>
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-12 col-sm-12 padding_zero">
+                                                        <input type="submit" class="btn btn-default login-btn" value="Log In">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <ul>
+                                                <li><a href="forgotpassword.html">Forgot your password?</a></li>
+                                                <li><a href="forgot-username.html">Forgot your username?</a></li>
+                                                <li><a href="registration.html">Don't have an account?</a></li>
+                                            </ul>
+                                        </div><!-- Login Form /- -->
+                                    </div>
                                 </div>
-                                <div class="column column_1_2">
-                                    <ul class="blog small">
-                                        <li class="post">
-                                            <a href="post.html" title="Study Linking Illnes and Salt Leaves Researchers Doubtful">
-                                                <img src='/static/images/samples/100x100/image_04.jpg' alt='img'>
-                                            </a>
-                                            <div class="post_content">
-                                                <h5>
-                                                    <a href="post.html" title="Study Linking Illnes and Salt Leaves Researchers Doubtful">Study Linking Illnes and Salt Leaves Researchers Doubtful</a>
-                                                </h5>
-                                                <ul class="post_details simple">
-                                                    <li class="category"><a href="category_health.html" title="HEALTH">HEALTH</a></li>
-                                                    <li class="date">
-                                                        10:11 PM, Feb 02
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="post">
-                                            <a href="post.html" title="Syrian Civilians Trapped For Months Continue To Be Evacuated">
-                                                <img src='/static/images/samples/100x100/image_10.jpg' alt='img'>
-                                            </a>
-                                            <div class="post_content">
-                                                <h5>
-                                                    <a href="post.html" title="Syrian Civilians Trapped For Months Continue To Be Evacuated">Syrian Civilians Trapped For Months Continue To Be Evacuated</a>
-                                                </h5>
-                                                <ul class="post_details simple">
-                                                    <li class="category"><a href="category_world.html" title="WORLD">WORLD</a></li>
-                                                    <li class="date">
-                                                        10:11 PM, Feb 02
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="post">
-                                            <a href="post.html" title="Built on Brotherhood, Club Lives Up to Name">
-                                                <img src='/static/images/samples/100x100/image_07.jpg' alt='img'>
-                                            </a>
-                                            <div class="post_content">
-                                                <h5>
-                                                    <a href="post.html" title="Built on Brotherhood, Club Lives Up to Name">Built on Brotherhood, Club Lives Up to Name</a>
-                                                </h5>
-                                                <ul class="post_details simple">
-                                                    <li class="category"><a href="category_sports.html" title="SPORTS">SPORTS</a></li>
-                                                    <li class="date">
-                                                        10:11 PM, Feb 02
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
+                            </div>
+                        </div><!-- Login Model /- -->
+                    </li>
+                    <li><a href="login.html">My Account</a></li>
+                </ul>
+            </div><!-- Col-md-6 /- -->
+            <div class="col-md-6 col-sm-6 col-xs-6 pull-right contact-info padding_zero">
+                <p><span>Call Us</span>(800) 755 1000</p>
+            </div><!-- Col-md-6 /- -->
+        </div><!-- Header Top /- -->
+    </div><!-- Row /- -->
+</div><!-- Container /- -->
+
+<!-- Header Section -->
+<header id="header-section" class="header-section" data-uk-sticky>
+    <div class="container">
+        <div class="row">
+            <div class="header-logo">
+                <div class="col-md-7 col-sm-7 col-xs-8 logo-block">
+                    <a href="index.html">
+                        <!--TODO-->
+                        <img src="/logo.jpg" alt="Fontaine HTML Template" width="100">
+                    </a>
+                    <p>Производство высокоточных систем навигации</p>
+                </div>
+                <div class="col-md-5 col-sm-5 padding_right search-social">
+                    <span id="canvas-bar" class="fa fa-bars"></span>
+                    <div class="social-icon col-md-7 col-sm-9">
+                        {{ block('social_block') }}
+                    </div>
+                    <div class="search-box col-md-5 col-sm-6 col-xs-4">
+                        <form class="form-search">
+                            <div class="input-group">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+									</span>
+                                <input type="text" class="form-control" placeholder="Search...">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-block" data-uk-sticky>
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse padding_zero" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/">О компании</a></li>
+                            <!--TODO-->
+                            <li class="dropdown">
+                                <a href="/products/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Продукты</a>
+                                <i class="responsive-caret fa fa-angle-down"></i>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/products/small/">Низкая точность</a></li>
+                                    <li><a href="/products/mid/">Средняя точность</a></li>
+                                    <li><a href="/products/high/">Высокая точность</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/articles/">Новости и статьи</a></li>
+                            <li><a href="/contacts/">Контакты</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offcanvas Menu -->
+    <!--TODO-->
+    <div id="offcanvas" class="offcanvas-box">
+        <div id="canvas" class="offcanvas-bars">
+            <div class="canvas-search">
+                <form class="form-search">
+                    <div class="input-group">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+							</span>
+                        <input type="text" class="form-control" placeholder="Search...">
+                    </div>
+                </form>
+            </div>
+            <div class="offcanvas-menu">
+                <ul class="main-menu">
+                    <li>
+                        <a href="/index_final.html">Home</a>
+                        <!--<ul class="sub-menu">-->
+                        <!--<li><a href="index.html">Home - Business Layout</a></li>-->
+                        <!--<li><a href="modular-layout.html">Home - Modular Layout</a></li>-->
+                        <!--<li><a href="creative-layout.html">Home - Creative Layout</a></li>-->
+                        <!--<li><a href="portfolio-layout.html">Home - Portfolio Layout</a></li>-->
+                        <!--<li><a href="home-blog-layout.html">Home - Blog Layout</a></li>-->
+                        <!--<li><a href="minimal-layout.html">Home - Minimal Layout</a></li>-->
+                        <!--</ul>-->
+                    </li>
+                    <li>
+                        <a href="#">Features</a>
+                        <ul class="sub-menu">
+                            <li><a href="module-variations.html">Module Layouts</a></li>
+                            <li><a href="icon-fonts.html">Icon Fonts</a></li>
+                            <li>
+                                <a href="#">Mega Menu</a>
+                                <ul class="child-menu">
+                                    <li><a href="#">Child Item</a></li>
+                                    <li><a href="#">Child Item</a></li>
+                                    <li><a href="#">Child Item</a></li>
+                                    <li><a href="#">Child Item</a></li>
+                                    <li><a href="#">Child Item</a></li>
+                                    <li><a href="#">Child Item</a></li>
+                                    <li>
+                                        <a href="#">Parent Item</a>
+                                        <ul class="child-menu">
+                                            <li><a href="#">Child Item</a></li>
+                                            <li><a href="#">Child Item</a></li>
+                                            <li><a href="#">Child Item</a></li>
+                                            <li><a href="#">Child Item</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Child Item</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="pricing-tables.html">Pricing Tables</a></li>
+                            <li><a href="unlimitedcolors.html">Unlimited Colors</a></li>
+                            <li><a href="dark-lightscreen.html">Dark & Light Skins</a></li>
+                            <li><a href="rtl-language-ready.html">RTL Language Ready</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Shortcodes</a>
+                        <ul class="sub-menu">
+                            <li><a href="headings.html">Headings</a></li>
+                            <li><a href="columnblocks.html">Column Blocks</a></li>
+                            <li><a href="blocks.html">Blocks</a></li>
+                            <li><a href="blockquotes.html">Blockquotes</a></li>
+                            <li><a href="list.html">Lists</a></li>
+                            <li><a href="buttons.html">Buttons</a></li>
+                            <li><a href="dropdown.html">Dropdowns</a></li>
+                            <li><a href="alerts.html">Alerts</a></li>
+                            <li><a href="panel.html">Panels</a></li>
+                            <li><a href="badgs.html">Badges</a></li>
+                            <li><a href="toggle.html">Toggles</a></li>
+                            <li><a href="tooltip.html">Tooltips</a></li>
+                            <li><a href="progressbar.html">Progress bar</a></li>
+                            <li><a href="tabs.html">Tabs</a></li>
+                            <li><a href="tags.html">Tags</a></li>
+                            <li><a href="table.html">Tables</a></li>
+                            <li><a href="image.html">Images</a></li>
+                            <li><a href="modelbox.html">Modal box</a></li>
+                            <li><a href="audio-video.html">Audio / Video</a></li>
+                            <li><a href="semantics.html">Semantics</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Pages</a>
+                        <ul class="sub-menu">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="our-team.html">Our Team</a></li>
+                            <li><a href="services.html">Our Services</a></li>
+                            <li><a href="testimonials.html">Testimonials</a></li>
+                            <li><a href="faq-page.html">FAQ Page</a></li>
+                            <li><a href="contacts.html">Contact Us</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Portfolio</a>
+                        <ul class="sub-menu">
+                            <li><a href="two-columngallery.html">2 Column Gallery</a></li>
+                            <li><a href="three-columngallery.html">3 Column Gallery</a></li>
+                            <li><a href="four-columngallery.html">4 Column Gallery</a></li>
+                            <li><a href="five-columngallery.html">5 Column Gallery</a></li>
+                            <li><a href="portfolioblocks.html">Portfolio in Blocks</a></li>
+                            <li><a href="portfoliocatagory.html">Portfolio Category</a></li>
+                            <li><a href="audio-portfolio.html">Audio Portfolio</a></li>
+                            <li><a href="video-portfolio.html">Video Portfolio</a></li>
+                            <li><a href="filterableportfolio.html">Filterable Portfolio</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                        <ul class="sub-menu">
+                            <li><a href="blog-item.html">Blog Item</a></li>
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog Category</a>
+                                <ul class="child-menu">
+                                    <li><a href="category-wordpress.html">WordPress</a></li>
+                                    <li><a href="category-notes.html">Notes</a></li>
+                                    <li><a href="category-news.html">News</a></li>
+                                    <li><a href="category-media.html">Media</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="user-page-blog.html">User Page Blog</a></li>
+                            <li><a href="blog-tag.html">Blog Items by Tag</a></li>
+                            <li><a href="latest-items-by-users.html">Latest Items by Users</a></li>
+                            <li><a href="latest-items-by-category.html">Latest Items by Category</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Wordpress</a>
+                        <ul class="sub-menu">
+                            <li><a href="single-article.html">Single Article</a></li>
+                            <li><a href="category-blog.html">Category Blog</a></li>
+                            <li><a href="category-list.html">Category List</a></li>
+                            <li><a href="contact-category.html">Contact Category</a></li>
+                            <li><a href="contact-item.html">Contact Item</a></li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="registration.html">Registration</a></li>
+                            <li><a href="frame-wrapper.html">Iframe Wrapper</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="module-block">
+                <h3>Offcanvas Module</h3>
+                <p>Our themes are built on a responsive framework, which gives them a <a href="#">friendly, adaptive layout</a></p>
+            </div>
+        </div>
+    </div><!-- Offcanvas Menu -->
+</header><!-- Header Section /- -->
+
+<!-- Container -->
+<div class="container">
+    <!-- Slider Section -->
+    {{ block('top_slider') }}
+</div>
+
+<!-- BlockQuote Section -->
+<div id="block-quotes" class="block-quotes">
+    <div class="container">
+        <div class="row">
+            <blockquote>
+                {{ block('blockquote') }}
+            </blockquote>
+        </div>
+    </div>
+</div><!-- BlockQuote Section /- -->
+
+<!-- Grid-box -->
+<div id="grid-box" class="grid-box">
+    <div class="container">
+        {{ block('mid_grid') }}
+    </div>
+</div><!-- Grid-box /- -->
+
+<!-- Work Section -->
+<div id="work-section" class="work-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12 work-block">
+                <div class="work-block-inner">
+                    <h2>We are open 24 Hours</h2>
+                    <div class="col-md-2 col-sm-3 col-xs-2 padding_left">
+                        <span class="box-icon pe-7s-clock"></span>
+                    </div>
+                    <div class="col-md-10 col-sm-9	 padding_zero">
+                        <p>Take up one idea. Make that one idea your life - think of it, dream of it, live on that idea</p>
+                    </div>
+                    <a class="login-btn  pull-right" href="#">Book now</a>
+                </div>
+                <div class="work-block-inner block-client">
+                    <h6> Recent Clients</h6>
+                    <div id="partners" class="partners">
+                        <div class="item">
+                            <img src="images/client-1.png" alt="client-1">
+                        </div>
+                        <div class="item">
+                            <img src="images/client-2.png" alt="client-2">
+                        </div>
+                        <div class="item">
+                            <img src="images/client-3.png" alt="client-3">
+                        </div>
+                        <div class="item">
+                            <img src="images/client-4.png" alt="client-4">
+                        </div>
+                        <div class="item">
+                            <img src="images/client-4.png" alt="client-4">
+                        </div>
+                        <div class="item">
+                            <img src="images/client-6.png" alt="client-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8 col-xs-12">
+                <div class="work-section-inner">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#Identify-your-niche" aria-controls="Identify-your-niche" role="tab" data-toggle="tab">Identify your niche</a></li>
+                        <li role="presentation"><a href="#Know-your-target-audience" aria-controls="Know-your-target-audience" role="tab" data-toggle="tab">Know your target audience</a></li>
+                        <li role="presentation"><a href="#Launch-your-product" aria-controls="Launch-your-product" role="tab" data-toggle="tab">Launch your product</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content tab-inner">
+                        <div role="tabpanel" class="tab-pane active" id="Identify-your-niche">
+                            <div class="tab-pane-inner">
+                                <div class="col-md-8 col-sm-12">
+                                    <h2>Take up one idea. Make that one idea your life</h2>
+                                    <p>Believe that life is worth living and your belief will help create the fact. We help your ideas come to life. The world owes you nothing. It was here first. If you don't like something, change it; If you can't change it, change your attitude. Change will not come if we wait for some other person, alien or thing.</p>
+                                </div>
+                                <div class="col-md-4 col-sm-12 tab-img">
+                                    <img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-7.jpg" alt="image1">
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger">See it in action</button>
+                                <div class="dropup-down">
+                                    <a class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a target="_blank" href="http://goo.gl/Tzea27">Vantage</a></li>
+                                        <li><a target="_blank" href="http://goo.gl/hN061w">Lighthouse</a></li>
+                                        <li><a target="_blank" href="http://goo.gl/5GPeXY">Uneedo</a></li>
+                                        <li><a target="_blank" href="http://goo.gl/EovFyp">Fontaine</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a target="_blank" href="http://goo.gl/6xBDNW">All Projects...</a></li>
                                     </ul>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#" title="Post Formats">
-                        Женщинам
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="post.html" title="Post Default">
-                                Post Default
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_gallery.html" title="Post Gallery">
-                                Post Gallery
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_small_image.html" title="Post Small Image">
-                                Post Small Image
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_video.html" title="Post Video YouTube">
-                                Post Video Youtube
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_video_2.html" title="Post Video Vimeo">
-                                Post Video Vimeo
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_soundcloud.html" title="Post Soundcloud">
-                                Post Soundcloud
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_review.html" title="Post Review Style 1">
-                                Post Review Style 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_review_2.html" title="Post Review Style 2">
-                                Post Review Style 2
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_quote.html" title="Post Quote Style 1">
-                                Post Quote Style 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_quote_2.html" title="Post Quote Style 2">
-                                Post Quote Style 2
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#" title="Post Formats">
-                        Женщинам
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="post.html" title="Post Default">
-                                Post Default
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_gallery.html" title="Post Gallery">
-                                Post Gallery
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_small_image.html" title="Post Small Image">
-                                Post Small Image
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_video.html" title="Post Video YouTube">
-                                Post Video Youtube
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_video_2.html" title="Post Video Vimeo">
-                                Post Video Vimeo
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_soundcloud.html" title="Post Soundcloud">
-                                Post Soundcloud
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_review.html" title="Post Review Style 1">
-                                Post Review Style 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_review_2.html" title="Post Review Style 2">
-                                Post Review Style 2
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_quote.html" title="Post Quote Style 1">
-                                Post Quote Style 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_quote_2.html" title="Post Quote Style 2">
-                                Post Quote Style 2
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#" title="Post Formats">
-                        Для всех
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="post.html" title="Post Default">
-                                Post Default
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_gallery.html" title="Post Gallery">
-                                Post Gallery
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_small_image.html" title="Post Small Image">
-                                Post Small Image
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_video.html" title="Post Video YouTube">
-                                Post Video Youtube
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_video_2.html" title="Post Video Vimeo">
-                                Post Video Vimeo
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_soundcloud.html" title="Post Soundcloud">
-                                Post Soundcloud
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_review.html" title="Post Review Style 1">
-                                Post Review Style 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_review_2.html" title="Post Review Style 2">
-                                Post Review Style 2
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_quote.html" title="Post Quote Style 1">
-                                Post Quote Style 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_quote_2.html" title="Post Quote Style 2">
-                                Post Quote Style 2
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="contact.html" title="Contact">
-                        Contact
-                    </a>
-                    <ul class="expand_left_contact">
-                        <li>
-                            <a href="contact.html" title="Contact Style 1">
-                                Contact Style 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contact_2.html" title="Contact Style 2">
-                                Contact Style 2
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <div class="mobile_menu_container">
-            <a href="#" class="mobile-menu-switch">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
-            </a>
-            <div class="mobile-menu-divider"></div>
-            <nav>
-                <ul class="mobile-menu">
-                    <li class="submenu selected">
-                        <a href="home.html" title="Home">
-                            Home
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="home.html" title="Home Style 1">
-                                    Home Style 1
-                                </a>
-                            </li>
-                            <li>
-                                <a href="home_2.html" title="Home Style 2">
-                                    Home Style 2
-                                </a>
-                            </li>
-                            <li>
-                                <a href="home_3.html" title="Home Style 3">
-                                    Home Style 3
-                                </a>
-                            </li>
-                            <li>
-                                <a href="home_4.html" title="Home Style 3">
-                                    Home Style 4
-                                </a>
-                            </li>
-                            <li class="selected">
-                                <a href="home_5.html" title="Home Style 5">
-                                    Home Style 5
-                                </a>
-                            </li>
-                            <li>
-                                <a href="home_6.html" title="Home Style 6">
-                                    Home Style 6
-                                </a>
-                            </li>
-                            <li>
-                                <a href="home_7.html" title="Home Style 7">
-                                    Home Style 7
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="about.html" title="Pages">
-                            Pages
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="about.html" title="About Style 1">
-                                    About Style 1
-                                </a>
-                            </li>
-                            <li>
-                                <a href="about_2.html" title="About Style 2">
-                                    About Style 2
-                                </a>
-                            </li>
-                            <li>
-                                <a href="default.html" title="Default">
-                                    Default
-                                </a>
-                            </li>
-                            <li>
-                                <a href="404.html" title="404 Not Found">
-                                    404 Not Found
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="post.html" title="Post Formats">
-                            Post Formats
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="post.html" title="Post Default">
-                                    Post Default
-                                </a>
-                            </li>
-                            <li>
-                                <a href="post_gallery.html" title="Post Gallery">
-                                    Post Gallery
-                                </a>
-                            </li>
-                            <li>
-                                <a href="post_small_image.html" title="Post Small Image">
-                                    Post Small Image
-                                </a>
-                            </li>
-                            <li>
-                                <a href="post_video.html" title="Post Video YouTube">
-                                    Post Video Youtube
-                                </a>
-                            </li>
-                            <li>
-                                <a href="post_video_2.html" title="Post Video Vimeo">
-                                    Post Video Vimeo
-                                </a>
-                            </li>
-                            <li>
-                                <a href="post_soundcloud.html" title="Post Soundcloud">
-                                    Post Soundcloud
-                                </a>
-                            </li>
-                            <li>
-                                <a href="post_review.html" title="Post Review Style 1">
-                                    Post Review Style 1
-                                </a>
-                            </li>
-                            <li>
-                                <a href="post_review_2.html" title="Post Review Style 2">
-                                    Post Review Style 2
-                                </a>
-                            </li>
-                            <li>
-                                <a href="post_quote.html" title="Post Quote Style 1">
-                                    Post Quote Style 1
-                                </a>
-                            </li>
-                            <li>
-                                <a href="post_quote_2.html" title="Post Quote Style 2">
-                                    Post Quote Style 2
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="blog.html" title="Blog">
-                            Blog
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="blog_small_slider.html" title="Blog Small Slider">
-                                    Blog Small Slider
-                                </a>
-                            </li>
-                            <li class="submenu">
-                                <a href="blog.html" title="Blog 1 column">
-                                    Blog 1 Column
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="blog.html" title="Blog With Right Sidebar">
-                                            Blog With Right Sidebar
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="blog_left_sidebar.html" title="Blog With Left Sidebar">
-                                            Blog With Left Sidebar
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="submenu">
-                                <a href="blog_2_columns.html" title="Blog 2 columns">
-                                    Blog 2 Columns
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="blog_2_columns.html" title="Right Sidebar">
-                                            Right Sidebar
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="blog_2_columns_left_sidebar.html" title="Left Sidebar">
-                                            Left Sidebar
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="blog_3_columns.html" title="Blog 3 Columns">
-                                    Blog 3 Columns
-                                </a>
-                            </li>
-                            <li>
-                                <a href="search.html?s=Maecenas+Mauris" title="Search Page Template">
-                                    Search Page Template
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="authors.html" title="Authors">
-                            Authors
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="authors.html" title="Authors List">
-                                    Authors List
-                                </a>
-                            </li>
-                            <li>
-                                <a href="author.html" title="Author Single">
-                                    Author Single
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="category_health.html" title="Categories">
-                            Categories
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="category_health.html" title="Health">
-                                    Health
-                                </a>
-                            </li>
-                            <li>
-                                <a href="category_science.html" title="Science">
-                                    Science
-                                </a>
-                            </li>
-                            <li>
-                                <a href="category_sports.html" title="Sports">
-                                    Sports
-                                </a>
-                            </li>
-                            <li>
-                                <a href="category_world.html" title="World">
-                                    World
-                                </a>
-                            </li>
-                            <li>
-                                <a href="category_lifestyle.html" title="Lifestyle">
-                                    Lifestyle
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="submenu">
-                        <a href="contact.html" title="Contact">
-                            Contact
-                        </a>
-                        <ul class="expand_left_contact">
-                            <li>
-                                <a href="contact.html" title="Contact Style 1">
-                                    Contact Style 1
-                                </a>
-                            </li>
-                            <li>
-                                <a href="contact_2.html" title="Contact Style 2">
-                                    Contact Style 2
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <div class="page">
-        <div class="page_layout page_margin_top clearfix">
-            <div class="row">
-                <div class="column column_1_1">
-
-                        {% block top_banner %}
-                        {% endblock top_banner %}
-
-                </div>
-            </div>
-            {% block hr_article %}{% endblock %}
-            <div class="row page_margin_top">
-                <div class="column column_1_1">
-                    {% block recommended %}
-                    {% endblock recommended %}
-                    {% block top %}
-                    {% endblock top %}
-                </div>
-            </div>
-            {% block tag_of_the_day_and_last_commented %}
-            {% endblockd tag_of_the_day_and_last_commented%}
-
-            {% block most_viewed %}
-            {% endblock most_viewed %}
-        </div>
-    </div>
-    <div class="footer_container">
-        <div class="footer clearfix">
-            <!--<div class="row">-->
-            <!--<div class="column column_1_3">-->
-            <!--<h4 class="box_header">About PressRoom</h4>-->
-            <!--<p class="padding_top_bottom_25">Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>-->
-            <!--<div class="row">-->
-            <!--<div class="column column_1_2">-->
-            <!--<h5>PressRoom Ltd.</h5>-->
-            <!--<p>-->
-            <!--33 Farlane Street<br>-->
-            <!--25-100 Keilor East,<br>-->
-            <!--Australia-->
-            <!--</p>-->
-            <!--</div>-->
-            <!--<div class="column column_1_2">-->
-            <!--<h5>Phone &amp; Fax</h5>-->
-            <!--<p>-->
-            <!--Phone: 1-800-64-38<br>-->
-            <!--Fax: 1-800-64-39-->
-            <!--</p>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<h4 class="box_header page_margin_top">Get In Touch With Us</h4>-->
-            <!--<ul class="social_icons dark page_margin_top clearfix">-->
-            <!--<li>-->
-            <!--<a target="_blank" title="" href="http://facebook.com/QuanticaLabs" class="social_icon facebook">-->
-            <!--&nbsp;-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<a target="_blank" title="" href="https://twitter.com/QuanticaLabs" class="social_icon twitter">-->
-            <!--&nbsp;-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<a title="" href="mailto:contact@pressroom.com" class="social_icon mail">-->
-            <!--&nbsp;-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<a title="" href="#" class="social_icon skype">-->
-            <!--&nbsp;-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<a title="" href="http://themeforest.net/user/QuanticaLabs?ref=QuanticaLabs" class="social_icon envato">-->
-            <!--&nbsp;-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<a title="" href="#" class="social_icon instagram">-->
-            <!--&nbsp;-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<a title="" href="#" class="social_icon pinterest">-->
-            <!--&nbsp;-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</div>-->
-            <!--<div class="column column_1_3">-->
-            <!--<h4 class="box_header">Latest Posts</h4>-->
-            <!--<div class="vertical_carousel_container clearfix">-->
-            <!--<ul class="blog small vertical_carousel autoplay-1 scroll-1 navigation-1 easing-easeInOutQuint duration-750">-->
-            <!--<li class="post">-->
-            <!--<a href="post_gallery.html" title="Study Linking Illnes and Salt Leaves Researchers Doubtful">-->
-            <!--<span class="icon small gallery"></span>-->
-            <!--<img src='/static/images/samples/100x100/image_06.jpg' alt='img'>-->
-            <!--</a>-->
-            <!--<div class="post_content">-->
-            <!--<h5>-->
-            <!--<a href="post_gallery.html" title="Study Linking Illnes and Salt Leaves Researchers Doubtful">Study Linking Illnes and Salt Leaves Researchers Doubtful</a>-->
-            <!--</h5>-->
-            <!--<ul class="post_details simple">-->
-            <!--<li class="category"><a href="category_health.html" title="HEALTH">HEALTH</a></li>-->
-            <!--<li class="date">-->
-            <!--10:11 PM, Feb 02-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</div>-->
-            <!--</li>-->
-            <!--<li class="post">-->
-            <!--<a href="post.html" title="Syrian Civilians Trapped For Months Continue To Be Evacuated">-->
-            <!--<img src='/static/images/samples/100x100/image_12.jpg' alt='img'>-->
-            <!--</a>-->
-            <!--<div class="post_content">-->
-            <!--<h5>-->
-            <!--<a href="post.html" title="Syrian Civilians Trapped For Months Continue To Be Evacuated">Syrian Civilians Trapped For Months Continue To Be Evacuated</a>-->
-            <!--</h5>-->
-            <!--<ul class="post_details simple">-->
-            <!--<li class="category"><a href="category_world.html" title="WORLD">WORLD</a></li>-->
-            <!--<li class="date">-->
-            <!--10:11 PM, Feb 02-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</div>-->
-            <!--</li>-->
-            <!--<li class="post">-->
-            <!--<a href="post.html" title="Built on Brotherhood, Club Lives Up to Name">-->
-            <!--<img src='/static/images/samples/100x100/image_02.jpg' alt='img'>-->
-            <!--</a>-->
-            <!--<div class="post_content">-->
-            <!--<h5>-->
-            <!--<a href="post.html" title="Built on Brotherhood, Club Lives Up to Name">Built on Brotherhood, Club Lives Up to Name</a>-->
-            <!--</h5>-->
-            <!--<ul class="post_details simple">-->
-            <!--<li class="category"><a href="category_sports.html" title="SPORTS">SPORTS</a></li>-->
-            <!--<li class="date">-->
-            <!--10:11 PM, Feb 02-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</div>-->
-            <!--</li>-->
-            <!--<li class="post">-->
-            <!--<a href="post.html" title="Nuclear Fusion Closer to Becoming a Reality">-->
-            <!--<img src='/static/images/samples/100x100/image_13.jpg' alt='img'>-->
-            <!--</a>-->
-            <!--<div class="post_content">-->
-            <!--<h5>-->
-            <!--<a href="post.html" title="Nuclear Fusion Closer to Becoming a Reality">Nuclear Fusion Closer to Becoming a Reality</a>-->
-            <!--</h5>-->
-            <!--<ul class="post_details simple">-->
-            <!--<li class="category"><a href="category_science.html" title="SCIENCE">SCIENCE</a></li>-->
-            <!--<li class="date">-->
-            <!--10:11 PM, Feb 02-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</div>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<div class="column column_1_3">-->
-            <!--<h4 class="box_header">Latest Galleries</h4>-->
-            <!--<div class="horizontal_carousel_container big page_margin_top">-->
-            <!--<ul class="blog horizontal_carousel visible-1 autoplay-0 scroll-1 navigation-1 easing-easeInOutQuint duration-750">-->
-            <!--<li class="post">-->
-            <!--<a href="post_gallery.html" title="Struggling Nuremberg Sack Coach Verbeek">-->
-            <!--<span class="icon gallery"></span>-->
-            <!--<img src='/static/images/samples/330x242/image_03.jpg' alt='img'>-->
-            <!--</a>-->
-            <!--<h5 class="with_number">-->
-            <!--<a href="post_gallery.html" title="Struggling Nuremberg Sack Coach Verbeek">Struggling Nuremberg Sack Coach Verbeek</a>-->
-            <!--<a class="comments_number" href="post_gallery.html#comments_list" title="2 comments">2<span class="arrow_comments"></span></a>-->
-            <!--</h5>-->
-            <!--<ul class="post_details simple">-->
-            <!--<li class="category"><a href="category_sports.html" title="SPORTS">SPORTS</a></li>-->
-            <!--<li class="date">-->
-            <!--10:11 PM, Feb 02-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</li>-->
-            <!--<li class="post">-->
-            <!--<a href="post_gallery.html" title="Built on Brotherhood, Club Lives Up to Name">-->
-            <!--<span class="icon gallery"></span>-->
-            <!--<img src='/static/images/samples/330x242/image_14.jpg' alt='img'>-->
-            <!--</a>-->
-            <!--<h5 class="with_number">-->
-            <!--<a href="post_gallery.html" title="Built on Brotherhood, Club Lives Up to Name">Built on Brotherhood, Club Lives Up to Name</a>-->
-            <!--<a class="comments_number" href="post_gallery.html#comments_list" title="2 comments">2<span class="arrow_comments"></span></a>-->
-            <!--</h5>-->
-            <!--<ul class="post_details simple">-->
-            <!--<li class="category"><a href="category_sports.html" title="SPORTS">SPORTS</a></li>-->
-            <!--<li class="date">-->
-            <!--10:11 PM, Feb 02-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</li>-->
-            <!--<li class="post">-->
-            <!--<a href="post_gallery.html" title="New Painkiller Rekindles Addiction Concerns">-->
-            <!--<span class="icon gallery"></span>-->
-            <!--<img src='/static/images/samples/330x242/image_04.jpg' alt='img'>-->
-            <!--</a>-->
-            <!--<h5 class="with_number">-->
-            <!--<a href="post_gallery.html" title="New Painkiller Rekindles Addiction Concerns">New Painkiller Rekindles Addiction Concerns</a>-->
-            <!--<a class="comments_number" href="post_gallery.html#comments_list" title="2 comments">2<span class="arrow_comments"></span></a>-->
-            <!--</h5>-->
-            <!--<ul class="post_details simple">-->
-            <!--<li class="category"><a href="category_sports.html" title="SPORTS">SPORTS</a></li>-->
-            <!--<li class="date">-->
-            <!--10:11 PM, Feb 02-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <div class="row page_margin_top_section">
-                <div class="column column_3_4">
-                    <ul class="footer_menu">
-                        <li>
-                            <h4><a href="category_world.html" title="World">World</a></h4>
-                        </li>
-                        <li>
-                            <h4><a href="category_health.html" title="Health">Health</a></h4>
-                        </li>
-                        <li>
-                            <h4><a href="category_sports.html" title="Sports">Sports</a></h4>
-                        </li>
-                        <li>
-                            <h4><a href="category_science.html" title="Science">Science</a></h4>
-                        </li>
-                        <li>
-                            <h4><a href="category_lifestyle.html" title="Lifestyle">Lifestyle</a></h4>
-                        </li>
-                    </ul>
-                </div>
-                <div class="column column_1_4">
-                    <a class="scroll_top" href="#top" title="Scroll to top">Top</a>
-                </div>
-            </div>
-            <div class="row copyright_row">
-                <div class="column column_2_3">
-                    © Copyright <a href="http://quanticalabs.com" title="QuanticaLabs" target="_blank">QuanticaLabs</a> - PressRoom Template. <a href="http://themeforest.net/item/pressroom-responsive-news-and-magazine-template/9066845?ref=QuanticaLabs" title="PressRoom Template" target="_blank">Click here to buy it</a>
-                </div>
-                <div class="column column_1_3">
-                    <ul class="footer_menu">
-                        <li>
-                            <h6><a href="about.html" title="About">About</a></h6>
-                        </li>
-                        <li>
-                            <h6><a href="authors.html" title="Authors">Authors</a></h6>
-                        </li>
-                        <li>
-                            <h6><a href="contact.html" title="Contact Us">Contact Us</a></h6>
-                        </li>
-                    </ul>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="Know-your-target-audience">
+                            <div class="tab-pane-inner">
+                                <div class="col-md-8 col-sm-12">
+                                    <h2>We are the change that we seek</h2>
+                                    <p>If you can't change it, change your attitude. Change will not come if we wait for some other person or some other time. We are the ones we've been waiting for. We are the change that we seek. Believe that life is worth living and your belief will help create the fact. We help your ideas come to life.</p>
+                                </div>
+                                <div class="col-md-4 col-sm-12 tab-img">
+                                    <img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-21.jpg" alt="image2">
+                                </div>
+                                <a class="login-btn" target="_self" href="http://goo.gl/6xBDNW">Learn more</a>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="Launch-your-product">
+                            <div class="tab-pane-inner">
+                                <div class="col-md-8 col-sm-12">
+                                    <h2>We help your ideas come to life</h2>
+                                    <p>Throughout life people will make you mad, disrespect you and treat you bad. Let God deal with the things they do, cause hate in your heart will consume you too. Be kind whenever possible. It is always possible. Everything should be as simple as it is, but not simpler; Believe that life is worth living.</p>
+                                </div>
+                                <div class="col-md-4 col-sm-12 tab-img">
+                                    <img src="http://www.teknol.ru/images/companav3_new_web.png" alt="image3">
+                                </div>
+                                <a class="login-btn" target="_self" href="http://goo.gl/6xBDNW">Download now</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="background_overlay"></div>
+</div><!-- Work Section /- -->
+
+<!--&lt;!&ndash; Article Section &ndash;&gt;-->
+<!--<div id="article-section" class="article-section">-->
+<!--<div class="container">-->
+<!--<div class="row">-->
+<!--<div class="col-md-3 col-sm-3 col-xs-4">-->
+<!--<div class="article-sidebar">-->
+<!--<h2>Who's Online</h2>-->
+<!--<p>We have 16 guests and no members online</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-9 col-sm-9 col-xs-8">-->
+<!--<div class="article-content">-->
+<!--<h3>You don't need another reason to redesign your website. This design is enough</h3>-->
+<!--<p>Fontaine is a clean and subtle Joomla 3.x Template design that has been built on a powerful framework with bundles of HTML5 and CSS3 goodies. Life is a series of natural and spontaneous changes. Don't resist them - that only creates sorrow. Let reality be reality.</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>&lt;!&ndash; Article Section /- &ndash;&gt;-->
+
+<!-- Subscribe Section -->
+{#<div id="subscribe-section" class="subscribe-section">#}
+    {#<div class="container">#}
+        {#<div class="row">#}
+            {#<div class="news-subscribe">#}
+                {#<form>#}
+                    {#<label class="col-md-7 col-sm-6 padding_zero col-xs-12">Drop us your email address and stay connected with us</label>#}
+                    {#<div class="form-group col-md-5 col-sm-6 col-xs-12">#}
+                        {#<input type="email" name="email" class="form-control" placeholder="Your email address">#}
+                        {#<input type="submit" value="Go">#}
+                    {#</div>#}
+                {#</form>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div><!-- Container -->#}
+{#</div><!-- Subscribe Section /- -->#}
+
+<!-- Footer Section -->
+<footer id="footer-section" class="footer-section">
+    <div class="container">
+        <div class="row">
+            {#<div class="footer-widget-area padding_zero container-fluid">#}
+                {#<div class="col-md-3 col-sm-6 col-xs-6">#}
+                    {#<div class="widget widget-categories">#}
+                        {#<h2 class="widget-title">Our Work</h2>#}
+                        {#<ul>#}
+                            {#<li><a href="http://themeforest.net/item/vantage-clean-responsive-joomla-theme/3649706/?ref=arrowthemes">Vantage Theme</a></li>#}
+                            {#<li><a href="http://themeforest.net/item/lighthouse-responsive-joomla-template/3266101/?ref=arrowthemes">Lighthouse Theme</a></li>#}
+                            {#<li><a href="http://themeforest.net/item/fidelity-clean-responsive-joomla-template/2999986/?ref=arrowthemes">Sauna Theme</a></li>#}
+                            {#<li><a href="http://themeforest.net/item/sauna-responsive-jooma-template/2678298/?ref=arrowthemes">Sauna Theme</a></li>#}
+                            {#<li><a href="http://themeforest.net/item/saffron-responsive-joomla-template/9696343/?ref=arrowthemes">Saffron Theme</a></li>#}
+                        {#</ul>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="col-md-3 col-sm-6 col-xs-6">#}
+                    {#<div class="widget widget-vision">#}
+                        {#<h2 class="widget-title">Our Vision</h2>#}
+                        {#<div class="vision-inner">#}
+                            {#<div class="col-md-3 col-sm-3 col-xs-3 vision-img padding_left">#}
+                                {#<img src="images/footer/small_1.png" alt="small">#}
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-9 vision-content padding_zero">#}
+                                {#<a href="#">We build the web</a>#}
+                                {#<p>Believe that life is worth living and your belief will help create the fact </p>#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#<div class="vision-inner">#}
+                            {#<div class="col-md-3 col-sm-3 col-xs-3 vision-img padding_left">#}
+                                {#<img src="images/footer/small_2.png" alt="small">#}
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-9 vision-content padding_zero">#}
+                                {#<a href="#">We strive to excel</a>#}
+                                {#<p>The world owes you nothing. It was here first. If you don't like, change it</p>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<!--<div class="col-md-3 col-sm-6 col-xs-6">-->#}
+                {#<!--<div class="widget widget-tag">-->#}
+                {#<!--<h2 class="widget-title">Blog Tags</h2>-->#}
+                {#<!--<ul class="tag-list">-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">arrowthemes</a></li>-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">audiojungle</a></li>-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">css3</a></li>-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">envato</a></li>-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">Fontaine</a></li>-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">HTML5</a></li>-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">Lighthouse</a></li>-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">media</a></li>-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">music</a></li>-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">responsive</a></li>-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">theme</a></li>-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">Themeforest</a></li>-->#}
+                {#<!--<li><a href="tag-arrowthemes.html">WordPress</a></li>-->#}
+                {#<!--</ul>-->#}
+                {#<!--</div>-->#}
+                {#<!--</div>-->#}
+                {#<div class="col-md-3 col-sm-6 col-xs-6">#}
+                    {#<div class="widget widget-address">#}
+                        {#<h2 class="widget-title">Our Location</h2>#}
+                        {#<div class="col-md-12 col-sm-12 col-xs-12 padding_left">#}
+                            {#<p><img src="images/footer/world.svg" alt="world" class="align-right" />Our offices are located all over the globe with multi-lingual assistants to help you out</p>#}
+                            {#<p>Life is a series of natural and spontaneous changes. Don't resist them - that only creates sorrow. Let reality be reality.</p>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="col-md-3 col-sm-6 col-xs-6">#}
+                    {#<div class="widget widget-vision">#}
+                        {#<h2 class="widget-title">Our Vision</h2>#}
+                        {#<div class="vision-inner">#}
+                            {#<div class="col-md-3 col-sm-3 col-xs-3 vision-img padding_left">#}
+                                {#<img src="images/footer/small_1.png" alt="small">#}
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-9 vision-content padding_zero">#}
+                                {#<a href="#">We build the web</a>#}
+                                {#<p>Believe that life is worth living and your belief will help create the fact </p>#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#<div class="vision-inner">#}
+                            {#<div class="col-md-3 col-sm-3 col-xs-3 vision-img padding_left">#}
+                                {#<img src="images/footer/small_2.png" alt="small">#}
+                            {#</div>#}
+                            {#<div class="col-md-9 col-sm-9 col-xs-9 vision-content padding_zero">#}
+                                {#<a href="#">We strive to excel</a>#}
+                                {#<p>The world owes you nothing. It was here first. If you don't like, change it</p>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+            <div class="footer-block padding_zero container-fluid">
+                <div class="col-md-6 col-sm-6 footer-menu-block">
+                    <nav class="navbar navbar-default">
+                        <ul class="nav navbar-nav">
+                            <li><a href="index.html">О компании</a></li>
+                            <li><a href="about.html">Продукты</a></li>
+                            <li><a href="our-team.html">Новости</a></li>
+                            <li><a href="contacts.html">Контакты</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="copy-right-section">
+                        <p>Copyright &copy; All rights reserved <a target="_blank" href="http://www.arrowthemes.com">arrowthemes</a>by design.</p>
+                    </div>
+                </div>
+            </div>
+            <a id="back-to-top" title="" class="back-to-top" href="#back-to-top"><i class="fa fa-angle-up"></i></a>
+        </div>
+    </div><!-- container -->
+</footer><!-- Footer Section /- -->
+
+<!-- jQuery Include -->
+<script src="/static/libraries/jquery.min.js"></script>
+<script src="/static/libraries/jquery.easing.min.js"></script>
+<script src="/static/libraries/bootstrap/bootstrap.min.js"></script>
+<script src="/static/libraries/jquery.animateNumber.min.js"></script>
+<script src="/static/libraries/jquery.appear.js"></script>
+<script src="/static/libraries/audio/mediaelement-and-player.min.js"></script>
+<script src="/static/libraries/flex-slider/jquery.flexslider-min.js"></script>
+<script src="/static/libraries/owl-carousel/owl.carousel.min.js"></script>
+<script src="/static/libraries/lightbox/lightbox.min.js"></script>
+<script src="/static/libraries/jquery.magnific-popup.min.js"></script>
+<script src="/static/libraries/uikit/js/uikit.min.js"></script>
+<script src="/static/libraries/uikit/js/components/sticky.min.js"></script>
+
+<!-- Customized Scripts -->
+<script src="/static/js/functions.js"></script>
+
 </body>
-{#<script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>#}
-{#<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>#}
-{#{% javascripts#}
-{#'static/js/jquery-migrate-1.2.1.min.js'#}
-{#'static/js/jquery.ba-bbq.min.js'#}
-{#'static/js/jquery-ui-1.11.1.custom.min.js'#}
-{#'static/js/jquery.easing.1.3.js'#}
-{#'static/js/jquery.carouFredSel-6.2.1-packed.js'#}
-{#'static/js/jquery.touchSwipe.min.js'#}
-{#'static/js/jquery.transit.min.js'#}
-{#'static/js/jquery.sliderControl.js'#}
-{#'static/js/jquery.timeago.js'#}
-{#'static/js/jquery.hint.js'#}
-{#'static/js/jquery.prettyPhoto.js'#}
-{#'static/js/jquery.qtip.min.js'#}
-{#'static/js/jquery.blockUI.js'#}
-{#'static/js/main.js'#}
-{#'static/js/odometer.min.js'#}
-{#output="static/assets/js/compiled/public.js"#}
-{#%}#}
-
-{#&#123;&#35;'static/assets/js/conjoined.js'&#35;&#125;#}
-{#&#123;&#35;'static/assets/js/custom.js'&#35;&#125;#}
-{#&#123;&#35;'@config_js'&#35;&#125;#}
-{#<script src="{{ asset_url }}"></script>#}
-{#{% endjavascripts %}#}
-
-<script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="/static/js/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="/static/js/jquery.ba-bbq.min.js"></script>
-<script type="text/javascript" src="/static/js/jquery-ui-1.11.1.custom.min.js"></script>
-<script type="text/javascript" src="/static/js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="/static/js/jquery.carouFredSel-6.2.1-packed.js"></script>
-<script type="text/javascript" src="/static/js/jquery.touchSwipe.min.js"></script>
-<script type="text/javascript" src="/static/js/jquery.transit.min.js"></script>
-<script type="text/javascript" src="/static/js/jquery.sliderControl.js"></script>
-<script type="text/javascript" src="/static/js/jquery.timeago.js"></script>
-<script type="text/javascript" src="/static/js/jquery.hint.js"></script>
-<script type="text/javascript" src="/static/js/jquery.prettyPhoto.js"></script>
-<script type="text/javascript" src="/static/js/jquery.qtip.min.js"></script>
-<script type="text/javascript" src="/static/js/jquery.blockUI.js"></script>
-<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="/static/js/main.js"></script>
-<script type="text/javascript" src="/static/js/odometer.min.js"></script>
-
 </html>

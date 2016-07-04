@@ -96,6 +96,7 @@ class UploadListener
         if (method_exists($eventArgs, 'getEntity')) {
             $entity = $eventArgs->getEntity();
             $class = $this->getClass($entity);
+
             if ($this->metadataReader->isUploadable($class)) {
                 $uploadableFields = $this->metadataReader->getUploadableFields($class);
                 if (!empty($uploadableFields)) {
@@ -119,6 +120,12 @@ class UploadListener
                             }
                         }
                     }
+                }
+                if (method_exists($entity, 'setResizes') && method_exists($eventArgs, 'hasChangedField')) {
+                    if ($eventArgs->hasChangedField('file'))  {
+                        $entity->setResizes(array());
+                    }
+
                 }
             }
 

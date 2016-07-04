@@ -29,6 +29,10 @@ services:
         class: SiteBundle\Manager\ArticleManager
         arguments: ["@service_container"]
 
+    block.manager:
+        class: SiteBundle\Manager\BlockManager
+        arguments: ["@service_container"]
+
 #    site.upload.subscriber:
 #        class: SiteBundle\EventListener\UploadSubscriber
 #        arguments: [@iphp.filestore.annotation.driver, @jms_serializer]
@@ -64,3 +68,9 @@ services:
     #     arguments: [~, SiteBundle\Entity\File, SonataAdminBundle:CRUD]
     #     tags:
     #         - { name: sonata.admin, manager_type: orm, group: admin, label: File }
+
+    site.admin.block:
+        class: SiteBundle\Admin\BlockAdmin
+        arguments: [~, SiteBundle\Entity\Block, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Block }

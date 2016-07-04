@@ -55,6 +55,18 @@ class HelperExtension extends \Twig_Extension
         );
     }
 
+    public function arrayToStringPretty($value, $field) {
+        $replace_pairs = $field->getOptions()['replace_pairs'];
+        if (!is_array($replace_pairs)) {
+            $replace_pairs = array();
+        }
+        $replace_pairs = array_merge($replace_pairs, array("Array" => "", "(" => "", ")" => ""));
+
+        $ret = print_r($value, true);
+        $ret = strtr($ret , $replace_pairs);
+        return nl2br($ret);
+    }
+
     public function toUpper($string) {
         return mb_strtoupper($string, 'utf-8');
     }
@@ -81,6 +93,7 @@ class HelperExtension extends \Twig_Extension
             'tEnd' => new \Twig_Function_Method($this, 'tEnd'),
             'getScriptTimeMessage' => new \Twig_Function_Method($this, 'getScriptTimeMessage'),
             'rgba' => new \Twig_Function_Method($this, 'toRGBA'),
+            'array_to_string_pretty' => new \Twig_Function_Method($this, 'arrayToStringPretty'),
         );
     }
 
