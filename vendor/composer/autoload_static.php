@@ -320,6 +320,13 @@ class ComposerStaticInitc4597ccc45f3c051e0c499dd4422467a
                 0 => __DIR__ . '/..' . '/stojg/crop/src',
             ),
         ),
+        'W' => 
+        array (
+            'WhiteOctober\\BreadcrumbsBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/whiteoctober/breadcrumbs-bundle',
+            ),
+        ),
         'T' => 
         array (
             'Twig_Extensions_' => 

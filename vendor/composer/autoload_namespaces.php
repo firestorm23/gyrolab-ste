@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'stojg\\crop' => array($vendorDir . '/stojg/crop/src'),
+    'WhiteOctober\\BreadcrumbsBundle' => array($vendorDir . '/whiteoctober/breadcrumbs-bundle'),
     'Twig_Extensions_' => array($vendorDir . '/twig/extensions/lib'),
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'Stfalcon\\Bundle\\TinymceBundle' => array($vendorDir . '/stfalcon/tinymce-bundle'),
