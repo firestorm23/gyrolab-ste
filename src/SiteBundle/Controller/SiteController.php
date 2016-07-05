@@ -23,7 +23,7 @@ class SiteController extends Controller
 
     /**
      *
-     * @Route("/")
+     * @Route("/", name="index")
      */
     public function indexAction()
     {
@@ -101,6 +101,12 @@ class SiteController extends Controller
 
     public function productsAction($slug = false) {
 
+        $title = "Продукция";
+
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addRouteItem($title, "products");
+        $breadcrumbs->prependRouteItem("Главная", "index");
+
         $allCategories = $this->getDoctrine()->getRepository("SiteBundle:Category")->getAllMainCategories();
 
         /** @var $productManager ProductManager */
@@ -114,6 +120,8 @@ class SiteController extends Controller
             $categories = $this->getDoctrine()->getRepository("SiteBundle:Category")->getMainCategories($slug);
                 /*->findBy(array('slug' => $slug));*/
         }
+
+
 
         $prodToSave = array();
 
@@ -130,10 +138,12 @@ class SiteController extends Controller
         }
 
 
+
         return $this->render('SiteBundle:Site:products.html.twig', array(
             'categories' => $categories,
             'allCategories' => $allCategories,
-            'slug' => $slug
+            'slug' => $slug,
+            'title' => $title
         ));
     }
 

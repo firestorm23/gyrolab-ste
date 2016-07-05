@@ -24,17 +24,19 @@
     <div class="row">
         <!-- PageTitle Section -->
         <div id="page-title" class="page-title">
-            <h2>Продукция</h2>
+            <h2>{{ title }}</h2>
         </div><!-- PageTitle Section /- -->
 
         <!-- PageBreadcrumb Section -->
-        <div class="page-breadcrumb">
-            <ol class="breadcrumb">
-                <li class="active"><a title="Home" href="index.html">Home</a></li>
-                <li class="active"><a title="Home" href="#">Wordpress</a></li>
-                <li>Category List</li>
-            </ol>
-        </div><!-- PageBreadcrumb Section /- -->
+        {#<div class="page-breadcrumb">#}
+            {#<ol class="breadcrumb">#}
+                {#<li class="active"><a title="Home" href="index.html">Home</a></li>#}
+                {#<li class="active"><a title="Home" href="#">Wordpress</a></li>#}
+                {#<li>Category List</li>#}
+            {#</ol>#}
+        {#</div>#}
+        {{ wo_render_breadcrumbs() }}
+        <!-- PageBreadcrumb Section /- -->
 
         <!-- Contact-category -->
         <div class="contact-category">
