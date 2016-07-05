@@ -2,3 +2,35 @@
    Use this file to add custom CSS easily
    ========================================================================== */
 
+.row-padding-h {
+    padding: 0 10px;
+}
+
+.grid-icon img {
+    width: 52px;
+    height: 52px;
+}
+
+[data-title=Desc] {
+    width: 350px;
+}
+
+tr.product img {
+    margin-top: 10px;
+}
+
+tr.product .item-title a {
+    display: block;
+}
+
+th.category-title span {
+	font-size: 11px;
+}
+
+th.item-title span {
+    color: #C23B44;
+}
+
+.select-filter.form-control {
+    width: auto;
+}
