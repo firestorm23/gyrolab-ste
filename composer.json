@@ -34,7 +34,8 @@
         "friendsofsymfony/rest-bundle": "1.1",
         "sonata-project/google-authenticator": "^1.0",
         "nelmio/api-doc-bundle": "^2.13",
-        "sonata-project/user-bundle": "^3.0"
+        "sonata-project/user-bundle": "^3.0",
+        "whiteoctober/breadcrumbs-bundle": "^1.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
