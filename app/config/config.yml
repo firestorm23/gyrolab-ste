@@ -49,6 +49,8 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        types:
+            json: Sonata\Doctrine\Types\JsonType
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
@@ -57,9 +59,12 @@ doctrine:
         #     path:     "%database_path%"
 
     orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        entity_managers:
+            default:
+                mappings:
+                    SiteBundle: ~
+                    SonataUserBundle: ~
+                    FOSUserBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -87,9 +92,15 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts: [admin]
         # ...
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
+        sonata.block.service.text: # used to if you plan to use Sonata user routes
+
 
         # Default configuration for extension with alias: "sonata_admin"
 sonata_admin:
+    security:
+        handler: sonata.admin.security.handler.role
     options:
         html5_validate:       true
 
@@ -124,7 +135,7 @@ sonata_admin:
             - bundles/sonataadmin/css/tree.css
             - static/assets/css/custom_admin.css
     templates:
-        user_block:           'SonataAdminBundle:Core:user_block.html.twig'
+        user_block:           'SonataUserBundle:Admin:Core/user_block.html.twig'
         add_block:            'SonataAdminBundle:Core:add_block.html.twig'
         layout:               'SiteBundle::standard_layout.html.twig'
         ajax:                 'SonataAdminBundle::ajax_layout.html.twig'
@@ -151,7 +162,7 @@ sonata_admin:
         outer_list_rows_mosaic:  'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig'
         outer_list_rows_list:  'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig'
         outer_list_rows_tree:  'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig'
-        base_list_field:      'SonataAdminBundle:CRUD:base_list_field.html.twig'
+        base_list_field:      'SiteBundle::base_list_field.html.twig'
         pager_links:          'SonataAdminBundle:Pager:links.html.twig'
         pager_results:        'SonataAdminBundle:Pager:results.html.twig'
         tab_menu_template:    'SonataAdminBundle:Core:tab_menu_template.html.twig'
@@ -186,6 +197,7 @@ jms_serializer:
 stfalcon_tinymce:
         selector: ".tinymce"
         language: %locale%
+
         # Custom buttons
         theme:
             # Simple theme: same as default theme
@@ -201,6 +213,9 @@ stfalcon_tinymce:
                  toolbar2: "print preview code media | forecolor backcolor emoticons | stfalcon | example"
                  menubar: false
                  relative_urls: false
+                 force_p_newlines: false
+                 forced_root_block: false
+                 extended_valid_elements: "i[class],a[href|target]"
 
 stof_doctrine_extensions:
    default_locale: en
@@ -210,3 +225,71 @@ stof_doctrine_extensions:
            tree: true
            timestampable: true
            sluggable: true
+
+fos_user:
+   db_driver:              orm # Required
+   firewall_name:          main # Required
+   user_class:     SiteBundle\Entity\User
+
+
+   group:
+       group_class:   SiteBundle\Entity\UserGroup
+       group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
+
+   service:
+       user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
+
+   use_listener:           true
+   use_username_form_type: true
+   model_manager_name:     null  # change it to the name of your entity/document manager if you don't want to use the default one.
+   from_email:
+       address:        webmaster@example.com
+       sender_name:    webmaster
+   profile:
+       form:
+           type:               fos_user_profile # or 'fos_user_profile' on Symfony < 2.8
+           name:               fos_user_profile_form
+           validation_groups:  [Profile, Default]
+   change_password:
+       form:
+           type:               fos_user_change_password # or 'fos_user_change_password' on Symfony < 2.8
+           name:               fos_user_change_password_form
+           validation_groups:  [ChangePassword, Default]
+   registration:
+       confirmation:
+           from_email: # Use this node only if you don't want the global email address for the confirmation email
+               address:        ...
+               sender_name:    ...
+           enabled:    false # change to true for required email confirmation
+           template:   FOSUserBundle:Registration:email.txt.twig
+       form:
+           type:               fos_user_registration # or 'fos_user_registration' on Symfony < 2.8
+           name:               fos_user_registration_form
+           validation_groups:  [Registration, Default]
+   resetting:
+       token_ttl: 86400
+       email:
+           from_email: # Use this node only if you don't want the global email address for the resetting email
+               address:        ...
+               sender_name:    ...
+           template:   FOSUserBundle:Resetting:email.txt.twig
+       form:
+           type:               fos_user_resetting # or 'fos_user_resetting' on Symfony < 2.8
+           name:               fos_user_resetting_form
+           validation_groups:  [ResetPassword, Default]
+   service:
+       mailer:                 fos_user.mailer.default
+       email_canonicalizer:    fos_user.util.canonicalizer.default
+       username_canonicalizer: fos_user.util.canonicalizer.default
+       token_generator:        fos_user.util.token_generator.default
+       user_manager:           fos_user.user_manager.default
+
+
+sonata_admin:
+    security:
+        handler: sonata.admin.security.handler.role
+
+sonata_user:
+    class:
+        user: SiteBundle\Entity\User
+        group: SiteBundle\Entity\UserGroup

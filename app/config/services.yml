@@ -13,15 +13,19 @@ services:
         calls:
             - [ addServer, ['localhost', 11211] ]
     memcached_cache:
-       class: Doctrine\Common\Cache\MemcachedCache
-       calls:
+        class: Doctrine\Common\Cache\MemcachedCache
+        calls:
            - [ setMemcached, [@memcached] ]
 
     memcached_helper:
-       class: SiteBundle\Services\MemcachedHelper
-       calls:
+        class: SiteBundle\Services\MemcachedHelper
+        calls:
            - [setMemcached, [@memcached_cache]]
 
     image_resize:
-       class: SiteBundle\Services\ImageResize
-       arguments: [@memcached_helper]
+        class: SiteBundle\Services\ImageResize
+        arguments: [@memcached_helper]
+
+    helper:
+        class: SiteBundle\Services\Helper
+        arguments: [@service_container]

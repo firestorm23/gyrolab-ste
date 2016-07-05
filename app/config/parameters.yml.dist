@@ -17,3 +17,10 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    web_user: www-data
+    web_group:  www-data
+    block.sort.types: false
+    top.slider.count: 10
+    mid.grid.count: 10
+    socials.count: 10

@@ -437,6 +437,7 @@ EOT;
         try {
             $template = $environment->loadTemplate($templateName);
         } catch (\Twig_Error_Loader $e) {
+
             @trigger_error(
                 'Relying on default template loading on field template loading exception '.
                 'is deprecated since 3.1 and will be removed in 4.0. '.
@@ -444,7 +445,6 @@ EOT;
                 E_USER_DEPRECATED
             );
             $template = $environment->loadTemplate($defaultTemplate);
-
             if (null !== $this->logger) {
                 $this->logger->warning(sprintf(
                     'An error occured trying to load the template "%s" for the field "%s", '.

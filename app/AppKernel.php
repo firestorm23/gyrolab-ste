@@ -29,7 +29,10 @@ class AppKernel extends Kernel
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             new Sonata\IntlBundle\SonataIntlBundle(),
-            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle()
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

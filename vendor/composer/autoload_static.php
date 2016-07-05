@@ -9,9 +9,9 @@ class ComposerStaticInitc4597ccc45f3c051e0c499dd4422467a
     public static $files = array (
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        '8ac9dba77d5c65db2811440ee8265f5d' => __DIR__ . '/..' . '/sonata-project/block-bundle/Resources/stubs/symfony2.php',
         'e40631d46120a9c38ea139981f8dab26' => __DIR__ . '/..' . '/ircmaxell/password-compat/lib/password.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
-        '8ac9dba77d5c65db2811440ee8265f5d' => __DIR__ . '/..' . '/sonata-project/block-bundle/Resources/stubs/symfony2.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         'edc6464955a37aa4d5fbf39d40fb6ee7' => __DIR__ . '/..' . '/symfony/polyfill-php55/bootstrap.php',
@@ -53,8 +53,13 @@ class ComposerStaticInitc4597ccc45f3c051e0c499dd4422467a
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
             'Stof\\DoctrineExtensionsBundle\\' => 30,
+            'Sonata\\UserBundle\\' => 18,
             'Sonata\\IntlBundle\\' => 18,
+            'Sonata\\EasyExtendsBundle\\' => 25,
+            'Sonata\\Doctrine\\Tests\\' => 22,
+            'Sonata\\Doctrine\\' => 16,
             'Sonata\\DoctrineORMAdminBundle\\' => 30,
+            'Sonata\\DatagridBundle\\' => 22,
             'Sonata\\CoreBundle\\' => 18,
             'Sonata\\Cache\\Tests\\' => 19,
             'Sonata\\Cache\\' => 13,
@@ -76,6 +81,11 @@ class ComposerStaticInitc4597ccc45f3c051e0c499dd4422467a
         'I' => 
         array (
             'Incenteev\\ParameterHandler\\' => 27,
+        ),
+        'G' => 
+        array (
+            'Google\\Authenticator\\Tests\\' => 27,
+            'Google\\Authenticator\\' => 21,
         ),
         'E' => 
         array (
@@ -184,13 +194,33 @@ class ComposerStaticInitc4597ccc45f3c051e0c499dd4422467a
         array (
             0 => __DIR__ . '/..' . '/stof/doctrine-extensions-bundle',
         ),
+        'Sonata\\UserBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/user-bundle',
+        ),
         'Sonata\\IntlBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sonata-project/intl-bundle',
         ),
+        'Sonata\\EasyExtendsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/easy-extends-bundle',
+        ),
+        'Sonata\\Doctrine\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/doctrine-extensions/tests',
+        ),
+        'Sonata\\Doctrine\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/doctrine-extensions/src',
+        ),
         'Sonata\\DoctrineORMAdminBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sonata-project/doctrine-orm-admin-bundle',
+        ),
+        'Sonata\\DatagridBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/datagrid-bundle',
         ),
         'Sonata\\CoreBundle\\' => 
         array (
@@ -239,6 +269,14 @@ class ComposerStaticInitc4597ccc45f3c051e0c499dd4422467a
         'Incenteev\\ParameterHandler\\' => 
         array (
             0 => __DIR__ . '/..' . '/incenteev/composer-parameter-handler',
+        ),
+        'Google\\Authenticator\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/google-authenticator/tests',
+        ),
+        'Google\\Authenticator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/google-authenticator/lib',
         ),
         'Exporter\\' => 
         array (
@@ -323,11 +361,26 @@ class ComposerStaticInitc4597ccc45f3c051e0c499dd4422467a
                 0 => __DIR__ . '/..' . '/phpcollection/phpcollection/src',
             ),
         ),
+        'N' => 
+        array (
+            'Nelmio\\ApiDocBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/nelmio/api-doc-bundle',
+            ),
+            'Negotiation' => 
+            array (
+                0 => __DIR__ . '/..' . '/willdurand/negotiation/src',
+            ),
+        ),
         'M' => 
         array (
             'MischiefCollective' => 
             array (
                 0 => __DIR__ . '/..' . '/mischiefcollective/colorjizz/src',
+            ),
+            'Michelf' => 
+            array (
+                0 => __DIR__ . '/..' . '/michelf/php-markdown',
             ),
             'Metadata\\' => 
             array (
@@ -365,6 +418,17 @@ class ComposerStaticInitc4597ccc45f3c051e0c499dd4422467a
             'Gedmo\\' => 
             array (
                 0 => __DIR__ . '/..' . '/gedmo/doctrine-extensions/lib',
+            ),
+        ),
+        'F' => 
+        array (
+            'FOS\\UserBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/friendsofsymfony/user-bundle',
+            ),
+            'FOS\\RestBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/friendsofsymfony/rest-bundle',
             ),
         ),
         'D' => 
