@@ -11,6 +11,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use SiteBundle\Form\ProductSpecType;
 
 
 class ProductAdmin extends AbstractAdmin
@@ -47,6 +48,7 @@ class ProductAdmin extends AbstractAdmin
             ->add('slug')
             ->add('viewCount')
             ->add('categories', 'entity', array('multiple' => true))
+            ->add('productSpecs', 'entity', array('multiple' => true))
             ->add('dateAdded')
             ->add('_action', null, array(
                 'actions' => array(
@@ -79,6 +81,15 @@ class ProductAdmin extends AbstractAdmin
             ->add('slug',  'text', array('required' => false))
             ->add('viewCount',  'integer', array('required' => false))
             ->add('categories', 'sonata_type_model', array('multiple' => true))
+            ->add('productSpecs',  'collection', array(
+                'type' => new ProductSpecType(
+                    $this->getConfigurationPool()->getContainer()->get('helper')
+                ),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'required' => false,
+                'label' => 'Характеристики'
+            ))
             ->add('dateAdded', 'sonata_type_date_picker', array('read_only' => true))
         ;
     }

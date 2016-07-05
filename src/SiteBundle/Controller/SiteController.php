@@ -9,10 +9,13 @@ use SiteBundle\Repository\TagRepository;
 use SiteBundle\Manager\FileManager;
 use SiteBundle\Manager\ArticleManager;
 use SiteBundle\Manager\BlockManager;
+use SiteBundle\Manager\ProductManager;
 use SiteBundle\Services\ImageResize;
 use SiteBundle\Entity\Article;
 use SiteBundle\Entity\Tag;
+use SiteBundle\Entity\Product;
 use SiteBundle\Entity\Block;
+use SiteBundle\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
 
 class SiteController extends Controller
@@ -28,7 +31,6 @@ class SiteController extends Controller
         $blockRepository = $this->getDoctrine()->getRepository("SiteBundle:Block");
         $topSliderBlocks = $blockRepository->getTopSliderBlocks($this->getParameter('top.slider.count'));
         $midGridBlocks = $blockRepository->getMidGridBlocks($this->getParameter('mid.grid.count'));
-        $socialBlocks = $blockRepository->getSocialBlocks($this->getParameter('socials.count'));
 //        print_r(count($socialBlocks));
 //        die();
 
@@ -88,7 +90,50 @@ class SiteController extends Controller
         return $this->render('SiteBundle:Site:index.html.twig', array(
             'topSliderBlocks' => $topSliderBlocks,
             'midGridBlocks' => $midGridBlocks,
-            'socialBlocks' => $socialBlocks
+//            'socialBlocks' => $socialBlocks
+        ));
+    }
+
+    /**
+     * @Route("/products/", name="products")
+     * @Route("/products/category/{slug}/", name="products_cat", requirements={"slug" = "[a-z-]*"})
+     */
+
+    public function productsAction($slug = false) {
+
+        $allCategories = $this->getDoctrine()->getRepository("SiteBundle:Category")->getAllMainCategories();
+
+        /** @var $productManager ProductManager */
+        $productManager = $this->get('product.manager');
+        /** @var $file_manager FileManager*/
+        $file_manager = $this->get('file.manager');
+
+        if (!$slug) {
+            $categories = $allCategories;
+        } else {
+            $categories = $this->getDoctrine()->getRepository("SiteBundle:Category")->getMainCategories($slug);
+                /*->findBy(array('slug' => $slug));*/
+        }
+
+        $prodToSave = array();
+
+        /** @var $category Category*/
+        foreach ($allCategories as $category) {
+            $productManager->productImageResize($category->getProducts(), array(
+                '140x117x2',
+            ), $prodToSave);
+        }
+
+        /** @var $product Product*/
+        foreach ($prodToSave as $product) {
+            $file_manager->saveImageEntity($product->getImage());
+        }
+
+
+        return $this->render('SiteBundle:Site:products.html.twig', array(
+            'categories' => $categories,
+            'allCategories' => $allCategories,
+            'slug' => $slug
         ));
     }
 
@@ -124,6 +169,17 @@ class SiteController extends Controller
         $result = $qb->getQuery()->getResult();
 
         return new Response(print_r($result[0]->getId(), true));
+    }
+
+    public function socialBlockAction() {
+
+        $blockRepository = $this->getDoctrine()->getRepository("SiteBundle:Block");
+
+        $socialBlocks = $blockRepository->getSocialBlocks($this->getParameter('socials.count'));
+
+        return $this->render('SiteBundle::social.html.twig', array(
+            'socialBlocks' => $socialBlocks
+        ));
     }
 
 

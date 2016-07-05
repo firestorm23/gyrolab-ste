@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tag
  *
  * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="SiteBundle\Repository\TagRepository")
+ * @ORM\Entity(repositoryClass="SiteBundle\Repository\CategoryRepository")
  */
 class Category
 {
@@ -28,6 +28,29 @@ class Category
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255, unique=true, nullable=false)
+     */
+    private $slug;
     /**
      * @var sort
      *

@@ -1,7 +1,7 @@
 {% extends "SiteBundle::public.html.twig" %}
 
 
-{% block top_slider %}
+{% block container_content %}
     <div class="row">
         <div id="slider" class="flexslider home-slider">
             <ul class="slides">
@@ -21,7 +21,19 @@
             </ul>
         </div>
     </div>
-{% endblock top_slider %}
+{% endblock container_content %}
+
+{% block blockquote_block %}
+    <div id="block-quotes" class="block-quotes">
+        <div class="container">
+            <div class="row">
+                <blockquote>
+                    {{ block('blockquote') }}
+                </blockquote>
+            </div>
+        </div>
+    </div>
+{% endblock blockquote_block %}
 
 {% block blockquote %}
     <p>
@@ -36,6 +48,7 @@
         наземного, авиационного и морского применения.
     </p>
 {% endblock blockquote %}
+
 
 {% block mid_grid %}
     <div class="row row-padding-h">
@@ -53,26 +66,130 @@
     </div>
 {% endblock mid_grid %}
 
-{% block social_block %}
-    <ul>
-        {% for block in socialBlocks %}
-        <li>
-            {{ block.extendedBody|raw }}
-        </li>
-        {% endfor %}
-    </ul>
-{% endblock social_block %}
+{% block mid_block %}
+    <div id="grid-box" class="grid-box">
+        <div class="container">
+            {{ block('mid_grid') }}
+        </div>
+    </div>
+{% endblock mid_block %}
 
+{#{% block social_block %}#}
+    {#<ul>#}
+        {#{% for block in socialBlocks %}#}
+        {#<li>#}
+            {#{{ block.extendedBody|raw }}#}
+        {#</li>#}
+        {#{% endfor %}#}
+    {#</ul>#}
+{#{% endblock social_block %}#}
 
-{% block most_viewed %}
+{% block work_block %}
+    <!-- Work Section -->
+    <div id="work-section" class="work-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-12 work-block">
+                    <div class="work-block-inner">
+                        <h2>We are open 24 Hours</h2>
+                        <div class="col-md-2 col-sm-3 col-xs-2 padding_left">
+                            <span class="box-icon pe-7s-clock"></span>
+                        </div>
+                        <div class="col-md-10 col-sm-9	 padding_zero">
+                            <p>Take up one idea. Make that one idea your life - think of it, dream of it, live on that idea</p>
+                        </div>
+                        <a class="login-btn  pull-right" href="#">Book now</a>
+                    </div>
+                    <div class="work-block-inner block-client">
+                        <h6> Recent Clients</h6>
+                        <div id="partners" class="partners">
+                            <div class="item">
+                                <img src="images/client-1.png" alt="client-1">
+                            </div>
+                            <div class="item">
+                                <img src="images/client-2.png" alt="client-2">
+                            </div>
+                            <div class="item">
+                                <img src="images/client-3.png" alt="client-3">
+                            </div>
+                            <div class="item">
+                                <img src="images/client-4.png" alt="client-4">
+                            </div>
+                            <div class="item">
+                                <img src="images/client-4.png" alt="client-4">
+                            </div>
+                            <div class="item">
+                                <img src="images/client-6.png" alt="client-6">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-8 col-xs-12">
+                    <div class="work-section-inner">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#Identify-your-niche" aria-controls="Identify-your-niche" role="tab" data-toggle="tab">Identify your niche</a></li>
+                            <li role="presentation"><a href="#Know-your-target-audience" aria-controls="Know-your-target-audience" role="tab" data-toggle="tab">Know your target audience</a></li>
+                            <li role="presentation"><a href="#Launch-your-product" aria-controls="Launch-your-product" role="tab" data-toggle="tab">Launch your product</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content tab-inner">
+                            <div role="tabpanel" class="tab-pane active" id="Identify-your-niche">
+                                <div class="tab-pane-inner">
+                                    <div class="col-md-8 col-sm-12">
+                                        <h2>Take up one idea. Make that one idea your life</h2>
+                                        <p>Believe that life is worth living and your belief will help create the fact. We help your ideas come to life. The world owes you nothing. It was here first. If you don't like something, change it; If you can't change it, change your attitude. Change will not come if we wait for some other person, alien or thing.</p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 tab-img">
+                                        <img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-7.jpg" alt="image1">
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-danger">See it in action</button>
+                                    <div class="dropup-down">
+                                        <a class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="fa fa-angle-down"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a target="_blank" href="http://goo.gl/Tzea27">Vantage</a></li>
+                                            <li><a target="_blank" href="http://goo.gl/hN061w">Lighthouse</a></li>
+                                            <li><a target="_blank" href="http://goo.gl/5GPeXY">Uneedo</a></li>
+                                            <li><a target="_blank" href="http://goo.gl/EovFyp">Fontaine</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a target="_blank" href="http://goo.gl/6xBDNW">All Projects...</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="Know-your-target-audience">
+                                <div class="tab-pane-inner">
+                                    <div class="col-md-8 col-sm-12">
+                                        <h2>We are the change that we seek</h2>
+                                        <p>If you can't change it, change your attitude. Change will not come if we wait for some other person or some other time. We are the ones we've been waiting for. We are the change that we seek. Believe that life is worth living and your belief will help create the fact. We help your ideas come to life.</p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 tab-img">
+                                        <img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-21.jpg" alt="image2">
+                                    </div>
+                                    <a class="login-btn" target="_self" href="http://goo.gl/6xBDNW">Learn more</a>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="Launch-your-product">
+                                <div class="tab-pane-inner">
+                                    <div class="col-md-8 col-sm-12">
+                                        <h2>We help your ideas come to life</h2>
+                                        <p>Throughout life people will make you mad, disrespect you and treat you bad. Let God deal with the things they do, cause hate in your heart will consume you too. Be kind whenever possible. It is always possible. Everything should be as simple as it is, but not simpler; Believe that life is worth living.</p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 tab-img">
+                                        <img src="http://www.teknol.ru/images/companav3_new_web.png" alt="image3">
+                                    </div>
+                                    <a class="login-btn" target="_self" href="http://goo.gl/6xBDNW">Download now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- Work Section /- -->
+{% endblock work_block %}
 
-{% endblock most_viewed %}
-
-
-{% block last_commented %}
-
-{% endblock last_commented %}
-
-{% block tag_of_the_day_and_last_commented %}
-
-{% endblock tag_of_the_day_and_last_commented%}

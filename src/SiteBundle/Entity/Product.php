@@ -113,6 +113,25 @@ class Product
     private $categories;
 
     /**
+     * @ORM\ManyToMany(targetEntity="ProductSpec", cascade={"persist", "remove"})
+     * @ORM\JoinTable(name="product_product_specs",
+     *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="spec_id", referencedColumnName="id", unique=true, onDelete="CASCADE")}
+     *      )
+     */
+
+    private $productSpecs;
+
+    function __construct()
+    {
+        $this->dateAdded = new \DateTime();
+        $this->categories = new ArrayCollection();
+        $this->galleryImages = new ArrayCollection();
+        $this->productSpecs = new ArrayCollection();
+//        $this->allowComments = true;
+    }
+
+    /**
      * @return mixed
      */
     public function getCategories()
@@ -138,6 +157,29 @@ class Product
     /**
      * @return mixed
      */
+    public function getProductSpecs()
+    {
+        return $this->productSpecs;
+    }
+
+    /**
+     * @param mixed $productSpecs
+     */
+    public function setProductSpecs($productSpecs)
+    {
+        $this->productSpecs = $productSpecs;
+        return $this;
+    }
+
+    public function addProductSpecs($productSpec)
+    {
+        $this->productSpecs[] = $productSpec;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getGalleryImages()
     {
         return $this->galleryImages;
@@ -149,12 +191,6 @@ class Product
     public function setGalleryImages($galleryImages)
     {
         $this->galleryImages = $galleryImages;
-        return $this;
-    }
-
-    public function addGalleryImages($galleryImage)
-    {
-        $this->galleryImages[] = $galleryImage;
         return $this;
     }
 //    /**
@@ -170,6 +206,12 @@ class Product
 //     */
 //    private $gallery;
 
+    public function addGalleryImages($galleryImage)
+    {
+        $this->galleryImages[] = $galleryImage;
+        return $this;
+    }
+
     /**
      * @return mixed
      */
@@ -184,14 +226,6 @@ class Product
     public function setGallery($gallery)
     {
         $this->gallery = $gallery;
-    }
-
-    function __construct()
-    {
-        $this->dateAdded = new \DateTime();
-        $this->categories = new ArrayCollection();
-        $this->galleryImages = new ArrayCollection();
-//        $this->allowComments = true;
     }
 
     /**

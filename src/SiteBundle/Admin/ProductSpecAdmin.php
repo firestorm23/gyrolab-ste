@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class CategoryAdmin extends AbstractAdmin
+class ProductSpecAdmin extends AbstractAdmin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -18,8 +18,8 @@ class CategoryAdmin extends AbstractAdmin
         $datagridMapper
             ->add('id')
             ->add('name')
-            ->add('isMain')
-            ->add('description')
+            ->add('code')
+            ->add('value')
         ;
     }
 
@@ -30,11 +30,9 @@ class CategoryAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('id')
-            ->add('name')
-            ->add('slug')
-            ->add('isMain')
-            ->add('description')
-            ->add('sort', 'integer')
+            ->add('name', 'string', array('editable' => true))
+            ->add('code', 'string', array('editable' => true))
+            ->add('value', 'string', array('editable' => true))
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -52,10 +50,8 @@ class CategoryAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name')
-            ->add('isMain')
-            ->add('slug')
-            ->add('description')
-            ->add('sort', 'integer')
+            ->add('code', 'text', array('required' => false))
+            ->add('value')
         ;
     }
 
@@ -67,8 +63,8 @@ class CategoryAdmin extends AbstractAdmin
         $showMapper
             ->add('id')
             ->add('name')
-            ->add('isMain')
-            ->add('description')
+            ->add('code')
+            ->add('value')
         ;
     }
 }

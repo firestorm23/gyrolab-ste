@@ -1,0 +1,135 @@
+{% extends "SiteBundle::public.html.twig" %}
+
+
+{% block container_content %}
+    {#<div class="row">#}
+        {#<div id="slider" class="flexslider home-slider">#}
+            {#<ul class="slides">#}
+                {#{% for slide in topSliderBlocks %}#}
+                    {#&#123;&#35;{{ dump(slide) }}&#35;&#125;#}
+                    {#<li>#}
+                        {#<img src="{{ slide.image.getResize("1280x500x2")|relpath }}" alt="{{ slide.name }}" title="{{ slide.name }}"/>#}
+                        {#<div class="slider-content col-md-3 col-sm-5">#}
+                            {#<h2>{{ slide.name }}</h2>#}
+                            {#<p>{{ slide.name }}</p>#}
+                            {#{% if slide.link is not empty %}#}
+                                {#<a target="_blank" href="{{ slide.link }}">Посмотреть</a>#}
+                            {#{% endif %}#}
+                        {#</div>#}
+                    {#</li>#}
+                {#{% endfor %}#}
+            {#</ul>#}
+        {#</div>#}
+    {#</div>#}
+    <div class="row">
+        <!-- PageTitle Section -->
+        <div id="page-title" class="page-title">
+            <h2>Продукция</h2>
+        </div><!-- PageTitle Section /- -->
+
+        <!-- PageBreadcrumb Section -->
+        <div class="page-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="active"><a title="Home" href="index.html">Home</a></li>
+                <li class="active"><a title="Home" href="#">Wordpress</a></li>
+                <li>Category List</li>
+            </ol>
+        </div><!-- PageBreadcrumb Section /- -->
+
+        <!-- Contact-category -->
+        <div class="contact-category">
+            {#<h2>Каталог продуктов</h2>#}
+            <div class="filter">
+                Категория точности
+                <form data-nodata="true" data-autosubmit="true" class="restful" action="{{ path('products') }}" data-action-pat="/products/category/#slug#/">
+                    <select name="slug" class="form-control select-filter">
+                        <option>Не выбрано</option>
+                        {% for category in allCategories %}
+                            <option value="{{ category.slug }}" {% if slug is not empty and slug == category.slug %}selected="selected"{% endif %}>{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </div>
+            <div class="table-responsive contact-table">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="item-title"><span>Название / изображение</span></th>
+                        <th class="item-title"><span>Описание</span></th>
+                        <th class="item-title"><span>Характеристики</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for category in categories %}
+                    <thead>
+                    <tr>
+                        <th colspan="3" class="category-title"><span>{{ category.name }}</span></th>
+                    </tr>
+                    </thead>
+                    {% for product in category.products %}
+                        <tr class="product">
+                            <td data-title="{{ product.name }}" class="item-title">
+                                <a href="single-article.html" style="display:block;">{{ product.name }}</a>
+                                <img src="{{ product.image.getResize("140x117x2")|relpath }}">
+                            </td>
+                            <td data-title="Desc">{{ product.description|raw }}</td>
+                            <td data-title="Hits">
+                                {% for spec in product.productSpecs  %}
+                                    <strong>{{ spec.name }} : </strong><span>{{ spec.value }}</span><br>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% endfor %}
+                    {#<tr>#}
+                    {#<td data-title="Title" class="item-title">#}
+                    {#<a href="single-article.html" style="display:block;">Audio jungle comes alive</a>#}
+                    {#<img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-7.jpg" style="width:140px; margin-top: 10px;">#}
+                    {#</td>#}
+                    {#<td data-title="Author">John Doe</td>#}
+                    {#<td data-title="Desc">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.</td>#}
+                    {#<td data-title="Hits">166</td>#}
+                    {#</tr>#}
+                    {#<tr>#}
+                    {#<td data-title="Title" class="item-title">#}
+                    {#<a href="single-article.html" style="display:block;">Be kind whenever possible</a>#}
+                    {#<img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-7.jpg" style="width:140px; margin-top: 10px;">#}
+                    {#</td>#}
+                    {#<td data-title="Author">John Doe</td>#}
+                    {#<td data-title="Desc">сть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь. Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца.</td>#}
+                    {#<td>166</td>#}
+                    {#</tr>#}
+                    {#<tr>#}
+                    {#<td data-title="Title" class="item-title">#}
+                    {#<a href="single-article.html" style="display:block;">Inspiration comes from within</a>#}
+                    {#<img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-7.jpg" style="width:140px; margin-top: 10px;">#}
+                    {#</td>#}
+                    {#<td data-title="Author">John Doe</td>#}
+                    {#<td data-title="Desc">Классический текст Lorem Ipsum, используемый с XVI века, приведён ниже. Также даны разделы 1.10.32 и 1.10.33 "de Finibus Bonorum et Malorum" Цицерона и их английский перевод, сделанный H. Rackham, 1914 год.</td>#}
+                    {#<td data-title="Hits">166</td>#}
+                    {#</tr>#}
+                    {#<tr>#}
+                    {#<td data-title="Title" class="item-title">#}
+                    {#<a href="single-article.html" style="display:block;">Make that idea your life</a>#}
+                    {#<img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-7.jpg" style="width:140px; margin-top: 10px;">#}
+                    {#</td>#}
+                    {#<td data-title="Author">John Doe</td>#}
+                    {#<td data-title="Desc">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</td>#}
+                    {#<td data-title="Hits">166</td>#}
+                    {#</tr>#}
+                    {#<tr>#}
+                    {#<td data-title="Title" class="item-title">#}
+                    {#<a href="single-article.html" style="display:block;">Music is food for the soul</a>#}
+                    {#<img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-7.jpg" style="width:140px; margin-top: 10px;">#}
+                    {#</td>#}
+                    {#<td data-title="Author">John Doe</td>#}
+                    {#<td data-title="Desc">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. </td>#}
+                    {#<td data-title="Hits">166</td>#}
+                    {#</tr>#}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock container_content %}
