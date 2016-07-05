@@ -31,6 +31,23 @@ th.item-title span {
     color: #C23B44;
 }
 
+.tab-inner .btn {
+    height: 35px;
+}
+
 .select-filter.form-control {
     width: auto;
+}
+
+.header-contacts {
+    text-align: right;
+    line-height: 15px;
+}
+
+.header-phone, .header-email {
+    padding-top: 10px;
+}
+
+.header-contacts a {
+    color: #C23B44;
 }

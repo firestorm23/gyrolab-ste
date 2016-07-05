@@ -8698,6 +8698,19 @@ th.item-title span {
 .select-filter.form-control {
     width: auto;
 }
+
+.header-contacts {
+    text-align: right;
+    line-height: 15px;
+}
+
+.header-phone, .header-email {
+    padding-top: 10px;
+}
+
+.header-contacts a {
+    color: #C23B44;
+}
 body {
 	background-color: #949a97;
 }

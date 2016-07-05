@@ -56,59 +56,59 @@
     <div class="row">
         <!-- Header Top -->
         <div class="header-top container-fluid padding_zero">
-            <div class="col-md-6 col-sm-6 col-xs-6 padding_zero">
-                <ul class="login-info">
-                    <li>
-                        <a href="#" data-toggle="modal" data-target="#myModal">Log In</a>
-                        <!-- Modal -->
-                        <div class="modal fade model-login" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
-                            <div class="modal-dialog modal-sm" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span class="fa fa-close"></span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!-- Login Form -->
-                                        <div class="login-form">
-                                            <h2>Member Login</h2>
-                                            <form class="form-horizontal">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="username" placeholder="Username">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="password" class="form-control" id="password" placeholder="Password">
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="checkbox">
-                                                        <label>Remember me</label>
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-12 col-sm-12 padding_zero">
-                                                        <input type="submit" class="btn btn-default login-btn" value="Log In">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <ul>
-                                                <li><a href="forgotpassword.html">Forgot your password?</a></li>
-                                                <li><a href="forgot-username.html">Forgot your username?</a></li>
-                                                <li><a href="registration.html">Don't have an account?</a></li>
-                                            </ul>
-                                        </div><!-- Login Form /- -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- Login Model /- -->
-                    </li>
-                    <li><a href="login.html">My Account</a></li>
-                </ul>
-            </div><!-- Col-md-6 /- -->
-            <div class="col-md-6 col-sm-6 col-xs-6 pull-right contact-info padding_zero">
-                <p><span>Call Us</span>(800) 755 1000</p>
-            </div><!-- Col-md-6 /- -->
+            {#<div class="col-md-6 col-sm-6 col-xs-6 padding_zero">#}
+                {#<ul class="login-info">#}
+                    {#<li>#}
+                        {#<a href="#" data-toggle="modal" data-target="#myModal">Log In</a>#}
+                        {#<!-- Modal -->#}
+                        {#<div class="modal fade model-login" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">#}
+                            {#<div class="modal-dialog modal-sm" role="document">#}
+                                {#<div class="modal-content">#}
+                                    {#<div class="modal-header">#}
+                                        {#<button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+                                            {#<span class="fa fa-close"></span>#}
+                                        {#</button>#}
+                                    {#</div>#}
+                                    {#<div class="modal-body">#}
+                                        {#<!-- Login Form -->#}
+                                        {#<div class="login-form">#}
+                                            {#<h2>Member Login</h2>#}
+                                            {#<form class="form-horizontal">#}
+                                                {#<div class="form-group">#}
+                                                    {#<input type="text" class="form-control" id="username" placeholder="Username">#}
+                                                {#</div>#}
+                                                {#<div class="form-group">#}
+                                                    {#<input type="password" class="form-control" id="password" placeholder="Password">#}
+                                                {#</div>#}
+                                                {#<div class="form-group">#}
+                                                    {#<div class="checkbox">#}
+                                                        {#<label>Remember me</label>#}
+                                                        {#<input type="checkbox">#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                                {#<div class="form-group">#}
+                                                    {#<div class="col-md-12 col-sm-12 padding_zero">#}
+                                                        {#<input type="submit" class="btn btn-default login-btn" value="Log In">#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                            {#</form>#}
+                                            {#<ul>#}
+                                                {#<li><a href="forgotpassword.html">Forgot your password?</a></li>#}
+                                                {#<li><a href="forgot-username.html">Forgot your username?</a></li>#}
+                                                {#<li><a href="registration.html">Don't have an account?</a></li>#}
+                                            {#</ul>#}
+                                        {#</div><!-- Login Form /- -->#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div><!-- Login Model /- -->#}
+                    {#</li>#}
+                    {#<li><a href="login.html">My Account</a></li>#}
+                {#</ul>#}
+            {#</div><!-- Col-md-6 /- -->#}
+            {#<div class="col-md-6 col-sm-6 col-xs-6 pull-right contact-info padding_zero">#}
+                {#<p><span>Call Us</span>(800) 755 1000</p>#}
+            {#</div><!-- Col-md-6 /- -->#}
         </div><!-- Header Top /- -->
     </div><!-- Row /- -->
 </div><!-- Container /- -->
@@ -119,7 +119,7 @@
         <div class="row">
             <div class="header-logo">
                 <div class="col-md-7 col-sm-7 col-xs-8 logo-block">
-                    <a href="index.html">
+                    <a href="/">
                         <!--TODO-->
                         <img src="/logo.jpg" alt="Fontaine HTML Template" width="100">
                     </a>
@@ -127,20 +127,24 @@
                 </div>
                 <div class="col-md-5 col-sm-5 padding_right search-social">
                     <span id="canvas-bar" class="fa fa-bars"></span>
-                    <div class="social-icon col-md-7 col-sm-9">
+                    <div class="social-icon col-md-11 col-sm-9">
                         {#{{ block('social_block') }}#}
                         {{ render(controller('SiteBundle:Site:socialBlock')) }}
                     </div>
-                    <div class="search-box col-md-5 col-sm-6 col-xs-4">
-                        <form class="form-search">
-                            <div class="input-group">
-									<span class="input-group-btn">
-										<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-									</span>
-                                <input type="text" class="form-control" placeholder="Search...">
-                            </div>
-                        </form>
+                    <div class="header-contacts col-md-11 col-sm-9">
+                        <div class="header-phone">Телефон: <a class="active" href="tel:89653533535">8 (965) 353 53 53 </a></div>
+                        <div class="header-email">email: <a class="active" href="mailto:mail@mail.ru">mail@mail.ru</a></div>
                     </div>
+                    {#<div class="search-box col-md-5 col-sm-6 col-xs-4">#}
+                        {#<form class="form-search">#}
+                            {#<div class="input-group">#}
+									{#<span class="input-group-btn">#}
+										{#<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>#}
+									{#</span>#}
+                                {#<input type="text" class="form-control" placeholder="Search...">#}
+                            {#</div>#}
+                        {#</form>#}
+                    {#</div>#}
                 </div>
             </div>
             <div class="menu-block" data-uk-sticky>
@@ -159,13 +163,9 @@
                             <li><a href="/">О компании</a></li>
                             <!--TODO-->
                             <li class="dropdown">
-                                <a href="/products/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Продукты</a>
+                                <a href="/products/" role="button" aria-haspopup="true" aria-expanded="false">Продукты</a>
                                 <i class="responsive-caret fa fa-angle-down"></i>
-                                <ul class="dropdown-menu">
-                                    <li><a href="/products/small/">Низкая точность</a></li>
-                                    <li><a href="/products/mid/">Средняя точность</a></li>
-                                    <li><a href="/products/high/">Высокая точность</a></li>
-                                </ul>
+                                {{ render(controller('SiteBundle:Site:mainCategoriesMenu')) }}
                             </li>
                             <li><a href="/articles/">Новости и статьи</a></li>
                             <li><a href="/contacts/">Контакты</a></li>
@@ -474,16 +474,17 @@
                 <div class="col-md-6 col-sm-6 footer-menu-block">
                     <nav class="navbar navbar-default">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.html">О компании</a></li>
-                            <li><a href="about.html">Продукты</a></li>
-                            <li><a href="our-team.html">Новости</a></li>
-                            <li><a href="contacts.html">Контакты</a></li>
+                            <li><a href="/">О компании</a></li>
+                            <li><a href="/products/">Продукты</a></li>
+                            <li><a href="/news/">Новости</a></li>
+                            <li><a href="/contacts/">Контакты</a></li>
+                            <li><a href="/feedback/">Обратная связь</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="copy-right-section">
-                        <p>Copyright &copy; All rights reserved <a target="_blank" href="http://www.arrowthemes.com">arrowthemes</a>by design.</p>
+                        <p>Компания &laquo;Гиролаб&raquo; {{ date('Y')|date('Y') }} г.</p>
                     </div>
                 </div>
             </div>

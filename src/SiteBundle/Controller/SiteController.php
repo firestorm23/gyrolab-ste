@@ -192,5 +192,13 @@ class SiteController extends Controller
         ));
     }
 
+    public function mainCategoriesMenuAction() {
+
+        $allCategories = $this->getDoctrine()->getRepository("SiteBundle:Category")->getAllMainCategories();
+
+        return $this->render('SiteBundle::main_categories_menu.html.twig', array(
+            'allCategories' => $allCategories
+        ));
+    }
 
 }
