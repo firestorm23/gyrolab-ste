@@ -122,7 +122,8 @@ class UploadListener
                     }
                 }
                 if (method_exists($entity, 'setResizes') && method_exists($eventArgs, 'hasChangedField')) {
-                    if ($eventArgs->hasChangedField('file'))  {
+                    if ($eventArgs->hasChangedField('name'))  {
+                        fileDump(array('sazazazza'), true);
                         $entity->setResizes(array());
                     }
 
