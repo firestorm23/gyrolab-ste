@@ -11,7 +11,7 @@
                         <img src="{{ slide.image.getResize("1280x500x2")|relpath }}" alt="{{ slide.name }}" title="{{ slide.name }}"/>
                         <div class="slider-content col-md-3 col-sm-5">
                             <h2>{{ slide.name }}</h2>
-                            <p>{{ slide.name }}</p>
+                            <p>{{ slide.description }}</p>
                             {% if slide.link is not empty %}
                                 <a target="_blank" href="{{ slide.link }}">Посмотреть</a>
                             {% endif %}
