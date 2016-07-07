@@ -66,7 +66,7 @@ class BlockAdmin extends AbstractAdmin
                     'rows' => "30"
                 )
             ))
-            ->add('extendedBody', 'textarea')
+            ->add('extendedBody', 'textarea', array('required' => false))
             ->add('name', 'text')
             ->end()
             ->with('Параметры сортировки', array('class' => 'col-md-6'))

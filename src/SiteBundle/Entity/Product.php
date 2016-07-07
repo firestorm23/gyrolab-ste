@@ -40,6 +40,12 @@ class Product
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="extended_name", type="string", length=4096, nullable=true)
+     */
+    private $extendedName;
+    /**
      *
      * @ORM\OneToOne(targetEntity="File", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
@@ -47,44 +53,30 @@ class Product
      */
 
     private $image;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="sort", type="integer", nullable=true)
      */
     private $sort;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="topSort", type="integer", nullable=true)
      */
     private $topSort;
-
     /**
      * @Gedmo\Slug(fields={"translit_name"}, updatable=true)
      * @ORM\Column(name="slug", length=128, unique=true)
      * @Assert\Regex("#[a-z_]*#")
      */
     private $slug;
-
     /**
      * @var string
      *
      * @ORM\Column(name="translit_name", type="string", length=128)
      */
     private $translit_name;
-//    /**
-//     * @var integer
-//     *
-//     * @ORM\Column(name="allowComments", type="integer", nullable=true)
-//     */
-//    private $allowComments;
-    /**
-     * @ORM\OneToMany(targetEntity="File", mappedBy="galleryProduct", cascade={"persist", "remove"})
-     */
-
     /**
      * @ORM\ManyToMany(targetEntity="File", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="gallery_product_images",
@@ -93,6 +85,20 @@ class Product
      *      )
      */
     private $galleryImages;
+    /**
+     * @ORM\ManyToMany(targetEntity="File", cascade={"persist", "remove"})
+     * @ORM\JoinTable(name="product_documentation",
+     *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="document_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    private $documentationFiles;
+//    /**
+//     * @var integer
+//     *
+//     * @ORM\Column(name="allowComments", type="integer", nullable=true)
+//     */
+//    private $allowComments;
     /**
      * @var integer
      *
@@ -111,7 +117,6 @@ class Product
      * @ORM\JoinTable(name="product_category")
      */
     private $categories;
-
     /**
      * @ORM\ManyToMany(targetEntity="ProductSpec", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="product_product_specs",
@@ -127,8 +132,48 @@ class Product
         $this->dateAdded = new \DateTime();
         $this->categories = new ArrayCollection();
         $this->galleryImages = new ArrayCollection();
+        $this->documentationFiles = new ArrayCollection();
         $this->productSpecs = new ArrayCollection();
 //        $this->allowComments = true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getExtendedName()
+    {
+        return $this->extendedName;
+    }
+
+    /**
+     * @param string $extendedName
+     */
+    public function setExtendedName($extendedName)
+    {
+        $this->extendedName = $extendedName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDocumentationFiles()
+    {
+        return $this->documentationFiles;
+    }
+
+    /**
+     * @param mixed $documentationFiles
+     */
+    public function setDocumentationFiles($documentationFiles)
+    {
+        $this->documentationFiles = $documentationFiles;
+    }
+    /**
+     * @param mixed $documentationFiles
+     */
+    public function addDocumentationFiles($documentationFile)
+    {
+        $this->documentationFiles[] = $documentationFile;
     }
 
     /**

@@ -29,6 +29,32 @@ class Helper {
         fileDump($params, true);
     }
 
+    public function getFileExtension($filename) {
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        return $ext;
+    }
+
+    public function humanFilesize($filename, $decimals = 2) {
+        $bytes = filesize($filename);
+        $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+        $factor = intval(floor((strlen($bytes) - 1) / 3));
+        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+    }
+
+    public function isImage($filename) {
+        $params = $this->service_container->getParameter('image.mimetypes');
+        $ext = $this->getFileExtension($filename);
+
+        return in_array($ext, $params);
+    }
+
+    public function isDocument($filename) {
+        $params = $this->service_container->getParameter('doc.mimetypes');
+        $ext = $this->getFileExtension($filename);
+
+        return in_array($ext, $params);
+    }
+
 //    public function convertArticlesToMenuLinks($articles, $showArticleTag = true) {
 //        /** @var $article Article */
 //        $menu = array();
