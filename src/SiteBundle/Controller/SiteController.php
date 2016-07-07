@@ -96,7 +96,7 @@ class SiteController extends Controller
 
     /**
      * @Route("/products/", name="products")
-     * @Route("/products/category/{slug}/", name="products_cat", requirements={"slug" = "[a-z-]*"})
+     * @Route("/products/category/{slug}/", name="products_cat", requirements={"slug" = "[a-z0-9-]*"})
      */
 
     public function productsAction($slug = false) {
@@ -147,9 +147,29 @@ class SiteController extends Controller
         ));
     }
 
+    /**
+     * @Route("/product/{slug}/", name="product_detail", requirements={"slug" = "[a-z0-9-]*"})
+     */
+
+    public function productAction($slug = false) {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+
+        /** @var $product Product*/
+        $product = $this->getDoctrine()->getRepository("SiteBundle:Product")->findOneBy(array('slug' => $slug));
+        $breadcrumbs->addRouteItem('Продукция', "products");
+        $title = $product->getName();
+        $breadcrumbs->addRouteItem($title, 'product_detail', array('slug' => $slug));
+        $breadcrumbs->prependRouteItem("Главная", "index");
+
+        return $this->render('SiteBundle:Site:product_detail.html.twig', array(
+            'product' => $product,
+            'title' => $title
+        ));
+    }
+
 
     /**
-     * @Route("/article/{slug}/", name="article_detail", requirements={"slug" = "[a-z-]*"})
+     * @Route("/article/{slug}/", name="article_detail", requirements={"slug" = "[a-z0-9-]*"})
      */
     public function articleAction($slug) {
         /** @var $article_repository ArticleRepository */

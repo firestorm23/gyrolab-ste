@@ -66,31 +66,47 @@ class ProductAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('description', 'textarea',array('attr' => array(
-                'class' => 'tinymce',
-                'data-theme' => 'simple',
-                'cols' => "150",
-                'rows' => "30"
-            )))
-            ->add('image', new FileType(), array('required' => false))
-            ->add('galleryImages', 'collection', array('required' => false, 'type' => new FileType(),     'allow_add' => true,
-                'allow_delete' => true))
-            ->add('sort', 'integer', array('required' => false))
-            ->add('topSort', 'integer',  array('required' => false))
-            ->add('slug',  'text', array('required' => false))
-            ->add('viewCount',  'integer', array('required' => false))
-            ->add('categories', 'sonata_type_model', array('multiple' => true))
-            ->add('productSpecs',  'collection', array(
-                'type' => new ProductSpecType(
-                    $this->getConfigurationPool()->getContainer()->get('helper')
-                ),
-                'allow_add' => true,
-                'allow_delete' => true,
-                'required' => false,
-                'label' => 'Характеристики'
-            ))
-            ->add('dateAdded', 'sonata_type_date_picker', array('read_only' => true))
+            ->tab('Основные поля')
+                ->add('name')
+                ->add('extendedName', 'textarea', array('required' => false))
+                ->add('description', 'textarea',array('attr' => array(
+                    'class' => 'tinymce',
+                    'data-theme' => 'simple',
+                    'cols' => "150",
+                    'rows' => "30"
+                )))
+            ->end()->end()
+
+            ->tab('Файлы')
+                ->with('Изображения', array('class' => 'col-md-6'))
+                    ->add('image', new FileType(), array('required' => false))
+                    ->add('galleryImages', 'collection', array('required' => false, 'type' => new FileType(),     'allow_add' => true,
+                        'allow_delete' => true))
+                ->end()
+                ->with('Документация', array('class' => 'col-md-6'))
+                    ->add('documentationFiles', 'collection', array('required' => false, 'type' => new FileType(),     'allow_add' => true,
+                        'allow_delete' => true))
+                ->end()
+            ->end()
+            ->tab('Характеристики')
+                ->add('productSpecs',  'collection', array(
+                    'type' => new ProductSpecType(
+                        $this->getConfigurationPool()->getContainer()->get('helper')
+                    ),
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'required' => false,
+                    'label' => 'Характеристики'
+                ))->end()->end()
+
+            ->tab('Служебные')
+                ->add('sort', 'integer', array('required' => false))
+                ->add('topSort', 'integer',  array('required' => false))
+                ->add('slug',  'text', array('required' => false))
+                ->add('viewCount',  'integer', array('required' => false))
+                ->add('categories', 'sonata_type_model', array('multiple' => true))
+                ->add('dateAdded', 'sonata_type_date_picker', array('read_only' => true))
+            ->end()
         ;
     }
 

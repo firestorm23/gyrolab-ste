@@ -4,6 +4,7 @@ use Test\TestBundle\DependencyInjection\MenuMapHelper;
 
 use Symfony\Component\HttpKernel\Kernel;
 use Knp\Menu\Twig\Helper;
+use SiteBundle\Entity\File;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use MischiefCollective\ColorJizz\Formats\Hex;
 use MischiefCollective\ColorJizz\Formats\RGB;
@@ -94,11 +95,37 @@ class HelperExtension extends \Twig_Extension
             'getScriptTimeMessage' => new \Twig_Function_Method($this, 'getScriptTimeMessage'),
             'rgba' => new \Twig_Function_Method($this, 'toRGBA'),
             'array_to_string_pretty' => new \Twig_Function_Method($this, 'arrayToStringPretty'),
+            'isImage' => new \Twig_Function_Method($this, 'isImage'),
+            'isDocument' => new \Twig_Function_Method($this, 'isDocument'),
+            'getFileSize' => new \Twig_Function_Method($this , 'getFileSize'),
+            'getFileExt' => new \Twig_Function_Method($this , 'getFileExt'),
+            'getLazyResize' => new \Twig_Function_Method($this , 'getLazyResize'),
         );
     }
 
     public function fileDump($var, $append) {
         fileDump($var, $append);
+    }
+
+    public function getLazyResize(File $file, $sizekey) {
+        $this->container->get('file.manager')->resizeImage($file, $sizekey);
+        return $file->getResize($sizekey);
+    }
+
+    public function getFileSize($filename) {
+        return $this->container->get('helper')->humanFilesize($filename);
+    }
+
+    public function getFileExt($filename) {
+        return $this->container->get('helper')->getFileExtension($filename);
+    }
+
+    public function isImage($filename) {
+        return $this->container->get('helper')->isImage($filename);
+    }
+
+    public function isDocument($filename) {
+        return $this->container->get('helper')->isDocument($filename);
     }
 
 

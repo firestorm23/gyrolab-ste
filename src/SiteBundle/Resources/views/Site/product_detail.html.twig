@@ -1,0 +1,111 @@
+{% extends "SiteBundle::public.html.twig" %}
+
+
+{% block container_content %}
+    {#<div class="row">#}
+        {#<div id="slider" class="flexslider home-slider">#}
+            {#<ul class="slides">#}
+                {#{% for slide in topSliderBlocks %}#}
+                    {#&#123;&#35;{{ dump(slide) }}&#35;&#125;#}
+                    {#<li>#}
+                        {#<img src="{{ slide.image.getResize("1280x500x2")|relpath }}" alt="{{ slide.name }}" title="{{ slide.name }}"/>#}
+                        {#<div class="slider-content col-md-3 col-sm-5">#}
+                            {#<h2>{{ slide.name }}</h2>#}
+                            {#<p>{{ slide.name }}</p>#}
+                            {#{% if slide.link is not empty %}#}
+                                {#<a target="_blank" href="{{ slide.link }}">Посмотреть</a>#}
+                            {#{% endif %}#}
+                        {#</div>#}
+                    {#</li>#}
+                {#{% endfor %}#}
+            {#</ul>#}
+        {#</div>#}
+    {#</div>#}
+    <div class="row">
+        <!-- PageTitle Section -->
+        <div id="page-title" class="page-title">
+            {% if product.extendedName is not empty %}
+                <h2>{{ product.extendedName }}</h2>
+            {% endif %}
+        </div><!-- PageTitle Section /- -->
+
+        <!-- PageBreadcrumb Section -->
+        {#<div class="page-breadcrumb">#}
+            {#<ol class="breadcrumb">#}
+                {#<li class="active"><a title="Home" href="index.html">Home</a></li>#}
+                {#<li class="active"><a title="Home" href="#">Wordpress</a></li>#}
+                {#<li>Category List</li>#}
+            {#</ol>#}
+        {#</div>#}
+        {{ wo_render_breadcrumbs() }}
+        <!-- PageBreadcrumb Section /- -->
+        <div class="single-post">
+            {% set hasDoc = product.documentationFiles is not empty%}
+            {% set colClass = hasDoc ? 'col-md-8' : 'col-md-12' %}
+            <div class="col-md-8 col-sm-12 single-post-inner">
+                <article class="single-post-content">
+                    <header class="entry-header">
+                        <h3 class="entry-title">{{ title }}</h3>
+                    </header>
+                    {#<div class="entry-cover hover-img">#}
+                        <div class="fotorama" data-width="700" data-ratio="700/467" data-max-width="100%" data-nav="thumbs">
+                            <a href="{{ product.image|relpath }}"><img src="{{ product.image|relpath }}"></a>
+                            {% for image in product.galleryImages %}
+                                <a href="{{ image|relpath }}"><img src="{{ image|relpath }}"></a>
+                            {% endfor %}
+                        </div>
+                        {#<a href="images/blog/blog_1.png" data-lightbox="example-set" data-title=""><img src="images/blog/blog_1.png" alt="blog">#}
+                            {#<i class="hover-icon pe-7s-plus"></i>#}
+                        {#</a>#}
+                    {#</div>#}
+                    <div class="entry-content mrg-top-20">
+                        {{ product.description|raw }}
+                    </div>
+
+                    {% if product.productSpecs is not empty %}
+                        <h3 class="entry-title">Характеристики</h3>
+                        <div class="table-responsive contact-table">
+                            <table class="table table-striped">
+                                <tbody>
+                                {% for spec in product.productSpecs %}
+                                    <tr>
+                                        <td data-title="Title" class="item-title">
+                                            {{ spec.name }}
+                                        </td>
+                                        <td data-title="Desc">
+                                            {{ spec.value }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                </article>
+            </div>
+            {% if hasDoc %}
+                <div class="col-md-4 col-sm-12 sidebar">
+                    <aside class="widget widget-tag col-md-12 col-sm-6">
+                        <h3 class="entry-title">Документация</h3>
+                        <ul class="tag-list">
+                            {% for doc in product.documentationFiles %}
+
+                                {% set filepath = getFileName(doc) %}
+                                {% set absolutePath =  doc|raw %}
+                                {% set filext = getFileExt(absolutePath) %}
+                                {% set filesize = getFileSize(absolutePath) %}
+
+                                <li><a target="_blank" href="{{ filepath }}">
+                                        Скачать {% if isDocument(absolutePath) %} документацию {% endif %}[{{ filext }}, {{ filesize }}]
+                                    </a></li>
+                            {% endfor %}
+                        </ul>
+                    </aside>
+                </div>
+            {% endif %}
+        </div>
+        <!-- Contact-category -->
+
+    </div>
+
+{% endblock container_content %}

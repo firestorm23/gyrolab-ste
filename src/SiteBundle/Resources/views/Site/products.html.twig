@@ -71,7 +71,7 @@
                     {% for product in category.products %}
                         <tr class="product">
                             <td data-title="{{ product.name }}" class="item-title">
-                                <a href="single-article.html" style="display:block;">{{ product.name }}</a>
+                                <a href="{{ path('product_detail', {'slug':product.slug}) }}" style="display:block;">{{ product.name }}</a>
                                 <img src="{{ product.image.getResize("140x117x2")|relpath }}">
                             </td>
                             <td data-title="Desc">{{ product.description|raw }}</td>
