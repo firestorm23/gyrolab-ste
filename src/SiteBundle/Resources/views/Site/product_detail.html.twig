@@ -42,7 +42,7 @@
         <div class="single-post">
             {% set hasDoc = product.documentationFiles is not empty%}
             {% set colClass = hasDoc ? 'col-md-8' : 'col-md-12' %}
-            <div class="col-md-8 col-sm-12 single-post-inner">
+            <div class="{{ colClass }} col-sm-12 single-post-inner">
                 <article class="single-post-content">
                     <header class="entry-header">
                         <h3 class="entry-title">{{ title }}</h3>
