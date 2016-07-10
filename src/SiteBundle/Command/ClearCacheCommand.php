@@ -33,7 +33,8 @@ class ClearCacheCommand extends ContainerAwareCommand
         } else {
             exec($app_dir."/console cache:clear --env=prod");
         }
-        exec("php $app_dir/../vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php");
+        
+        exec("php $app_dir/../vendor/sensio/distribution-bundle/Resources/bin/build_bootstrap.php");
         $time_end = microtime(true);
         $execution_time = number_format($time_end - $time_start + 1, 2);//+1 sec for correction
 
