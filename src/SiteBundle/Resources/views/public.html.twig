@@ -332,7 +332,18 @@
 <!-- Container -->
 <div id="main-content" class="container">
     <!-- Slider Section -->
-    {{ block('container_content') }}
+    <div class="row">
+        {% if is_main %}
+            <div id="page-title" class="page-title">
+                {% if title is not empty %}
+                    <h2>{{ title }}</h2>
+                {% endif %}
+            </div>
+
+            {{ wo_render_breadcrumbs() }}
+        {% endif %}
+        {{ block('container_content') }}
+    </div>
 </div>
 
 {{ block('blockquote_block') }}
@@ -509,6 +520,14 @@
 <script src="/static/libraries/uikit/js/components/sticky.min.js"></script>
 <script src="/static/libraries/select2/select2.full.min.js"></script>
 <script src="/static/libraries/fotorama/fotorama.js"></script>
+<script type="text/javascript">
+    $(function () {
+        {# Image will be refreshed when the link is clicked #}
+        $('#contact_form_captcha_refresh').click(function() {
+            $('#contact_form_captcha_image').attr('src', '{{ path('genemu_captcha_refresh') }}?' + Math.random());
+        });
+    });
+</script>
 
 <!-- Customized Scripts -->
 <script src="/static/js/functions.js"></script>

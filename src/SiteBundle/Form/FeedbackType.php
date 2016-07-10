@@ -59,19 +59,73 @@ class FeedbackType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+
         $builder
-            ->add('name', 'text',  array('label' => 'Имя'))
-            ->add('subject', 'text', array('label' => 'Тема'))
-            ->add('email',     'email', array('label' => 'Email'))
-            ->add('message', 'textarea', array('label' => 'Сообщение'));
+            ->add('name', 'text',  array(
+                    'label' => 'Имя *',
+                    'attr' => array(
+                        'class' => 'form-control'
+                    ),
+                    'label_attr' => array(
+                        'class' => 'col-md-4 col-sm-3 control-label',
+                        'data-toggle' => 'tooltip',
+                        'data-placement' => 'top'
+                    )
+                )
+            )
+            ->add('subject', 'text', array(
+                    'label' => 'Тема *',
+                    'attr' => array(
+                        'class' => 'form-control'
+                    ),
+                    'label_attr' => array(
+                        'class' => 'col-md-4 col-sm-3 control-label',
+                        'data-toggle' => 'tooltip',
+                        'data-placement' => 'top'
+                    )
+                )
+            )
+            ->add('email',     'email', array(
+                    'label' => 'Email *',
+                    'attr' => array(
+                        'class' => 'form-control'
+                    ),
+                    'label_attr' => array(
+                        'class' => 'col-md-4 col-sm-3 control-label',
+                        'data-toggle' => 'tooltip',
+                        'data-placement' => 'top'
+                    )
+                )
+            )
+            ->add('message', 'textarea', array(
+                    'label' => 'Сообщение *',
+                    'attr' => array(
+                        'class' => 'form-control'
+                    ),
+                    'label_attr' => array(
+                        'class' => 'col-md-4 col-sm-3 control-label',
+                        'data-toggle' => 'tooltip',
+                        'data-placement' => 'top'
+                    )
+                )
+            );
 
         if ($this->captchaType) {
             $builder->add('captcha', $this->captchaType, array(
-                'label' => 'mremi_contact.form.captcha',
+                'label' => 'Код безопасности *',
+                'attr' => array(
+                    'class' => 'form-control'
+                ),
+                'label_attr' => array(
+                    'class' => 'col-md-4 col-sm-3 control-label',
+                    'data-toggle' => 'tooltip',
+                    'data-placement' => 'top'
+                )
             ));
         }
 
-        $builder->add('save', 'submit', array('label' => 'mremi_contact.form_submit'));
+        $builder->add('save', 'submit', array('label' => 'Отправить', 'attr' => array('class' => 'btn-defult login-btn pull-right')));
     }
 
     /**

@@ -21,21 +21,21 @@
             {#</ul>#}
         {#</div>#}
     {#</div>#}
-    <div class="row">
+    {#<div class="row">#}
         <!-- PageTitle Section -->
-        <div id="page-title" class="page-title">
-            <h2>{{ title }}</h2>
-        </div><!-- PageTitle Section /- -->
+        {#<div id="page-title" class="page-title">#}
+            {#<h2>{{ title }}</h2>#}
+        {#</div><!-- PageTitle Section /- -->#}
 
-        <!-- PageBreadcrumb Section -->
-        {#<div class="page-breadcrumb">#}
-            {#<ol class="breadcrumb">#}
-                {#<li class="active"><a title="Home" href="index.html">Home</a></li>#}
-                {#<li class="active"><a title="Home" href="#">Wordpress</a></li>#}
-                {#<li>Category List</li>#}
-            {#</ol>#}
-        {#</div>#}
-        {{ wo_render_breadcrumbs() }}
+        {#<!-- PageBreadcrumb Section -->#}
+        {#&#123;&#35;<div class="page-breadcrumb">&#35;&#125;#}
+            {#&#123;&#35;<ol class="breadcrumb">&#35;&#125;#}
+                {#&#123;&#35;<li class="active"><a title="Home" href="index.html">Home</a></li>&#35;&#125;#}
+                {#&#123;&#35;<li class="active"><a title="Home" href="#">Wordpress</a></li>&#35;&#125;#}
+                {#&#123;&#35;<li>Category List</li>&#35;&#125;#}
+            {#&#123;&#35;</ol>&#35;&#125;#}
+        {#&#123;&#35;</div>&#35;&#125;#}
+        {#{{ wo_render_breadcrumbs() }}#}
         <!-- PageBreadcrumb Section /- -->
 
         <!-- Contact-category -->
@@ -132,6 +132,6 @@
                 </table>
             </div>
         </div>
-    </div>
+    {#</div>#}
 
 {% endblock container_content %}

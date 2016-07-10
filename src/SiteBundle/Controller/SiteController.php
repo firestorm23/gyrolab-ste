@@ -100,6 +100,7 @@ class SiteController extends Controller
         return $this->render('SiteBundle:Site:index.html.twig', array(
             'topSliderBlocks' => $topSliderBlocks,
             'midGridBlocks' => $midGridBlocks,
+            'is_main' => false
 //            'socialBlocks' => $socialBlocks
         ));
     }
@@ -153,7 +154,8 @@ class SiteController extends Controller
             'categories' => $categories,
             'allCategories' => $allCategories,
             'slug' => $slug,
-            'title' => $title
+            'title' => $title,
+            'is_main' => true
         ));
     }
 
@@ -167,13 +169,14 @@ class SiteController extends Controller
         /** @var $product Product*/
         $product = $this->getDoctrine()->getRepository("SiteBundle:Product")->findOneBy(array('slug' => $slug));
         $breadcrumbs->addRouteItem('Продукция', "products");
-        $title = $product->getName();
+        $title = $product->getExtendedName();
         $breadcrumbs->addRouteItem($title, 'product_detail', array('slug' => $slug));
         $breadcrumbs->prependRouteItem("Главная", "index");
 
         return $this->render('SiteBundle:Site:product_detail.html.twig', array(
             'product' => $product,
-            'title' => $title
+            'title' => $title,
+            'is_main' => true
         ));
     }
 
@@ -234,10 +237,15 @@ class SiteController extends Controller
 
 
     /**
-     * @Route("/feedback/", name="feedback")
+     * @Route("/contacts/", name="contacts")
      */
 
     public function feedbackFormAction() {
+
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+
+        $breadcrumbs->addRouteItem('Контакты', "contacts");
+        $breadcrumbs->prependRouteItem("Главная", "index");
 
         $eventDispatcher = $this->get('event_dispatcher');
         $formFactory = $this->get('mremi_contact.form_factory');
@@ -253,8 +261,6 @@ class SiteController extends Controller
         $form = $formFactory->createForm($contact);
 
         $form->handleRequest($request);
-
-        fileDump(array($form->isValid() ? "yes" : "no", 'lkjlkj', get_class_methods($form)), true);
 
         if ($form->isValid()) {
             $event = new FormEvent($form, $request);
@@ -276,7 +282,9 @@ class SiteController extends Controller
 
         return $this->render('SiteBundle::feedback.html.twig', array(
             'form' => $form->createView(),
-            'form_action' => $this->generateUrl('feedback')
+            'form_action' => $this->generateUrl('contacts'),
+            'is_main' => true,
+            'title' => "Контакты"
         ));
     }
 

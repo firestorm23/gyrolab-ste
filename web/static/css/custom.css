@@ -63,3 +63,11 @@ th.item-title span {
 .mrg-top-20 {
     margin-top: 20px;
 }
+
+#contact_form_captcha_image {
+    margin-bottom: 15px;
+}
+
+.contact-form .form-horizontal .form-control {
+    width: 352px;
+}

@@ -47,3 +47,6 @@ sonata_user_admin_resetting:
 
 mremi_contact_form:
     resource: "@MremiContactBundle/Resources/config/routing.xml"
+
+genemu_base64:
+    resource: "@GenemuFormBundle/Resources/config/routing/base64.xml"

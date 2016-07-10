@@ -309,6 +309,12 @@ white_october_breadcrumbs:
     translation_domain: ~ # defaults to null, so the default domain is used
     viewTemplate:       'SiteBundle::breadcrumb.html.twig'
 
+genemu_form:
+    captcha:
+        width: 200
+        height: 50
+        font_size: 22
+
 mremi_contact:
     store_data:        true
     contact_class:     SiteBundle\Entity\FeedbackResult

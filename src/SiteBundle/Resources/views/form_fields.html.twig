@@ -1,19 +1,47 @@
-{% extends "SiteBundle::public.html.twig" %}
-{% form_theme form 'SiteBundle::form_fields.html.twig' %}
+{% extends 'SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig' %}
 
+{#{% block form_widget_simple %}#}
 
-{% block container_content %}
-<div class="col-md-6 col-sm-12 contact-add-form">
-    <div class="contact-form">
-        <h2>Свяжитесь с нами</h2>
-        <p>Все поля отмеченные * обязательны для заполнения</p>
-        {{ form_start(form, {'action': form_action, 'attr' : {'class': 'form-horizontal'}}) }}
-            {{ form_widget(form) }}
-        {{ form_end(form) }}
-        <div id="alert-msg" class="alert-msg"></div>
+{#{% endblock form_widget_simple %}#}
+
+{%- block form_row -%}
+    <div class="form-group">
+    {#{{- form_label(form) -}}#}
+    {{ form_label(form) }}
+    {{- form_errors(form) -}}
+        <div class="col-md-8 col-sm-9">
+            {{- form_widget(form) -}}
+        </div>
     </div>
-</div>
-{% endblock container_content %}
+{%- endblock form_row -%}
+
+{% block genemu_captcha_widget %}
+    <img id="{{ id }}_image" src="{{ src }}" width="{{ width }}" height="{{ height }}" title="{{ name|trans }}" />
+    {# We're putting a link there #}
+    <a id="{{ id }}_refresh">Получить другой код</a>
+    {{ block("form_widget_simple") }}
+    {#<script type="text/javascript">#}
+        {#$(function () {#}
+            {#&#123;&#35; Image will be refreshed when the link is clicked &#35;&#125;#}
+            {#$('#{{ id }}_refresh').click(function() {#}
+                {#$('#{{ id }}_image').attr('src', '{{ path('genemu_captcha_refresh') }}?' + Math.random());#}
+            {#});#}
+        {#});#}
+    {#</script>#}
+{% endblock %}
+
+{#{% block genemu_captcha_javascript %}#}
+    {#<script type="text/javascript">#}
+        {#$(function () {#}
+            {#&#123;&#35; Image will be refreshed when the link is clicked &#35;&#125;#}
+            {#$('#{{ id }}_refresh').click(function() {#}
+                {#$('#{{ id }}_image').attr('src', '{{ path('genemu_captcha_refresh') }}?' + Math.random());#}
+            {#});#}
+        {#});#}
+    {#</script>#}
+
+    {#{{ parent() }}#}
+{#{% endblock %}#}
 
 
 {#<div class="contact-form">#}
