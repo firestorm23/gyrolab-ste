@@ -319,3 +319,5 @@ mremi_contact:
     form:
         captcha_type: genemu_captcha
         type: feedback_form
+    template:
+        SiteBundle::email_feedback.txt.twig
