@@ -1,0 +1,33 @@
+{#
+
+This file is part of the Mremi\ContactBundle Symfony bundle.
+
+(c) Rémi Marseille <marseille.remi@gmail.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+
+{% block body_text %}
+{% autoescape false %}
+{{ 'mremi_contact.email_message_txt'|trans({
+    'Имя': contact.firstName,
+    'Почта':     contact.email,
+    'Тема':   contact.subject,
+    'Сообщение':   contact.message
+}) }}
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+{% autoescape false %}
+{{ 'mremi_contact.email_message_html'|trans({
+    'Имя': contact.firstName,
+    'Почта':     contact.email,
+    'Тема':   contact.subject,
+    'Сообщение':   contact.message|nl2br
+}) }}
+{% endautoescape %}
+{% endblock %}
