@@ -119,6 +119,14 @@ $slugify = new Slugify(['lowercase' => false]);
 $slugify->slugify('Hello World'); // -> "Hello-World"
 ```
 
+By default Slugify will use dashes as separators. If you want to use a different default separator, you can set the
+`separator` option.
+
+```php
+$slugify = new Slugify(['separator' => '_']);
+$slugify->slugify('Hello World'); // -> "hello_world"
+```
+
 ### Contributing
 
 Feel free to ask for new rules for languages that is not already here.
@@ -177,6 +185,7 @@ You can set the following configuration settings in `app/config.yml` to adjust t
 ```yaml
 cocur_slugify:
     lowercase: <boolean>
+    separator: <string>
     regexp: <string>
     rulesets: { }
 ```
@@ -255,7 +264,7 @@ use Cocur\Slugify\Slugify;
 
 $mustache = new Mustache_Engine(array(
     // ...
-    'helpers' => array('slugify' => function($string, $separator = '-') {
+    'helpers' => array('slugify' => function($string, $separator = null) {
         return Slugify::create()->slugify($string, $separator);
     }),
 ));
@@ -403,9 +412,68 @@ In a template you can use it like this:
 <a href="/blog/{{ post.title|slugify }}">{{ post.title|raw }}</a></h5>
 ```
 
+### League
+
+Slugify provides a service provider for use with `league/container`:
+
+```php
+use Cocur\Slugify;
+use League\Container;
+
+/* @var Container\ContainerInterface $container */
+$container->addServiceProvider(new Slugify\Bridge\League\SlugifyServiceProvider());
+
+/* @var Slugify\Slugify $slugify */
+$slugify = $container->get(Slugify\SlugifyInterface::class);
+```
+
+You can configure it by sharing the required options:
+
+```php
+use Cocur\Slugify;
+use League\Container;
+
+/* @var Container\ContainerInterface $container */
+$container->share('config.slugify.options', [
+    'lowercase' => false,
+    'rulesets' => [
+        'default',
+        'german',
+    ],
+]);
+
+$container->addServiceProvider(new Slugify\Bridge\League\SlugifyServiceProvider());
+
+/* @var Slugify\Slugify $slugify */
+$slugify = $container->get(Slugify\SlugifyInterface::class);
+```
+
+You can configure which rule provider to use by sharing it:
+
+```php
+use Cocur\Slugify;
+use League\Container;
+
+/* @var Container\ContainerInterface $container */
+$container->share(Slugify\RuleProvider\RuleProviderInterface::class, function () {
+    return new Slugify\RuleProvider\FileRuleProvider(__DIR__ . '/../../rules');
+]);
+
+$container->addServiceProvider(new Slugify\Bridge\League\SlugifyServiceProvider());
+
+/* @var Slugify\Slugify $slugify */
+$slugify = $container->get(Slugify\SlugifyInterface::class);
+```
 
 Change Log
 ----------
+
+### Version 2.2 (10 July 2016)
+
+- [#102](https://github.com/cocur/slugify/pull/102) Add transliterations for Azerbaijani (by [seferov](https://github.com/seferov))
+- [#109](https://github.com/cocur/slugify/pull/109) Made integer values into strings (by [JonathanMH](https://github.com/JonathanMH))
+- [#114](https://github.com/cocur/slugify/pull/114) Provide SlugifyServiceProvider for league/container (by [localheinz](https://github.com/localheinz))
+- [#120](https://github.com/cocur/slugify/issues/120) Add compatibility with Silex 2 (by [shamotj](https://github.com/shamotj))
 
 ### Version 2.1.1 (8 April 2016)
 

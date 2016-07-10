@@ -37,7 +37,7 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
      */
     private $provider;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->provider = Mockery::mock('\Cocur\Slugify\RuleProvider\RuleProviderInterface');
         $this->provider->shouldReceive('getRules')->andReturn([]);
@@ -135,6 +135,54 @@ class SlugifyTest extends \PHPUnit_Framework_TestCase
 
         $this->slugify = new Slugify(['lowercase' => false]);
         $this->assertEquals($expected, $this->slugify->slugify($actual));
+    }
+
+    /**
+     * @test
+     * @dataProvider customRulesProvider
+     */
+    public function customRules($rule, $string, $result)
+    {
+        $slugify = new Slugify();
+        $slugify->activateRuleSet($rule);
+
+        $this->assertSame($result, $slugify->slugify($string));
+    }
+
+    public function customRulesProvider()
+    {
+        return [
+            ['azerbaijani', 'əöüğşçı', 'eougsci'],
+            ['azerbaijani', 'Fərhad Səfərov', 'ferhad-seferov']
+        ];
+    }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::__construct()
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function slugifyDefaultsToSeparatorOption()
+    {
+        $actual   = 'file name';
+        $expected = 'file__name';
+
+        $this->slugify = new Slugify(['separator' => '__']);
+        $this->assertEquals($expected, $this->slugify->slugify($actual));
+    }
+
+    /**
+     * @test
+     * @covers Cocur\Slugify\Slugify::__construct()
+     * @covers Cocur\Slugify\Slugify::slugify()
+     */
+    public function slugifyHonorsSeparatorArgument()
+    {
+        $actual   = 'file name';
+        $expected = 'file__name';
+
+        $this->slugify = new Slugify(['separator' => 'dummy']);
+        $this->assertEquals($expected, $this->slugify->slugify($actual, '__'));
     }
 
     public function defaultRuleProvider()
