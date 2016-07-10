@@ -29,3 +29,10 @@ services:
     helper:
         class: SiteBundle\Services\Helper
         arguments: [@service_container]
+
+    feedback_form:
+            class: SiteBundle\Form\FeedbackType
+            tags:
+            - { name: form.type, alias: feedback_form }
+            arguments: [@mremi_contact.subject_provider.noop, 'SiteBundle\Entity\FeedbackResult', 'genemu_captcha']
+

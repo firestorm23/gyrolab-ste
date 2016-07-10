@@ -25,7 +25,7 @@
         "stfalcon/tinymce-bundle": "1.x",
         "stojg/crop": "^1.2",
         "jms/serializer-bundle":"1.x",
-        "genemu/form-bundle":"v2.x",
+        "genemu/form-bundle":"^3.0@dev",
         "mischiefcollective/colorjizz":"dev-master",
         "sonata-project/intl-bundle": "^2.2",
         "gedmo/doctrine-extensions": "@stable",
@@ -35,7 +35,8 @@
         "sonata-project/google-authenticator": "^1.0",
         "nelmio/api-doc-bundle": "^2.13",
         "sonata-project/user-bundle": "^3.0",
-        "whiteoctober/breadcrumbs-bundle": "^1.2"
+        "whiteoctober/breadcrumbs-bundle": "^1.2",
+        "mremi/contact-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

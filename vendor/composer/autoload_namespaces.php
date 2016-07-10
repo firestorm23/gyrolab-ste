@@ -18,6 +18,7 @@ return array(
     'PhpCollection' => array($vendorDir . '/phpcollection/phpcollection/src'),
     'Nelmio\\ApiDocBundle' => array($vendorDir . '/nelmio/api-doc-bundle'),
     'Negotiation' => array($vendorDir . '/willdurand/negotiation/src'),
+    'Mremi\\ContactBundle' => array($vendorDir . '/mremi/contact-bundle'),
     'MischiefCollective' => array($vendorDir . '/mischiefcollective/colorjizz/src'),
     'Michelf' => array($vendorDir . '/michelf/php-markdown'),
     'Metadata\\' => array($vendorDir . '/jms/metadata/src'),

@@ -381,6 +381,10 @@ class ComposerStaticInitc4597ccc45f3c051e0c499dd4422467a
         ),
         'M' => 
         array (
+            'Mremi\\ContactBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/mremi/contact-bundle',
+            ),
             'MischiefCollective' => 
             array (
                 0 => __DIR__ . '/..' . '/mischiefcollective/colorjizz/src',

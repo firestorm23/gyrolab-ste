@@ -18,6 +18,16 @@ use SiteBundle\Entity\Block;
 use SiteBundle\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
 
+use Mremi\ContactBundle\ContactEvents;
+use Mremi\ContactBundle\Event\ContactEvent;
+use Mremi\ContactBundle\Event\FilterContactResponseEvent;
+use Mremi\ContactBundle\Event\FormEvent;
+use Mremi\ContactBundle\Form\Factory\FormFactory;
+use Mremi\ContactBundle\Model\ContactManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 class SiteController extends Controller
 {
 
@@ -218,6 +228,55 @@ class SiteController extends Controller
 
         return $this->render('SiteBundle::main_categories_menu.html.twig', array(
             'allCategories' => $allCategories
+        ));
+    }
+
+
+
+    /**
+     * @Route("/feedback/", name="feedback")
+     */
+
+    public function feedbackFormAction() {
+
+        $eventDispatcher = $this->get('event_dispatcher');
+        $formFactory = $this->get('mremi_contact.form_factory');
+        $contactManager = $this->get('mremi_contact.contact_manager');
+        $router = $this->get('router');
+        $session = $this->get('session');
+        $request = $this->get('request');
+
+        $contact = $contactManager->create();
+
+        $eventDispatcher->dispatch(ContactEvents::FORM_INITIALIZE, new ContactEvent($contact, $request));
+
+        $form = $formFactory->createForm($contact);
+
+        $form->handleRequest($request);
+
+        fileDump(array($form->isValid() ? "yes" : "no", 'lkjlkj', get_class_methods($form)), true);
+
+        if ($form->isValid()) {
+            $event = new FormEvent($form, $request);
+            $eventDispatcher->dispatch(ContactEvents::FORM_SUCCESS, $event);
+
+            if (null === $response = $event->getResponse()) {
+                $response = new RedirectResponse($this->router->generate('mremi_contact_confirmation'));
+            }
+
+            $contactManager->save($contact, true);
+            $session->set('mremi_contact_data', $contact);
+
+            $eventDispatcher->dispatch(ContactEvents::FORM_COMPLETED, new FilterContactResponseEvent($contact, $request, $response));
+
+            return $response;
+        }
+
+
+
+        return $this->render('SiteBundle::feedback.html.twig', array(
+            'form' => $form->createView(),
+            'form_action' => $this->generateUrl('feedback')
         ));
     }
 

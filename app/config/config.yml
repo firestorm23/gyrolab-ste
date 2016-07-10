@@ -305,3 +305,17 @@ white_october_breadcrumbs:
     locale:             ~ # defaults to null, so the default locale is used
     translation_domain: ~ # defaults to null, so the default domain is used
     viewTemplate:       'SiteBundle::breadcrumb.html.twig'
+
+mremi_contact:
+    store_data:        true
+    contact_class:     SiteBundle\Entity\FeedbackResult
+    email:
+
+        from:
+            - { address: charlysais@gmail.com, name: "Azaza" }
+
+        to:
+            - { address: charlysais@gmail.com, name: "Webmaster" }
+    form:
+        captcha_type: genemu_captcha
+        type: feedback_form
