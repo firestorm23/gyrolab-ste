@@ -24,3 +24,7 @@ parameters:
     top.slider.count: 10
     mid.grid.count: 10
     socials.count: 10
+    image.mimetypes: false
+    doc.mimetypes: false
+    email_header: false
+    email_footer: false

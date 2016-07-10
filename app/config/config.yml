@@ -33,6 +33,9 @@ framework:
 
 # Twig Configuration
 twig:
+    globals:
+            email_feedback_header: "%email_header%"
+            email_feedback_footer: "%email_footer%"
     debug:            true
     strict_variables: "%kernel.debug%"
     form:
