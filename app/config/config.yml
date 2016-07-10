@@ -316,8 +316,8 @@ mremi_contact:
 
         to:
             - { address: charlysais@gmail.com, name: "Webmaster" }
+        template:
+            SiteBundle::email_feedback.txt.twig
     form:
         captcha_type: genemu_captcha
         type: feedback_form
-    template:
-        SiteBundle::email_feedback.txt.twig
