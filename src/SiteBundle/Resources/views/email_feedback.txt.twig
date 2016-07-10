@@ -12,22 +12,20 @@ file that was distributed with this source code.
 
 {% block body_text %}
 {% autoescape false %}
-{{ 'mremi_contact.email_message_txt'|trans({
-    'Имя': contact.firstName,
-    'Почта':     contact.email,
-    'Тема':   contact.subject,
-    'Сообщение':   contact.message
-}) }}
+Имя: {{ contact.firstName }},
+Почта: {{ contact.email }},
+Тема: {{ contact.subject }},
+Сообщение: {{ contact.message }}
 {% endautoescape %}
 {% endblock %}
 
 {% block body_html %}
 {% autoescape false %}
-{{ 'mremi_contact.email_message_html'|trans({
-    'Имя': contact.firstName,
-    'Почта':     contact.email,
-    'Тема':   contact.subject,
-    'Сообщение':   contact.message|nl2br
-}) }}
+    На сайте gyrolab.ru была заполнена форма<br><br>
+    Имя: {{ contact.firstName }},<br>
+    Почта: {{ contact.email }},<br>
+    Тема: {{ contact.subject }},<br>
+    Сообщение: {{ contact.message|nl2br }}<br><br>
+    ========================<br>Компания <a href="http://gyrolab.ru">Gyrolab</a>
 {% endautoescape %}
 {% endblock %}
