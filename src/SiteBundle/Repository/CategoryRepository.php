@@ -14,8 +14,11 @@ class CategoryRepository extends EntityRepository
 {
     public function getAllMainCategories() {
         $qb = $this->createQueryBuilder('c');
+        $qb->join('c.products', 'p');
+        $qb->addSelect('count(p) AS HIDDEN product_count');
         $qb->where($qb->expr()->isNotNull('c.slug'))
             ->andWhere($qb->expr()->isNotNull('c.isMain'))
+            ->andHaving($qb->expr()->gt('product_count', 0))
             ->orderBy('c.isMain', 'desc');
 
         return $qb->getQuery()

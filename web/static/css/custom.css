@@ -76,6 +76,10 @@ th.item-title span {
     text-transform: none;
 }
 
+.header {
+    z-index: 1000000;
+}
+
 .latest-category article.single-post-content {
     border-bottom: none;
 }
@@ -94,10 +98,115 @@ input {
 
 
 .news-subscribe {
-    padding: 10px 10px;
+    padding: 5px 10px;
+    box-shadow: none;
 }
 
 .header-logo {
     margin-bottom: 10px;
     padding-top: 25px;
+}
+
+.header-logo img {
+    width: 100px;
+}
+
+@media (max-width: 1250px) {
+    .header-logo h1 {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1158px) {
+    .header-logo h1 {
+        font-size: 17px;
+    }
+    .news-subscribe label {
+        font-size: 16px;
+    }
+
+    .header-logo img {
+        width: 90px;
+    }
+    .news-subscribe .form-control{;
+        width: 180px;
+    }
+    .news-subscribe input[type=submit] {;
+        width: 200px;
+    }
+}
+
+@media (max-width: 900px) {
+    .header-logo h1 {
+        font-size: 14px;
+    }
+    .news-subscribe .form-control{
+        font-size: 13px;
+        width: 150px;
+    }
+    .news-subscribe input[type=submit] {
+        font-size: 13px;
+        width: 165px;
+        padding: 8px 10px;
+    }
+    .header-logo img {
+        width: 70px;
+    }
+}
+
+
+
+@media (max-width: 800px) {
+    .header-logo h1 {
+        font-size: 12px;
+    }
+
+    .header-logo img {
+        width: 65px;
+    }
+    .news-subscribe label {
+        font-size: 13px;
+    }
+    .news-subscribe .form-control{
+        font-size: 12px;
+        width: 130px;
+    }
+    .news-subscribe input[type=submit] {
+        font-size: 12px;
+        width: 150px;
+    }
+
+    .fa {
+        width: 30px!important;
+        height: 30px!important;
+    }
+
+    .fa:before {
+        font-size: 75%;
+        position: relative;
+        top: -2px;
+    }
+
+    #canvas-bar {
+        padding: 12px 10px;
+    }
+    .header-phone, .header-email {
+        padding-top: 6px;
+
+    }
+    .header-contacts {
+        font-size: 14px;
+        line-height: 10px;
+        text-align: center;
+    }
+
+    .nav .navbar-nav a {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 767px) {
+    .logo-block {
+        width: 83.33333333%!important;
+    }
 }
