@@ -89,8 +89,8 @@
                 <div role="tabpanel" class="tab-pane {% if loop.first %}active{% endif %}" id="tab_index_{{ block.id }}">
                     <div class="tab-pane-inner">
                         <div class="col-md-8 col-sm-12">
-                            <h2>{{ block.extendedBody }}</h2>
-                            <p>{{ block.body }}</p>
+                            <h2>{{ block.extendedBody|raw }}</h2>
+                            <p>{{ block.body|raw }}</p>
                         </div>
                         <div class="col-md-4 col-sm-12 tab-img">
                             <img src="{{ block.image.getResize('300x300x1')|relpath }}" alt="{{ block.name }}">
