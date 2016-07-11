@@ -43,6 +43,7 @@ class SiteController extends Controller
         $blockRepository = $this->getDoctrine()->getRepository("SiteBundle:Block");
         $topSliderBlocks = $blockRepository->getTopSliderBlocks($this->getParameter('top.slider.count'));
         $midGridBlocks = $blockRepository->getMidGridBlocks($this->getParameter('mid.grid.count'));
+        $tabBlocks = $blockRepository->getTabBlocks($this->getParameter('index.tab.count'));
 //        print_r(count($socialBlocks));
 //        die();
 
@@ -60,6 +61,10 @@ class SiteController extends Controller
 
         $blockManager->blocksImageResize($midGridBlocks, array(
             '52x52x2',
+        ), $blocksToSave);
+
+        $blockManager->blocksImageResize($tabBlocks, array(
+            '300x300x1',
         ), $blocksToSave);
 
         /** @var $block Block*/
@@ -102,6 +107,7 @@ class SiteController extends Controller
         return $this->render('SiteBundle:Site:index.html.twig', array(
             'topSliderBlocks' => $topSliderBlocks,
             'midGridBlocks' => $midGridBlocks,
+            'tabBlocks' => $tabBlocks,
             'is_main' => false
 //            'socialBlocks' => $socialBlocks
         ));
@@ -182,7 +188,7 @@ class SiteController extends Controller
         $pagination = $paginator->paginate(
             $articlesQuery, /* query NOT result */
             $page/*page number*/,
-            $this->getParameter('news_page_count')/*limit per page*/
+            $this->getParameter('news.page.count')/*limit per page*/
         );
 
         $paginationData = $pagination->getPaginationData();

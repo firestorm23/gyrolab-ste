@@ -45,4 +45,16 @@ class BlockRepository extends \Doctrine\ORM\EntityRepository
 
         return $result;
     }
+
+    public function getTabBlocks($count) {
+        $qb = $this->createQueryBuilder('b');
+        $qb->join('b.blockSort', 'bs')
+            ->where($qb->expr()->eq('bs.code', '\'tab_main\''))
+            ->andWhere($qb->expr()->isNotNull('bs.sort'))
+            ->orderBy('bs.sort', 'asc')->setMaxResults($count);
+
+        $result = $qb->getQuery()->getResult();
+
+        return $result;
+    }
 }

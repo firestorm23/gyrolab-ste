@@ -67,7 +67,7 @@ class BlockAdmin extends AbstractAdmin
                 )
             ))
             ->add('extendedBody', 'textarea', array('required' => false))
-            ->add('name', 'text')
+            ->add('link', 'text')
             ->end()
             ->with('Параметры сортировки', array('class' => 'col-md-6'))
             ->add('blockSort',  'collection', array(
