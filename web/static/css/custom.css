@@ -96,3 +96,8 @@ input {
 .news-subscribe {
     padding: 10px 10px;
 }
+
+.header-logo {
+    margin-bottom: 10px;
+    padding-top: 25px;
+}
