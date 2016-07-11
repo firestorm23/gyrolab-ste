@@ -289,9 +289,9 @@ class SiteController extends Controller
             $event = new FormEvent($form, $request);
             $eventDispatcher->dispatch(ContactEvents::FORM_SUCCESS, $event);
 
-            if (null === $response = $event->getResponse()) {
+            //if (null === $response = $event->getResponse()) {
                 $response = new RedirectResponse($this->router->generate('contacts_confirm'));
-            }
+            //}
 
             $contactManager->save($contact, true);
             $session->set('mremi_contact_data', $contact);
