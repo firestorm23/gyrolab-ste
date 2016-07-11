@@ -290,7 +290,7 @@ class SiteController extends Controller
             $eventDispatcher->dispatch(ContactEvents::FORM_SUCCESS, $event);
 
             //if (null === $response = $event->getResponse()) {
-                $response = new RedirectResponse($this->router->generate('contacts_confirm'));
+                $response = new RedirectResponse($router->generate('contacts_confirm'));
             //}
 
             $contactManager->save($contact, true);
