@@ -76,6 +76,7 @@ class ComposerStaticInitc4597ccc45f3c051e0c499dd4422467a
         'K' => 
         array (
             'Knp\\Menu\\' => 9,
+            'Knp\\Bundle\\PaginatorBundle\\' => 27,
             'Knp\\Bundle\\MenuBundle\\' => 22,
         ),
         'I' => 
@@ -262,6 +263,10 @@ class ComposerStaticInitc4597ccc45f3c051e0c499dd4422467a
         array (
             0 => __DIR__ . '/..' . '/knplabs/knp-menu/src/Knp/Menu',
         ),
+        'Knp\\Bundle\\PaginatorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle',
+        ),
         'Knp\\Bundle\\MenuBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/knplabs/knp-menu-bundle',
@@ -396,6 +401,13 @@ class ComposerStaticInitc4597ccc45f3c051e0c499dd4422467a
             'Metadata\\' => 
             array (
                 0 => __DIR__ . '/..' . '/jms/metadata/src',
+            ),
+        ),
+        'K' => 
+        array (
+            'Knp\\Component' => 
+            array (
+                0 => __DIR__ . '/..' . '/knplabs/knp-components/src',
             ),
         ),
         'J' => 

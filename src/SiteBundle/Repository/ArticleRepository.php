@@ -12,48 +12,28 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArticleRepository extends EntityRepository
 {
-    public function getTopBannerArticles() {
+    public function getArticles($query = false) {
         $qb = $this->createQueryBuilder('u');
-        $qb->where($qb->expr()->isNotNull('u.topBannerSort'))->orderBy('u.topBannerSort', 'asc');
+        $now = new \DateTime();
+        $qb->where($qb->expr()->isNotNull('u.active'))
+            ->andWhere($qb->expr()->orX(
+                $qb->expr()->andX(
+                    $qb->expr()->gte('u.dateShowStart',$now->format('Y-m-d')),
+                    $qb->expr()->isNull('u.dateShowEnd')
+                ),
+                $qb->expr()->andX(
+                    $qb->expr()->gte('u.dateShowStart',$now->format('Y-m-d')),
+                    $qb->expr()->lte('u.dateShowEnd',$now->format('Y-m-d'))
+                )
+            ))
+            ->orderBy('u.dateShowStart', 'desc');
 
-        return $qb->getQuery()
-            ->getResult();
-    }
+        if ($query) {
+            $result = $qb->getQuery();
+        } else {
+            $result = $qb->getQuery()->getResult();
+        }
 
-    public function getRecommendedArticles() {
-        $qb = $this->createQueryBuilder('u');
-        $qb->where($qb->expr()->isNotNull('u.recommendedSort'))->orderBy('u.recommendedSort', 'asc');
-
-        return $qb->getQuery()
-            ->getResult();
-    }
-
-    public function getTopArticles() {
-        $qb = $this->createQueryBuilder('u');
-        $qb->where($qb->expr()->isNotNull('u.topSort'))->orderBy('u.topSort', 'asc');
-
-        return $qb->getQuery()
-            ->getResult();
-    }
-
-    public function getMostViewArticles($maxResults = 10) {
-        $qb = $this->createQueryBuilder('u');
-        $qb->where($qb->expr()->isNotNull('u.viewCount'))->orderBy('u.viewCount', 'desc')->setMaxResults(intval($maxResults));
-
-        return $qb->getQuery()
-            ->getResult();
-    }
-
-    public function getLatestCommentedArticles($maxResults) {
-        $qb = $this->createQueryBuilder('u')->join('u.replies', 'replies');
-        $qb->where($qb->expr()->isNotNull('u.viewCount'))
-            ->addSelect('count(replies) AS HIDDEN comment_count')
-            //->having($qb->expr()->gt('comment_count', 1))
-            ->orderBy('replies.dateCreated', 'desc')
-            ->groupBy('u.id')
-            ->setMaxResults(intval($maxResults));
-
-        return $qb->getQuery()
-            ->getResult();
+        return $result;
     }
 }

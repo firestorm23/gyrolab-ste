@@ -45,5 +45,7 @@ $(function () {
         $("body").css({ minHeight: ($(window).innerHeight()) + 'px' });
     });
 
+    $('.popup-image').magnificPopup({type:'image'});
+
 
 });

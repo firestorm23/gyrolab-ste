@@ -29,3 +29,4 @@ parameters:
     email_header: false
     email_footer: false
     feedback_form_confirm: false
+    news_page_count: false

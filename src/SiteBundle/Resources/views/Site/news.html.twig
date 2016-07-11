@@ -1,0 +1,188 @@
+{% extends "SiteBundle::public.html.twig" %}
+
+
+{% block container_content %}
+    {#<div class="row">#}
+        {#<div id="slider" class="flexslider home-slider">#}
+            {#<ul class="slides">#}
+                {#{% for slide in topSliderBlocks %}#}
+                    {#&#123;&#35;{{ dump(slide) }}&#35;&#125;#}
+                    {#<li>#}
+                        {#<img src="{{ slide.image.getResize("1280x500x2")|relpath }}" alt="{{ slide.name }}" title="{{ slide.name }}"/>#}
+                        {#<div class="slider-content col-md-3 col-sm-5">#}
+                            {#<h2>{{ slide.name }}</h2>#}
+                            {#<p>{{ slide.name }}</p>#}
+                            {#{% if slide.link is not empty %}#}
+                                {#<a target="_blank" href="{{ slide.link }}">Посмотреть</a>#}
+                            {#{% endif %}#}
+                        {#</div>#}
+                    {#</li>#}
+                {#{% endfor %}#}
+            {#</ul>#}
+        {#</div>#}
+    {#</div>#}
+    {#<div class="row">#}
+        <!-- PageTitle Section -->
+        {#<div id="page-title" class="page-title">#}
+            {#<h2>{{ title }}</h2>#}
+        {#</div><!-- PageTitle Section /- -->#}
+
+        {#<!-- PageBreadcrumb Section -->#}
+        {#&#123;&#35;<div class="page-breadcrumb">&#35;&#125;#}
+            {#&#123;&#35;<ol class="breadcrumb">&#35;&#125;#}
+                {#&#123;&#35;<li class="active"><a title="Home" href="index.html">Home</a></li>&#35;&#125;#}
+                {#&#123;&#35;<li class="active"><a title="Home" href="#">Wordpress</a></li>&#35;&#125;#}
+                {#&#123;&#35;<li>Category List</li>&#35;&#125;#}
+            {#&#123;&#35;</ol>&#35;&#125;#}
+        {#&#123;&#35;</div>&#35;&#125;#}
+        {#{{ wo_render_breadcrumbs() }}#}
+        <!-- PageBreadcrumb Section /- -->
+    <div class="latest-category blog-item">
+        <div class="col-md-12 col-sm-12 single-post-inner">
+            {#{% set articles = pagination.items %}#}
+            {% for article in articles %}
+                <article class="single-post-content">
+                    <header class="entry-header">
+                        <div class="col-md-12 col-sm-12 padding_zero">
+                            <h3 class="entry-title">
+                                <a href="{{ path('news_detail', {'slug': article.slug}) }}">
+                                    {{ article.name }}
+                                </a>
+									<span class="post-date-right pull-right">
+										<span class="entry-post-date">
+                                            {{ article.dateShowStart | format_date('d', 'ru', 'Europe/Moscow', constant('IntlDateFormatter::SHORT')) }}
+                                        </span>
+										<span class="entry-post-month">
+                                            {{ article.dateShowStart | format_date('MMMM', 'ru', 'Europe/Moscow', constant('IntlDateFormatter::LONG'))|low }}
+                                        </span>
+									</span>
+                            </h3>
+                            <div class="entry-post">
+                                <p>
+                                    {{ article.dateShowStart | format_date(null, 'ru', 'Europe/Moscow', constant('IntlDateFormatter::MEDIUM'))|low }}
+                                </p>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="entry-cover img-wrapper">
+                        <a href="{{ path('news_detail', {'slug': article.slug}) }}">
+                            <img src="{{ article.image.getResize('1250x500x2')|relpath }}" alt="blog">
+                        </a>
+                    </div>
+                    <div class="entry-content">
+                        <p>{{ article.previewText|raw }}</p>
+                    </div>
+                    <a href="{{ path('news_detail', {'slug': article.slug}) }}" class="login-btn pull-right">Подробнее...</a>
+                </article>
+            {% endfor %}
+
+            {#{% block pagination %}#}
+                {% include 'SiteBundle::pagination.html.twig' with
+                {
+                'paginationPath': 'news_page',
+                'lastPage':pagination.last,
+                'currentPage':pagination.current,
+                'currentFilters':pagination.params,
+                'showAlwaysFirstAndLast': false
+                } %}
+            {#{% endblock %}#}
+
+        </div> <!-- col-md-9 /- -->
+    </div>
+        {#<!-- Contact-category -->#}
+        {#<div class="contact-category">#}
+            {#&#123;&#35;<h2>Каталог продуктов</h2>&#35;&#125;#}
+            {#<div class="filter">#}
+                {#Категория точности#}
+                {#<form data-nodata="true" data-autosubmit="true" class="restful" action="{{ path('products') }}" data-action-pat="/products/category/#slug#/">#}
+                    {#<select name="slug" class="form-control select-filter">#}
+                        {#<option>Не выбрано</option>#}
+                        {#{% for category in allCategories %}#}
+                            {#<option value="{{ category.slug }}" {% if slug is not empty and slug == category.slug %}selected="selected"{% endif %}>{{ category.name }}</option>#}
+                        {#{% endfor %}#}
+                    {#</select>#}
+                {#</form>#}
+            {#</div>#}
+            {#<div class="table-responsive contact-table">#}
+                {#<table class="table table-striped">#}
+                    {#<thead>#}
+                    {#<tr>#}
+                        {#<th class="item-title"><span>Название / изображение</span></th>#}
+                        {#<th class="item-title"><span>Описание</span></th>#}
+                        {#<th class="item-title"><span>Характеристики</span></th>#}
+                    {#</tr>#}
+                    {#</thead>#}
+                    {#<tbody>#}
+                    {#{% for category in categories %}#}
+                    {#<thead>#}
+                    {#<tr>#}
+                        {#<th colspan="3" class="category-title"><span>{{ category.name }}</span></th>#}
+                    {#</tr>#}
+                    {#</thead>#}
+                    {#{% for product in category.products %}#}
+                        {#<tr class="product">#}
+                            {#<td data-title="{{ product.name }}" class="item-title">#}
+                                {#<a href="{{ path('product_detail', {'slug':product.slug}) }}" style="display:block;">{{ product.name }}</a>#}
+                                {#<img src="{{ product.image.getResize("140x117x2")|relpath }}">#}
+                            {#</td>#}
+                            {#<td data-title="Desc">{{ product.description|raw }}</td>#}
+                            {#<td data-title="Hits">#}
+                                {#{% for spec in product.productSpecs  %}#}
+                                    {#<strong>{{ spec.name }} : </strong><span>{{ spec.value }}</span><br>#}
+                                {#{% endfor %}#}
+                            {#</td>#}
+                        {#</tr>#}
+                    {#{% endfor %}#}
+                    {#{% endfor %}#}
+                    {#&#123;&#35;<tr>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Title" class="item-title">&#35;&#125;#}
+                    {#&#123;&#35;<a href="single-article.html" style="display:block;">Audio jungle comes alive</a>&#35;&#125;#}
+                    {#&#123;&#35;<img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-7.jpg" style="width:140px; margin-top: 10px;">&#35;&#125;#}
+                    {#&#123;&#35;</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Author">John Doe</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Desc">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Hits">166</td>&#35;&#125;#}
+                    {#&#123;&#35;</tr>&#35;&#125;#}
+                    {#&#123;&#35;<tr>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Title" class="item-title">&#35;&#125;#}
+                    {#&#123;&#35;<a href="single-article.html" style="display:block;">Be kind whenever possible</a>&#35;&#125;#}
+                    {#&#123;&#35;<img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-7.jpg" style="width:140px; margin-top: 10px;">&#35;&#125;#}
+                    {#&#123;&#35;</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Author">John Doe</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Desc">сть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь. Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца.</td>&#35;&#125;#}
+                    {#&#123;&#35;<td>166</td>&#35;&#125;#}
+                    {#&#123;&#35;</tr>&#35;&#125;#}
+                    {#&#123;&#35;<tr>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Title" class="item-title">&#35;&#125;#}
+                    {#&#123;&#35;<a href="single-article.html" style="display:block;">Inspiration comes from within</a>&#35;&#125;#}
+                    {#&#123;&#35;<img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-7.jpg" style="width:140px; margin-top: 10px;">&#35;&#125;#}
+                    {#&#123;&#35;</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Author">John Doe</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Desc">Классический текст Lorem Ipsum, используемый с XVI века, приведён ниже. Также даны разделы 1.10.32 и 1.10.33 "de Finibus Bonorum et Malorum" Цицерона и их английский перевод, сделанный H. Rackham, 1914 год.</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Hits">166</td>&#35;&#125;#}
+                    {#&#123;&#35;</tr>&#35;&#125;#}
+                    {#&#123;&#35;<tr>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Title" class="item-title">&#35;&#125;#}
+                    {#&#123;&#35;<a href="single-article.html" style="display:block;">Make that idea your life</a>&#35;&#125;#}
+                    {#&#123;&#35;<img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-7.jpg" style="width:140px; margin-top: 10px;">&#35;&#125;#}
+                    {#&#123;&#35;</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Author">John Doe</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Desc">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Hits">166</td>&#35;&#125;#}
+                    {#&#123;&#35;</tr>&#35;&#125;#}
+                    {#&#123;&#35;<tr>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Title" class="item-title">&#35;&#125;#}
+                    {#&#123;&#35;<a href="single-article.html" style="display:block;">Music is food for the soul</a>&#35;&#125;#}
+                    {#&#123;&#35;<img src="http://besprovodka.ru/wp-content/uploads/2014/09/bins-7.jpg" style="width:140px; margin-top: 10px;">&#35;&#125;#}
+                    {#&#123;&#35;</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Author">John Doe</td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Desc">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. </td>&#35;&#125;#}
+                    {#&#123;&#35;<td data-title="Hits">166</td>&#35;&#125;#}
+                    {#&#123;&#35;</tr>&#35;&#125;#}
+                    {#</tbody>#}
+                {#</table>#}
+            {#</div>#}
+        {#</div>#}
+    {#&#123;&#35;</div>&#35;&#125;#}
+
+{% endblock container_content %}

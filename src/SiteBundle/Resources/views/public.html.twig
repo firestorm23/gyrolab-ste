@@ -146,6 +146,39 @@
                         {#</form>#}
                     {#</div>#}
                 </div>
+                {#<div class="col-md-3 col-sm-5 padding_right search-social">#}
+
+                    {#<div class="form-group col-md-5 col-sm-6 col-xs-12">#}
+                        {#<input type="email" name="email" class="form-control" placeholder="Your email address">#}
+                        {#<input type="submit" value="Go">#}
+                    {#</div>#}
+                    {#<form method="POST" action="https://cp.unisender.ru/ru/subscribe?hash=59gp8hx6urw719awqsqr187mk86qq7ncdks1g4eeyjkxcqdb371yo" name="subscribtion_form">#}
+                        {#<div class="subscribe-form-item subscribe-form-item--btn-submit">#}
+                            {#<input class="subscribe-form-item__btn subscribe-form-item__btn--btn-submit" type="submit" value="Подписаться / Subscribe">#}
+                        {#</div>#}
+                        {#<div class="subscribe-form-item subscribe-form-item--input-email">#}
+                            {#<label class="subscribe-form-item__label subscribe-form-item__label--input-email subscribe-form-item__label--required">E-mail</label>#}
+                            {#<input class="subscribe-form-item__control subscribe-form-item__control--input-email" type="text" name="email" value="" style="background-image: none; background-position: 0% 0%; background-repeat: repeat;">#}
+                        {#</div>#}
+                        {#<input type="hidden" name="charset" value="">#}
+                        {#<input type="hidden" name="default_list_id" value="4">#}
+                        {#<input type="hidden" name="overwrite" value="2">#}
+                        {#<input type="hidden" name="is_v5" value="1">#}
+                    {#</form>#}
+                {#</div>#}
+            </div>
+            <div class="news-subscribe">
+                <form method="POST" action="https://cp.unisender.ru/ru/subscribe?hash=59gp8hx6urw719awqsqr187mk86qq7ncdks1g4eeyjkxcqdb371yo" name="subscribtion_form">
+                    <label class="col-md-7 col-sm-6 padding_zero col-xs-12">Подпишитесь на новости сайта</label>
+                    <div class="form-group col-md-5 col-sm-6 col-xs-12">
+                        <input type="email" name="email" class="form-control" placeholder="Введите свой email">
+                        <input type="submit" value="Подписаться / Subscribe">
+                        <input type="hidden" name="charset" value="">
+                        <input type="hidden" name="default_list_id" value="4">
+                        <input type="hidden" name="overwrite" value="2">
+                        <input type="hidden" name="is_v5" value="1">
+                    </div>
+                </form>
             </div>
             <div class="menu-block" data-uk-sticky>
                 <nav class="navbar navbar-default">
@@ -167,7 +200,7 @@
                                 <i class="responsive-caret fa fa-angle-down"></i>
                                 {{ render(controller('SiteBundle:Site:mainCategoriesMenu')) }}
                             </li>
-                            <li><a href="/articles/">Новости и статьи</a></li>
+                            <li><a href="/news/">Новости и статьи</a></li>
                             <li><a href="/contacts/">Контакты</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
@@ -489,7 +522,6 @@
                             <li><a href="/products/">Продукты</a></li>
                             <li><a href="/news/">Новости</a></li>
                             <li><a href="/contacts/">Контакты</a></li>
-                            <li><a href="/feedback/">Обратная связь</a></li>
                         </ul>
                     </nav>
                 </div>

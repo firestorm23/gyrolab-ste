@@ -28,6 +28,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use SiteBundle\Repository\ContactsRepository;
+use SiteBundle\Repository\ArticleRepository;
 
 class SiteController extends Controller
 {
@@ -161,6 +162,92 @@ class SiteController extends Controller
     }
 
     /**
+     * @Route("/news/", name="news")
+     * @Route("/news/page/{page}/", name="news_page", requirements={"page" = "[0-9]*"})
+     */
+
+    public function newsAction($page = 1) {
+
+        $title = 'Новости';
+
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addRouteItem($title, "products");
+        $breadcrumbs->prependRouteItem("Главная", "index");
+
+        /** @var $articleRepository ArticleRepository */
+        $articleRepository = $this->getDoctrine()->getRepository("SiteBundle:Article");
+        $articlesQuery = $articleRepository->getArticles(true);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $articlesQuery, /* query NOT result */
+            $page/*page number*/,
+            $this->getParameter('news_page_count')/*limit per page*/
+        );
+
+        $paginationData = $pagination->getPaginationData();
+        $paginationData['params'] = $pagination->getParams();
+
+        $articlesToSave = array();
+
+        /** @var $file_manager FileManager*/
+        $file_manager = $this->get('file.manager');
+
+        /** @var $article_manager ArticleManager*/
+        $article_manager = $this->get('article.manager');
+
+        $articles = $pagination->getItems();
+
+        $article_manager->articlesImageResize($articles,array('1250x500x2'), $articlesToSave);
+
+        foreach ($articlesToSave as $article) {
+            $file_manager->saveImageEntity($article->getImage());
+        }
+
+        return $this->render('SiteBundle:Site:news.html.twig', array('pagination' => $paginationData, 'articles' => $articles, 'is_main' => true, 'title' => $title));
+//        $title = "Продукция";
+//
+//        $breadcrumbs = $this->get("white_october_breadcrumbs");
+//        $breadcrumbs->addRouteItem($title, "products");
+//        $breadcrumbs->prependRouteItem("Главная", "index");
+//
+//
+//        /** @var $articleRepository ArticleRepository */
+//        $articleRepository = $this->getDoctrine()->getRepository("SiteBundle:Article");
+//        /** @var $articleManager ArticleManager */
+//        $articleManager = $this->get('article.manager');
+//        /** @var $file_manager FileManager*/
+//        $file_manager = $this->get('file.manager');
+//
+//        $articles = $articleRepository;
+//
+//        $prodToSave = array();
+//
+//        /** @var $category Category*/
+//        foreach ($allCategories as $category) {
+//            $productManager->productImageResize($category->getProducts(), array(
+//                '140x117x2',
+//            ), $prodToSave);
+//        }
+//
+//        /** @var $product Product*/
+//        foreach ($prodToSave as $product) {
+//            $file_manager->saveImageEntity($product->getImage());
+//        }
+//
+//
+//
+//        return $this->render('SiteBundle:Site:products.html.twig', array(
+//            'categories' => $categories,
+//            'allCategories' => $allCategories,
+//            'slug' => $slug,
+//            'title' => $title,
+//            'is_main' => true
+//        ));
+    }
+
+
+    /**
      * @Route("/product/{slug}/", name="product_detail", requirements={"slug" = "[a-z0-9-]*"})
      */
 
@@ -174,8 +261,35 @@ class SiteController extends Controller
         $breadcrumbs->addRouteItem($title, 'product_detail', array('slug' => $slug));
         $breadcrumbs->prependRouteItem("Главная", "index");
 
+//        \IntlDateFormatter::MEDIUM
+
         return $this->render('SiteBundle:Site:product_detail.html.twig', array(
             'product' => $product,
+            'title' => $title,
+            'is_main' => true
+        ));
+    }
+
+    /**
+     * @Route("/news/{slug}/", name="news_detail", requirements={"slug" = "[a-z0-9-]*"})
+     */
+
+    public function newsDetailAction($slug = false) {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+
+        /** @var $article Article*/
+        $article = $this->getDoctrine()->getRepository("SiteBundle:Article")->findOneBy(array('slug' => $slug));
+        $breadcrumbs->addRouteItem('Новости', "news");
+        $title = $article->getExtendedName();
+        $breadcrumbs->addRouteItem($title, 'news_detail', array('slug' => $slug));
+        $breadcrumbs->prependRouteItem("Главная", "index");
+
+        /** @var $file_manager FileManager*/
+        $file_manager = $this->get('file.manager');
+        $file_manager->resizeImage($article->getImage(), '823x463x2');
+
+        return $this->render('SiteBundle:Site:article_detail.html.twig', array(
+            'article' => $article,
             'title' => $title,
             'is_main' => true
         ));

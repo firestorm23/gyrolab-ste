@@ -36,7 +36,8 @@
         "nelmio/api-doc-bundle": "^2.13",
         "sonata-project/user-bundle": "^3.0",
         "whiteoctober/breadcrumbs-bundle": "^1.2",
-        "mremi/contact-bundle": "dev-master"
+        "mremi/contact-bundle": "dev-master",
+        "knplabs/knp-paginator-bundle":"2.x"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

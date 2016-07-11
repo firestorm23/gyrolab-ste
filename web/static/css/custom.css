@@ -71,3 +71,28 @@ th.item-title span {
 .contact-form .form-horizontal .form-control {
     width: 352px;
 }
+
+.entry-post p {
+    text-transform: none;
+}
+
+.latest-category article.single-post-content {
+    border-bottom: none;
+}
+
+.latest-category  .single-post-content .entry-header {
+    margin-top: 30px;
+}
+
+.header-section .news-subscribe {
+    background-color: #fff;
+}
+
+input {
+    font-family: Arial, sans-serif!important;
+}
+
+
+.news-subscribe {
+    padding: 10px 10px;
+}

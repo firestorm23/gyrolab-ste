@@ -53,6 +53,8 @@ class HelperExtension extends \Twig_Extension
         return array(
             new \Twig_SimpleFilter('relpath', array($this, 'getFileRelPath')),
             new \Twig_SimpleFilter('up', array($this, 'toUpper')),
+            new \Twig_SimpleFilter('low', array($this, 'toLower')),
+            new \Twig_SimpleFilter('upfirst', array($this, 'toUcFirst')),
         );
     }
 
@@ -70,6 +72,15 @@ class HelperExtension extends \Twig_Extension
 
     public function toUpper($string) {
         return mb_strtoupper($string, 'utf-8');
+    }
+
+    public function toUcFirst($string) {
+        $enc = 'utf-8';
+        return mb_strtoupper(mb_substr($string, 0, 1, $enc), $enc) . mb_substr($string, 1, mb_strlen($string, $enc), $enc);
+    }
+
+    public function toLower($string) {
+        return mb_strtolower($string, 'utf-8');
     }
 
     function getFileRelPath($absolute_path) {
