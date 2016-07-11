@@ -7,11 +7,67 @@
     <div class="contact-form">
         <h2>Свяжитесь с нами</h2>
         <p>Все поля отмеченные * обязательны для заполнения</p>
+        {% if confirmMessage %}
+            <div class="alert alert-success" role="alert">
+                {{ confirmMessage }}
+            </div>
+        {% endif %}
         {{ form_start(form, {'action': form_action, 'attr' : {'class': 'form-horizontal'}}) }}
             {{ form_widget(form) }}
         {{ form_end(form) }}
         <div id="alert-msg" class="alert-msg"></div>
     </div>
+</div>
+<div class="col-md-6 col-sm-12">
+    <div class="col-md-6 col-sm-6 col-xs-6 contact-details">
+        <div class="contact-detail-inner">
+            <h2>Контактные данные</h2>
+            <ul class="icon-list">
+                <li>Телефон <i class="fa fa-phone"></i>{{ contacts.main_phone.viewValue|raw }}</li>
+                <li>Факс <i class="fa fa-fax"></i>{{ contacts.fax.viewValue|raw }}</li>
+                <li>Email <i class="fa fa-envelope-o"></i>{{ contacts.main_email.viewValue|raw }}</li>
+            </ul>
+        </div>
+    </div><!-- Contact Details /- -->
+    <div class="col-md-6 col-sm-6 col-xs-6 contact-details">
+        <div class="contact-detail-inner">
+            <h2>Адрес</h2>
+            <ul class="icon-list">
+                <li><i class="fa fa-map-marker"></i>
+                    {{ contacts.address.viewValue|raw }}
+                </li>
+            </ul>
+        </div>
+    </div><!-- Contact Details /- -->
+    <div class="col-md-12 col-sm-6 col-xs-6 contact-details">
+        <div class="contact-detail-inner">
+            <h2>Контакты сотрудников</h2>
+            <p>
+                {{ contacts.contacts.viewValue|raw }}
+            </p>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-6 col-xs-6 contact-details">
+        <div class="contact-detail-inner">
+            <h2>Реквизиты</h2>
+            <p>
+                {{ contacts.requisites.viewValue|raw }}
+            </p>
+        </div>
+    </div><!-- Contact Details /- -->
+    {#<div class="col-md-6 col-sm-6 col-xs-6 contact-details">#}
+        {#<div class="contact-detail-inner">#}
+            {#<h2>Cape Town</h2>#}
+            {#<p>Themeforest Plaza<br>#}
+                {#Envato Street | Template Drive<br>#}
+                {#10th Floor, Site Wing</p>#}
+            {#<ul class="icon-list">#}
+                {#<li><i class="fa fa-phone"></i>1 555 000-000</li>#}
+                {#<li><i class="fa fa-envelope-o"></i><a href="mailto:noreply@arrowthemes.com">noreply@arrowthemes.com</a></li>#}
+                {#<li><i class="fa fa-map-marker"></i>Cape Town, South Africa</li>#}
+            {#</ul>#}
+        {#</div>#}
+    {#</div><!-- Contact Details /- -->#}
 </div>
 {% endblock container_content %}
 

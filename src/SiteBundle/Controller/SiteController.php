@@ -27,6 +27,7 @@ use Mremi\ContactBundle\Model\ContactManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use SiteBundle\Repository\ContactsRepository;
 
 class SiteController extends Controller
 {
@@ -221,7 +222,16 @@ class SiteController extends Controller
         $socialBlocks = $blockRepository->getSocialBlocks($this->getParameter('socials.count'));
 
         return $this->render('SiteBundle::social.html.twig', array(
-            'socialBlocks' => $socialBlocks
+            'socialBlocks' => $socialBlocks,
+        ));
+    }
+
+    public function headerContactsBlockAction() {
+        $contacts = $this->getDoctrine()->getRepository("SiteBundle:Contacts")->getContactsIndexedByCode();
+
+
+        return $this->render('SiteBundle::header_contacts.html.twig', array(
+            'contacts' => $contacts,
         ));
     }
 
@@ -238,6 +248,7 @@ class SiteController extends Controller
 
     /**
      * @Route("/contacts/", name="contacts")
+     * @Route("/contacts/confirm/", name="contacts_confirm")
      */
 
     public function feedbackFormAction() {
@@ -254,6 +265,14 @@ class SiteController extends Controller
         $session = $this->get('session');
         $request = $this->get('request');
 
+        $routeName = $request->get('_route');
+
+        if ($routeName == 'contacts_confirm') {
+            $confirmMessage = $this->getParameter('feedback_form_confirm');
+        } else {
+            $confirmMessage = false;
+        }
+
         $contact = $contactManager->create();
 
         $eventDispatcher->dispatch(ContactEvents::FORM_INITIALIZE, new ContactEvent($contact, $request));
@@ -262,12 +281,16 @@ class SiteController extends Controller
 
         $form->handleRequest($request);
 
+        /** @var $contactsRepository ContactsRepository*/
+        $contactsRepository = $this->getDoctrine()->getRepository("SiteBundle:Contacts");
+        $contacts = $contactsRepository->getContactsIndexedByCode();
+
         if ($form->isValid()) {
             $event = new FormEvent($form, $request);
             $eventDispatcher->dispatch(ContactEvents::FORM_SUCCESS, $event);
 
             if (null === $response = $event->getResponse()) {
-                $response = new RedirectResponse($this->router->generate('mremi_contact_confirmation'));
+                $response = new RedirectResponse($this->router->generate('contacts_confirm'));
             }
 
             $contactManager->save($contact, true);
@@ -284,7 +307,9 @@ class SiteController extends Controller
             'form' => $form->createView(),
             'form_action' => $this->generateUrl('contacts'),
             'is_main' => true,
-            'title' => "Контакты"
+            'title' => "Контакты",
+            'contacts' => $contacts,
+            'confirmMessage' => $confirmMessage
         ));
     }
 

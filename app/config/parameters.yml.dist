@@ -28,3 +28,4 @@ parameters:
     doc.mimetypes: false
     email_header: false
     email_footer: false
+    feedback_form_confirm: false

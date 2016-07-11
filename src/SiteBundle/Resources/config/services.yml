@@ -84,3 +84,9 @@ services:
         arguments: [~, SiteBundle\Entity\ProductSpec, SonataAdminBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: ProductSpec }
+
+    site.admin.contacts:
+        class: SiteBundle\Admin\ContactsAdmin
+        arguments: [~, SiteBundle\Entity\Contacts, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Contacts }
