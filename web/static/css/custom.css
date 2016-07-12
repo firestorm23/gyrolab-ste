@@ -319,3 +319,11 @@ input {
     }
 
 }
+
+.contact-table.table-responsive > .table > thead > tr > th.item-title {
+    text-align: center;
+}
+
+.contact-table.table-responsive > .table > thead > tr > th span{
+    white-space: nowrap;
+}

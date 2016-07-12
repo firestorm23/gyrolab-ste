@@ -42,6 +42,12 @@ class Product
     /**
      * @var string
      *
+     * @ORM\Column(name="preview_description", type="string", length=4096, nullable=true)
+     */
+    private $previewDescription;
+    /**
+     * @var string
+     *
      * @ORM\Column(name="extended_name", type="string", length=4096, nullable=true)
      */
     private $extendedName;
@@ -93,12 +99,6 @@ class Product
      *      )
      */
     private $documentationFiles;
-//    /**
-//     * @var integer
-//     *
-//     * @ORM\Column(name="allowComments", type="integer", nullable=true)
-//     */
-//    private $allowComments;
     /**
      * @var integer
      *
@@ -112,6 +112,12 @@ class Product
      */
 
     private $dateAdded;
+//    /**
+//     * @var integer
+//     *
+//     * @ORM\Column(name="allowComments", type="integer", nullable=true)
+//     */
+//    private $allowComments;
     /**
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="products")
      * @ORM\JoinTable(name="product_category")
@@ -135,6 +141,22 @@ class Product
         $this->documentationFiles = new ArrayCollection();
         $this->productSpecs = new ArrayCollection();
 //        $this->allowComments = true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPreviewDescription()
+    {
+        return $this->previewDescription;
+    }
+
+    /**
+     * @param string $previewDescription
+     */
+    public function setPreviewDescription($previewDescription)
+    {
+        $this->previewDescription = $previewDescription;
     }
 
     /**

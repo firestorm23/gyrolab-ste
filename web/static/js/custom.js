@@ -10,13 +10,15 @@ $(function () {
             [name, $form, action, actionPattern, value]
         );
 
-        if (typeof value != 'undefined' ) {
+        if (value != 'null' ) {
             var regexp = new RegExp("#"+name+"#");
             action = actionPattern.replace(regexp, value);
             $form.attr('action', action);
+            $(this).trigger('change');
+        } else {
+            return false;
         }
 
-        $(this).trigger('change');
 
     });
 

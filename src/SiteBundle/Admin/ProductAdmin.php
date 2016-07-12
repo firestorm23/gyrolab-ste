@@ -49,6 +49,7 @@ class ProductAdmin extends AbstractAdmin
             ->add('id', 'string')
             ->add('name', 'string' ,array('label' => 'Название', 'editable' => true))
             ->add('description', 'string' ,array('label' => 'Описание'))
+            ->add('previewDescription', 'string', array('label' => 'Короткое описание'))
             ->add('sort', 'string',array('label' => 'Индекс сортировки', 'editable' => true))
             ->add('slug', 'string' ,array('label' => 'URL код', 'editable' => true))
             ->add('categories', 'entity', array('multiple' => true, 'label' => 'Категории'))
@@ -73,6 +74,12 @@ class ProductAdmin extends AbstractAdmin
             ->tab('Основные поля')
                 ->add('name', 'text' , array('label' => 'Название'))
                 ->add('extendedName', 'textarea', array('required' => false, 'label' => 'Дополнительное название'))
+                ->add('previewDescription', 'textarea',array('label' => 'Короткое описание', 'attr' => array(
+                    'class' => 'tinymce',
+                    'data-theme' => 'simple',
+                    'cols' => "150",
+                    'rows' => "10"
+                )))
                 ->add('description', 'textarea',array('label' => 'Описание', 'attr' => array(
                     'class' => 'tinymce',
                     'data-theme' => 'simple',

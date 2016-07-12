@@ -45,7 +45,7 @@
                 Категория точности
                 <form data-nodata="true" data-autosubmit="true" class="restful" action="{{ path('products') }}" data-action-pat="/products/category/#slug#/">
                     <select name="slug" class="form-control select-filter">
-                        <option>Не выбрано</option>
+                        <option value="null">Не выбрано</option>
                         {% for category in allCategories %}
                             <option value="{{ category.slug }}" {% if slug is not empty and slug == category.slug %}selected="selected"{% endif %}>{{ category.name }}</option>
                         {% endfor %}
@@ -74,7 +74,7 @@
                                 <a href="{{ path('product_detail', {'slug':product.slug}) }}" style="display:block;">{{ product.name }}</a>
                                 <img src="{{ product.image.getResize("140x117x2")|relpath }}">
                             </td>
-                            <td data-title="Desc">{{ product.description|raw }}</td>
+                            <td data-title="Desc">{{ product.previewDescription|raw }}</td>
                             <td data-title="Hits">
                                 {% for spec in product.productSpecs  %}
                                     <strong>{{ spec.name }} : </strong><span>{{ spec.value }}</span><br>
