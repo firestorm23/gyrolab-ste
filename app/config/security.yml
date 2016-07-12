@@ -10,6 +10,19 @@ security:
             id: fos_user.user_manager
 
     firewalls:
+        # admin:
+        #     pattern:            /admin(.*)
+        #     context:            user
+        #     form_login:
+        #         provider:       fos_userbundle
+        #         login_path:     /admin/login
+        #         use_forward:    false
+        #         check_path:     /admin/login_check
+        #         failure_path:   null
+        #     logout:
+        #         path:           /admin/logout
+        #         target:         /admin/login
+        #     anonymous:          true
         main:
             pattern:             .*
             context:             user
@@ -20,7 +33,11 @@ security:
                 check_path:     /login_check # have also tried fos_user_security_check
                 failure_path:   null
                 csrf_provider:  form.csrf_provider
-            logout:             true
+                always_use_default_target_path: true
+                default_target_path: /admin
+            logout:
+                path:   /admin/logout
+                target: /
             anonymous:          true
 
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -37,19 +54,6 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
-        admin:
-                    pattern:            /admin(.*)
-                    context:            user
-                    form_login:
-                        provider:       fos_userbundle
-                        login_path:     /admin/login
-                        use_forward:    false
-                        check_path:     /admin/login_check
-                        failure_path:   null
-                    logout:
-                        path:           /admin/logout
-                        target:         /admin/login
-                    anonymous:          true
 
 #    role_hierarchy:
 #

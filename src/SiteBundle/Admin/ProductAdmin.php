@@ -51,8 +51,8 @@ class ProductAdmin extends AbstractAdmin
             ->add('description', 'string' ,array('label' => 'Описание'))
             ->add('sort', 'string',array('label' => 'Индекс сортировки', 'editable' => true))
             ->add('slug', 'string' ,array('label' => 'URL код', 'editable' => true))
-            ->add('categories', 'entity', array('multiple' => true))
-            ->add('productSpecs', 'entity', array('multiple' => true))
+            ->add('categories', 'entity', array('multiple' => true, 'label' => 'Категории'))
+            ->add('productSpecs', 'entity', array('multiple' => true, 'label' => 'Категории'))
             ->add('dateAdded')
             ->add('_action', null, array(
                 'actions' => array(
