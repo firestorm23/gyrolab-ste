@@ -29,7 +29,10 @@ class FileManager extends Manager {
         /** @var $article ImageContainer*/
         foreach ($articles as $article) {
             foreach ($resize_identifiers as $identifier) {
-                $this->resizeImage($article->getImage(), $identifier, false);
+                $image = $article->getImage();
+                if (is_a($image, 'SiteBundle\Entity\File')) {
+                    $this->resizeImage($article->getImage(), $identifier, false);
+                }
             }
             $resized_articles[$article->getId()] = $article;
         }
