@@ -146,6 +146,10 @@ class HelperExtension extends \Twig_Extension
 
     public function getFileName($file, $width_resize = false, $height_resize = false, $type = 'center') {
 
+        if (is_null($file->getName())) {
+            return false;
+        }
+
         if (intval($width_resize) > 0 && intval($height_resize) > 0) {
             $resize_constants = array(
                 'center' => 1,

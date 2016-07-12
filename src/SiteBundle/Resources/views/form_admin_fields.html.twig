@@ -5,19 +5,23 @@
     {% if type != 'file' %}
         {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control'}) %}
     {% else %}
-        {% set filepath = getFileName(form.parent.vars.value) %}
-        {% set absolutePath =  form.parent.vars.value|raw %}
-        {% set filext = getFileExt(absolutePath) %}
-        {% set filesize = getFileSize(absolutePath) %}
+        {% if form.parent.vars.value is not empty %}
 
-        {% if filepath is not empty %}
-            {% if isImage(absolutePath) %}
-                <a class="admin-popup-image" href="{{ filepath }}"><img src="{{ getLazyResize(form.parent.vars.value, "200x200x2")|relpath }}" /></a>
-            {% else %}
-                <a target="_blank" href="{{ filepath }}">Скачать {% if isDocument(absolutePath) %} документ {% endif %}[{{ filext }}, {{ filesize }}]</a>
+            {% set filepath = getFileName(form.parent.vars.value) %}
+
+            {% if filepath is not empty %}
+
+                {% set absolutePath =  form.parent.vars.value|raw %}
+                {% set filext = getFileExt(absolutePath) %}
+                {% set filesize = getFileSize(absolutePath) %}
+
+                {% if isImage(absolutePath) %}
+                    <a class="admin-popup-image" href="{{ filepath }}"><img src="{{ getLazyResize(form.parent.vars.value, "200x200x2")|relpath }}" /></a>
+                {% else %}
+                    <a target="_blank" href="{{ filepath }}">Скачать {% if isDocument(absolutePath) %} документ {% endif %}[{{ filext }}, {{ filesize }}]</a>
+                {% endif %}
             {% endif %}
         {% endif %}
-
     {% endif %}
     {{ parent() }}
 {% endblock form_widget_simple %}

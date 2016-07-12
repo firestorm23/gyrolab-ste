@@ -544,6 +544,9 @@ class Article implements ImageContainer
      */
     public function getImage()
     {
+        if (is_null($this->image)) {
+            return new File();
+        }
         return $this->image;
     }
 

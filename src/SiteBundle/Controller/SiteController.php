@@ -115,7 +115,7 @@ class SiteController extends Controller
 
     /**
      * @Route("/products/", name="products")
-     * @Route("/products/category/{slug}/", name="products_cat", requirements={"slug" = "[a-z0-9-]*"})
+     * @Route("/products/category/{slug}/", name="products_cat", requirements={"slug" = "[a-z0-9-_]*"})
      */
 
     public function productsAction($slug = false) {
@@ -257,7 +257,7 @@ class SiteController extends Controller
 
 
     /**
-     * @Route("/product/{slug}/", name="product_detail", requirements={"slug" = "[a-z0-9-]*"})
+     * @Route("/product/{slug}/", name="product_detail", requirements={"slug" = "[a-z0-9-_]*"})
      */
 
     public function productAction($slug = false) {
@@ -280,7 +280,7 @@ class SiteController extends Controller
     }
 
     /**
-     * @Route("/news/{slug}/", name="news_detail", requirements={"slug" = "[a-z0-9-]*"})
+     * @Route("/news/{slug}/", name="news_detail", requirements={"slug" = "[a-z0-9-_]*"})
      */
 
     public function newsDetailAction($slug = false) {
@@ -306,7 +306,7 @@ class SiteController extends Controller
 
 
     /**
-     * @Route("/article/{slug}/", name="article_detail", requirements={"slug" = "[a-z0-9-]*"})
+     * @Route("/article/{slug}/", name="article_detail", requirements={"slug" = "[a-z0-9-_]*"})
      */
     public function articleAction($slug) {
         /** @var $article_repository ArticleRepository */
