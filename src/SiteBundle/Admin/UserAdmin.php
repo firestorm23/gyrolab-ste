@@ -25,6 +25,10 @@ class UserAdmin extends AbstractAdmin
      */
     protected $userManager;
 
+    public function configure()
+    {
+        $this->setLabel('Пользователи');
+    }
     /**
      * {@inheritdoc}
      */

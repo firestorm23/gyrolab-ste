@@ -10,6 +10,10 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ProductSpecAdmin extends AbstractAdmin
 {
+    public function configure()
+    {
+        $this->setLabel('Характеристики продукции');
+    }
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -30,9 +34,9 @@ class ProductSpecAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('id')
-            ->add('name', 'string', array('editable' => true))
-            ->add('code', 'string', array('editable' => true))
-            ->add('value', 'string', array('editable' => true))
+            ->add('name', 'string', array('editable' => true, 'label' => 'Название'))
+            ->add('code', 'string', array('editable' => true, 'label' => 'Код'))
+            ->add('value', 'string', array('editable' => true, 'label' => 'Значение'))
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -49,9 +53,9 @@ class ProductSpecAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('code', 'text', array('required' => false))
-            ->add('value')
+            ->add('name', 'text', array('label' => 'Название'))
+            ->add('code', 'text', array('required' => false, 'label' => 'Код'))
+            ->add('value', 'text', array('label' => 'Значение'))
         ;
     }
 

@@ -10,6 +10,11 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class CategoryAdmin extends AbstractAdmin
 {
+
+    public function configure()
+    {
+        $this->setLabel('Категории');
+    }
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -30,11 +35,11 @@ class CategoryAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('id')
-            ->add('name')
-            ->add('slug')
-            ->add('isMain')
-            ->add('description')
-            ->add('sort', 'integer')
+            ->add('name', 'string', array('label' => 'Название', 'editable' => true))
+            ->add('slug', 'string', array('label' => 'URL код', 'editable' => true))
+            ->add('isMain', 'boolean', array('label' => 'Главная категория', 'editable' => true))
+            ->add('description', 'string', array('label' => 'Описание'))
+            ->add('sort', 'integer', array('label' => 'Индекс сортировки'))
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -51,11 +56,11 @@ class CategoryAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('isMain')
-            ->add('slug')
-            ->add('description')
-            ->add('sort', 'integer')
+            ->add('name', 'text', array('label' => 'Название'))
+            ->add('isMain', 'checkbox', array('label' => 'Главная категория'))
+            ->add('slug', 'text', array('label' => 'URL код'))
+            ->add('description', 'textarea', array('label' => 'Описание'))
+            ->add('sort', 'integer', array('label' => 'Индекс сортировки'))
         ;
     }
 

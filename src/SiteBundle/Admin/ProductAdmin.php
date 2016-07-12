@@ -19,6 +19,12 @@ class ProductAdmin extends AbstractAdmin
     /**
      * @param DatagridMapper $datagridMapper
      */
+
+    public function configure()
+    {
+        $this->setLabel('Продукция');
+    }
+
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
@@ -67,9 +73,9 @@ class ProductAdmin extends AbstractAdmin
     {
         $formMapper
             ->tab('Основные поля')
-                ->add('name')
-                ->add('extendedName', 'textarea', array('required' => false))
-                ->add('description', 'textarea',array('attr' => array(
+                ->add('name', 'text' , array('label' => 'Название'))
+                ->add('extendedName', 'textarea', array('required' => false, 'label' => 'Дополнительное название'))
+                ->add('description', 'textarea',array('label' => 'Описание', 'attr' => array(
                     'class' => 'tinymce',
                     'data-theme' => 'simple',
                     'cols' => "150",
@@ -79,12 +85,12 @@ class ProductAdmin extends AbstractAdmin
 
             ->tab('Файлы')
                 ->with('Изображения', array('class' => 'col-md-6'))
-                    ->add('image', new FileType(), array('required' => false))
-                    ->add('galleryImages', 'collection', array('required' => false, 'type' => new FileType(),     'allow_add' => true,
+                    ->add('image', new FileType(), array('required' => false, 'label' => 'Главная картинка'))
+                    ->add('galleryImages', 'collection', array('label' => 'Галерея картинок', 'required' => false, 'type' => new FileType(),     'allow_add' => true,
                         'allow_delete' => true))
                 ->end()
                 ->with('Документация', array('class' => 'col-md-6'))
-                    ->add('documentationFiles', 'collection', array('required' => false, 'type' => new FileType(),     'allow_add' => true,
+                    ->add('documentationFiles', 'collection', array('label' => 'Документы', 'required' => false, 'type' => new FileType(),     'allow_add' => true,
                         'allow_delete' => true))
                 ->end()
             ->end()

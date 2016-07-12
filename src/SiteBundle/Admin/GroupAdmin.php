@@ -18,6 +18,11 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 class GroupAdmin extends AbstractAdmin
 {
+
+    public function configure()
+    {
+        $this->setLabel('Пользовательские группы');
+    }
     /**
      * {@inheritdoc}
      */
@@ -64,7 +69,7 @@ class GroupAdmin extends AbstractAdmin
         $formMapper
             ->tab('Group')
                 ->with('General', array('class' => 'col-md-6'))
-                    ->add('name')
+                    ->add('name', 'text', array('label' => 'Название'))
                 ->end()
             ->end()
             ->tab('Security')
@@ -73,6 +78,7 @@ class GroupAdmin extends AbstractAdmin
                         'expanded' => true,
                         'multiple' => true,
                         'required' => false,
+                        'label' => 'Роли'
                     ))
                 ->end()
             ->end()

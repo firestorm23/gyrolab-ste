@@ -15,6 +15,12 @@ use Symfony\Bridge\Doctrine\Form\DataTransformer\CollectionToArrayTransformer;
 
 class BlockAdmin extends AbstractAdmin
 {
+
+    public function configure()
+    {
+        $this->setLabel('Текстовые блоки');
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -35,11 +41,11 @@ class BlockAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('id')
-            ->add('name')
-            ->add('body')
-            ->add('extendedBody')
-            ->add('link')
-            ->add('blockSort', 'entity', array('multiple' => true))
+            ->add('name', 'string', array('label' => 'Название'))
+            ->add('body', 'string', array('label' => 'Текст блока'))
+            ->add('extendedBody', 'string', array('label' => 'Дополнительный текстовый блок'))
+            ->add('link', 'string', array('label' => 'Ссылка', 'editable' => true))
+            ->add('blockSort', 'entity', array('multiple' => true, 'label' => 'Индексы сортировок'))
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -57,17 +63,18 @@ class BlockAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('Контент', array('class' => 'col-md-6'))
-            ->add('name')
+            ->add('name', 'text', array('label' => 'Название'))
             ->add('body', 'textarea', array(
                 'attr' => array(
                     'class' => 'tinymce',
                     'data-theme' => 'simple',
                     'cols' => "150",
                     'rows' => "30"
-                )
+                ),
+                'label' => 'Текст блока'
             ))
-            ->add('extendedBody', 'textarea', array('required' => false))
-            ->add('link', 'text')
+            ->add('extendedBody', 'textarea', array('required' => false, 'label' => 'Дополнительный текстовый блок'))
+            ->add('link', 'text', array('label' => 'Ссылка'))
             ->end()
             ->with('Параметры сортировки', array('class' => 'col-md-6'))
             ->add('blockSort',  'collection', array(
@@ -87,7 +94,7 @@ class BlockAdmin extends AbstractAdmin
             ->end()
 
             ->with('Медиа', array('class' => 'col-md-6'))
-            ->add('image', new FileType(), array('required' => false))->end()
+            ->add('image', new FileType(), array('required' => false, 'label' => 'Изображение'))->end()
         ;
     }
 

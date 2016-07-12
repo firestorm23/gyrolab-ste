@@ -13,6 +13,11 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ArticleAdmin extends AbstractAdmin
 {
+    public function configure()
+    {
+        $this->setLabel('Новости');
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -37,16 +42,15 @@ class ArticleAdmin extends AbstractAdmin
                 )
             ))
             ->add('id')
-            ->add('name')
-            ->add('extendedName')
-            ->add('body')
-            ->add('dateAdded', 'date')
-            ->add('dateShowStart', 'date')
-            ->add('dateShowEnd', 'date')
-            ->add('sort', 'integer', array('editable' => true))
-            ->add('slug', 'string', array('editable' => true))
-            ->add('active', 'boolean', array('editable' => true))
-            ->add('mainTag', 'sonata_type_model');
+            ->add('name','string' , array('editable' => true, 'label' => 'Название'))
+            ->add('extendedName','string' , array('editable' => true, 'label' => 'Дополнительное название'))
+            ->add('body','string' , array('editable' => true, 'label' => 'Описание'))
+            ->add('dateAdded', 'date', array('label' => 'Дата добавления'))
+            ->add('dateShowStart', 'date', array('label' => 'Дата начала показа'))
+            ->add('dateShowEnd', 'date', array('label' => 'Дата коца показа'))
+            ->add('sort', 'integer', array('editable' => true, 'label' => 'Дата коца показа'))
+            ->add('slug', 'string', array('editable' => true, 'label' => 'Дата коца показа'))
+            ->add('active', 'boolean', array('editable' => true,  'label' => 'Дата коца показа'))
         ;
     }
 
@@ -57,27 +61,28 @@ class ArticleAdmin extends AbstractAdmin
     {
         $formMapper
             ->tab('Основные поля')
-            ->add('name')
-            ->add('extendedName', 'textarea', array('required' => false))
+            ->add('name', 'text' , array('label' => 'Название'))
+            ->add('extendedName', 'textarea', array('required' => false, 'label' => 'Доп. название'))
             ->add('body', 'textarea',array('attr' => array(
                 'class' => 'tinymce',
                 'data-theme' => 'simple',
                 'cols' => "150",
                 'rows' => "30"
-            )))
+            ),
+            'label' => 'Описание'))
             ->add('previewText', 'textarea',array('attr' => array(
                 'class' => 'tinymce',
                 'data-theme' => 'simple',
                 'cols' => "150",
                 'rows' => "20"
-            )))
+            ),  'label' => 'Описание для анонса'))
             ->end()->end()
             ->tab('Файлы')
             ->with('Изображение', array('class' => 'col-md-6'))
-            ->add('image', new FileType(), array('required' => false))
+            ->add('image', new FileType(), array('required' => false, 'label' => 'Основное изображение'))
             ->end()
             ->with('Документация', array('class' => 'col-md-6'))
-            ->add('documentationFiles', 'collection', array('required' => false, 'type' => new FileType(),     'allow_add' => true,
+            ->add('documentationFiles', 'collection', array('required' => false, 'label' => 'Документцы', 'type' => new FileType(),     'allow_add' => true,
                 'allow_delete' => true))
             ->end()
             ->end()

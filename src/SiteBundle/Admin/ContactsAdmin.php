@@ -10,6 +10,10 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class ContactsAdmin extends AbstractAdmin
 {
+    public function configure()
+    {
+        $this->setLabel('Контакты');
+    }
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -30,10 +34,10 @@ class ContactsAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('id')
-            ->add('name')
-            ->add('code')
-            ->add('value', 'string', array('editable' => true))
-            ->add('htmlValue')
+            ->add('name', 'string', array('label' => 'Название'))
+            ->add('code', 'string', array('label' => 'Код'))
+            ->add('value', 'string', array('label' => 'Значение', 'editable' => true))
+            ->add('htmlValue', 'string', array('label' => 'Дополнительное HTML значение'))
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -51,8 +55,8 @@ class ContactsAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('Данные', array('class' => 'col-md-6'))
-            ->add('name', 'text')
-            ->add('value', 'text', array('required' => false))
+            ->add('name', 'text', array('label' => 'Название'))
+            ->add('value', 'text', array('required' => false, 'label' => 'Значение'))
             ->add('htmlValue', 'textarea', array(
                 'attr' => array(
                     'class' => 'tinymce',
@@ -60,11 +64,12 @@ class ContactsAdmin extends AbstractAdmin
                     'cols' => "150",
                     'rows' => "30"
                 ),
-                'required' => false
+                'required' => false,
+                'label' => 'Дополнительное HTML значение'
             ))
             ->end()
             ->with('Служебные', array('class' => 'col-md-6'))
-            ->add('code')
+            ->add('code', 'text', array('label' => 'Код'))
             ->end()
         ;
     }
