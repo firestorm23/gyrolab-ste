@@ -127,7 +127,7 @@ class SiteController extends Controller
         $breadcrumbs->prependRouteItem("Главная", "index");
 
         $allCategories = $this->getDoctrine()->getRepository("SiteBundle:Category")->getAllMainCategories();
-
+        
         /** @var $productManager ProductManager */
         $productManager = $this->get('product.manager');
         /** @var $file_manager FileManager*/
