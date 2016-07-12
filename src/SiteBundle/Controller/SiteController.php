@@ -153,7 +153,10 @@ class SiteController extends Controller
 
         /** @var $product Product*/
         foreach ($prodToSave as $product) {
-            $file_manager->saveImageEntity($product->getImage());
+            $image = $product->getImage();
+            if (is_a($image, 'SiteBundle\Entity\File')) {
+                $file_manager->saveImageEntity($image);
+            }
         }
 
 
