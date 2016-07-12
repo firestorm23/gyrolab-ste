@@ -46,13 +46,11 @@ class ProductAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('name')
-            ->add('description')
-            ->add('sort')
-            ->add('topSort')
-            ->add('slug')
-            ->add('viewCount')
+            ->add('id', 'string')
+            ->add('name', 'string' ,array('label' => 'Название', 'editable' => true))
+            ->add('description', 'string' ,array('label' => 'Описание'))
+            ->add('sort', 'string',array('label' => 'Индекс сортировки', 'editable' => true))
+            ->add('slug', 'string' ,array('label' => 'URL код', 'editable' => true))
             ->add('categories', 'entity', array('multiple' => true))
             ->add('productSpecs', 'entity', array('multiple' => true))
             ->add('dateAdded')
