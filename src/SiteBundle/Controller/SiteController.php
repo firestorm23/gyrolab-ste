@@ -397,6 +397,7 @@ class SiteController extends Controller
 
         return $this->render('SiteBundle::social.html.twig', array(
             'socialBlocks' => $socialBlocks,
+            'en' => $en
         ));
     }
 

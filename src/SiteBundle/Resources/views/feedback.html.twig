@@ -3,22 +3,22 @@
 
 
 {% block container_content %}
-<div class="col-md-6 col-sm-12 contact-add-form">
-    <div class="contact-form">
-        <h2>Свяжитесь с нами</h2>
-        <p>Все поля отмеченные * обязательны для заполнения</p>
-        {% if confirmMessage %}
-            <div class="alert alert-success" role="alert">
-                {{ confirmMessage }}
-            </div>
-        {% endif %}
-        {{ form_start(form, {'action': form_action, 'attr' : {'class': 'form-horizontal'}}) }}
-            {{ form_widget(form) }}
-        {{ form_end(form) }}
-        <div id="alert-msg" class="alert-msg"></div>
-    </div>
-</div>
-<div class="col-md-6 col-sm-12">
+{#<div class="col-md-6 col-sm-12 contact-add-form">#}
+    {#<div class="contact-form">#}
+        {#<h2>Свяжитесь с нами</h2>#}
+        {#<p>Все поля отмеченные * обязательны для заполнения</p>#}
+        {#{% if confirmMessage %}#}
+            {#<div class="alert alert-success" role="alert">#}
+                {#{{ confirmMessage }}#}
+            {#</div>#}
+        {#{% endif %}#}
+        {#{{ form_start(form, {'action': form_action, 'attr' : {'class': 'form-horizontal'}}) }}#}
+            {#{{ form_widget(form) }}#}
+        {#{{ form_end(form) }}#}
+        {#<div id="alert-msg" class="alert-msg"></div>#}
+    {#</div>#}
+{#</div>#}
+<div class="col-md-12 col-sm-12">
     <div class="col-md-6 col-sm-6 col-xs-6 contact-details">
         <div class="contact-detail-inner">
             <h2>Контактные данные</h2>

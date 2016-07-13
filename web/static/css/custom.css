@@ -127,6 +127,12 @@ input {
     font-size: 14px;
 }
 
+.lang-button a {
+    color: #C23B44;
+    margin: 0 6px;
+}
+
+
 @media (max-width: 1200px) {
     .search-social ul {
         float: left;
@@ -181,6 +187,7 @@ input {
         float: right;
     }
 }
+
 
 /*.search-social ul {*/
     /*float: left;*/
