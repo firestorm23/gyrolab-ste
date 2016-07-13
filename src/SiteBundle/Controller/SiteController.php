@@ -13,6 +13,7 @@ use SiteBundle\Manager\ProductManager;
 use SiteBundle\Services\ImageResize;
 use SiteBundle\Entity\Article;
 use SiteBundle\Entity\Tag;
+use SiteBundle\Entity\File;
 use SiteBundle\Entity\Product;
 use SiteBundle\Entity\Block;
 use SiteBundle\Entity\Category;
@@ -111,6 +112,34 @@ class SiteController extends Controller
             'is_main' => false
 //            'socialBlocks' => $socialBlocks
         ));
+    }
+
+
+    /**
+     * @Route("/download/{id}/", name="download", requirements={"id" = "[0-9]*"})
+     */
+
+    public function downloadAction($id = false) {
+        if (intval($id)) {
+            /** @var $file File*/
+            $file = $this->getDoctrine()->getRepository("SiteBundle:File")->find($id);
+            $filename = $file->__toString();
+
+            $response = new Response();
+
+            $response->headers->set('Cache-Control', 'private');
+            $response->headers->set('Content-type', 'application/octet-stream');
+            $response->headers->set('Content-Disposition', 'attachment; filename="' . $file->getOriginalName() . '";');
+            $response->headers->set('Content-length', filesize($filename));
+
+            $response->sendHeaders();
+
+            $response->setContent(file_get_contents($filename));
+
+            return $response;
+        }
+
+        return false;
     }
 
     /**

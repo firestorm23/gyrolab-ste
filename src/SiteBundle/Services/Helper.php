@@ -5,7 +5,7 @@ namespace SiteBundle\Services;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use SiteBundle\Entity\Article;
-use Symfony\Component\Routing\Router;
+use Symfony\Component\Routing\RouterInterface;
 
 class Helper {
 
@@ -32,6 +32,29 @@ class Helper {
     public function getFileExtension($filename) {
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
         return $ext;
+    }
+
+    public function getDownloadFilePath($file) {
+
+        /** @var $router RouterInterface*/
+        $router = $this->get('router');
+        return $router->generate('download', array('id', $file->getId()));
+    }
+
+    public function getOriginalName($file, $without_ext = false) {
+        $name = $file->getOriginalName();
+        if (empty($name)) {
+            return false;
+        }
+
+        if ($without_ext) {
+            $nameExploded = explode(".",$name);
+
+            return $nameExploded[0];
+        }
+
+        return $name;
+
     }
 
     public function humanFilesize($filename, $decimals = 2) {

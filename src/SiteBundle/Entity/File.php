@@ -38,7 +38,7 @@ class File
     /**
      * @var array
      * @Assert\File( maxSize="100M")
-     * @Vich\UploadableField(mapping="upload", fileNameProperty="originalName")
+     * @Vich\UploadableField(mapping="upload", fileNameProperty="name")
      *
      */
     private $file;
@@ -187,12 +187,17 @@ class File
      */
     public function setFile($file)
     {
+        fileDump($file, true);
         if (is_null($file)) {
             return $this;
         } else if (is_a($file, 'Symfony\Component\HttpFoundation\File\File')) {
             //специальная строчка. принудительно устанавливаем поле name, чтобы подхватилось событие preUpdate, так как само
             //поле file не размечено для Doctrine и не управляется ею
             $this->name = $file->getFilename();
+            fileDump(get_class_methods($file), true);
+            if (method_exists($file, 'getClientOriginalName')) {
+                $this->originalName = $file->getClientOriginalName();
+            }
             $this->file = $file;
         }
 

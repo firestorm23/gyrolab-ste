@@ -92,13 +92,17 @@
                             {% for doc in product.documentationFiles %}
 
                                 {% set filepath = getFileName(doc) %}
-                                {% set absolutePath =  doc|raw %}
-                                {% set filext = getFileExt(absolutePath) %}
-                                {% set filesize = getFileSize(absolutePath) %}
+                                    {% if filepath is not empty %}
+                                        {% set absolutePath =  doc|raw %}
+                                        {% set filext = getFileExt(absolutePath) %}
+                                        {% set filesize = getFileSize(absolutePath) %}
+                                        {% set originalName = getOriginalName(absolutePath) %}
+                                        {% set downloadPath =  getDownloadPath(doc)%}
 
-                                <li><a target="_blank" href="{{ filepath }}">
-                                        Скачать {% if isDocument(absolutePath) %} документацию {% endif %}[{{ filext }}, {{ filesize }}]
-                                    </a></li>
+                                        <li><a target="_blank" href="{{ filepath }}">
+                                                Скачать {{ originalName }} [{{ filext }}, {{ filesize }}]
+                                            </a></li>
+                                    {% endif %}
                             {% endfor %}
                         </ul>
                     </aside>

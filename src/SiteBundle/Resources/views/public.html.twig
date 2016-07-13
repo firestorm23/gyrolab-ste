@@ -119,16 +119,17 @@
     <div class="container">
         <div class="row">
             <div class="header-logo">
-                <div class="col-md-8 col-sm-7 col-xs-8 logo-block">
+                <div class="col-lg-8 col-md-12 col-sm-6 col-xs-12 logo-block">
                     <a href="/">
                         <!--TODO-->
                         <img src="/logo.jpg" alt="Fontaine HTML Template">
                     </a>
-                    <h1>Производство высокоточных систем навигации</h1>
+                    <h1>Разработка и производство бесплатформенных инерциальных навигационных
+                        систем (БИНС)</h1>
                 </div>
-                <div class="col-md-4 col-sm-5 padding_right search-social">
+                <div class="col-lg-4 col-md-4 col-sm-6 padding_right search-social">
                     <span id="canvas-bar" class="fa fa-bars"></span>
-                    <div class="social-icon col-md-11 col-sm-9">
+                    <div class="social-icon col-md-11 col-sm-9 padding_zero">
                         {#{{ block('social_block') }}#}
                         {{ render(controller('SiteBundle:Site:socialBlock')) }}
                     </div>
@@ -167,19 +168,19 @@
                     {#</form>#}
                 {#</div>#}
             </div>
-            <div class="news-subscribe">
-                <form method="POST" action="https://cp.unisender.ru/ru/subscribe?hash=59gp8hx6urw719awqsqr187mk86qq7ncdks1g4eeyjkxcqdb371yo" name="subscribtion_form">
-                    <label class="col-md-5 col-sm-6 padding_zero col-xs-12">Подпишитесь на новости сайта</label>
-                    <div class="form-group col-md-7 col-sm-6 col-xs-12">
-                        <input type="email" name="email" class="form-control" placeholder="Введите свой email">
-                        <input type="submit" value="Подписаться / Subscribe">
-                        <input type="hidden" name="charset" value="">
-                        <input type="hidden" name="default_list_id" value="4">
-                        <input type="hidden" name="overwrite" value="2">
-                        <input type="hidden" name="is_v5" value="1">
-                    </div>
-                </form>
-            </div>
+            {#<div class="news-subscribe">#}
+                {#<form method="POST" action="https://cp.unisender.ru/ru/subscribe?hash=59gp8hx6urw719awqsqr187mk86qq7ncdks1g4eeyjkxcqdb371yo" name="subscribtion_form">#}
+                    {#<label class="col-md-5 col-sm-6 padding_zero col-xs-12">Подпишитесь на новости сайта</label>#}
+                    {#<div class="form-group col-md-7 col-sm-6 col-xs-12">#}
+                        {#<input type="email" name="email" class="form-control" placeholder="Введите свой email">#}
+                        {#<input type="submit" value="Подписаться / Subscribe">#}
+                        {#<input type="hidden" name="charset" value="">#}
+                        {#<input type="hidden" name="default_list_id" value="4">#}
+                        {#<input type="hidden" name="overwrite" value="2">#}
+                        {#<input type="hidden" name="is_v5" value="1">#}
+                    {#</div>#}
+                {#</form>#}
+            {#</div>#}
             <div class="menu-block" data-uk-sticky>
                 <nav class="navbar navbar-default">
                     <div class="navbar-header">
@@ -267,12 +268,31 @@
         {{ block('container_content') }}
     </div>
 </div>
+<div id="subscribe-section" class="subscribe-section">
+    <div class="container">
+        <div class="row">
+            <div class="news-subscribe">
+                <form method="POST" action="https://cp.unisender.ru/ru/subscribe?hash=59gp8hx6urw719awqsqr187mk86qq7ncdks1g4eeyjkxcqdb371yo" name="subscribtion_form">
+                    <label class="col-lg-3 col-md-4 col-sm-4 padding_zero col-xs-12">Подпишитесь на новости компании</label>
+                    <div class="form-group col-lg-4 col-md-6 col-sm-8 col-xs-12">
+                        <input type="email" name="email" class="form-control" placeholder="Введите свой email">
+                        <input type="submit" value="Подписаться / Subscribe">
+                        <input type="hidden" name="charset" value="">
+                        <input type="hidden" name="default_list_id" value="4">
+                        <input type="hidden" name="overwrite" value="2">
+                        <input type="hidden" name="is_v5" value="1">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- Container -->
+</div>
 
 {{ block('blockquote_block') }}
 
 {{ block('mid_block') }}
 
-{{ block('work_block') }}
+{#{{ block('work_block') }}#}
 
 <!--&lt;!&ndash; Article Section &ndash;&gt;-->
 <!--<div id="article-section" class="article-section">-->

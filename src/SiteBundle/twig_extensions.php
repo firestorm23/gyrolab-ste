@@ -111,6 +111,8 @@ class HelperExtension extends \Twig_Extension
             'getFileSize' => new \Twig_Function_Method($this , 'getFileSize'),
             'getFileExt' => new \Twig_Function_Method($this , 'getFileExt'),
             'getLazyResize' => new \Twig_Function_Method($this , 'getLazyResize'),
+            'getOriginalName' => new \Twig_Function_Method($this , 'getOriginalName'),
+            'getDownloadPath' => new \Twig_Function_Method($this , 'getDownloadPath'),
         );
     }
 
@@ -123,8 +125,16 @@ class HelperExtension extends \Twig_Extension
         return $file->getResize($sizekey);
     }
 
+    public function getOriginalName(File $file) {
+        return $this->container->get('helper')->getOriginalName($file, true);
+    }
+
     public function getFileSize($filename) {
         return $this->container->get('helper')->humanFilesize($filename);
+    }
+
+    public function getDownloadPath(File $file) {
+        return $this->container->get('helper')->getDownloadFilePath($file);
     }
 
     public function getFileExt($filename) {

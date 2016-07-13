@@ -30,7 +30,7 @@ class BlockSortType extends AbstractType
                 'choices' => array(
                     'top_slider_main' => 'В верхнем слайдере на главной',
                     'middle_blocks_main' => 'Блоки "Преимущества", на главной',
-                    'tab_main' => 'Табы на главной',
+//                    'tab_main' => 'Табы на главной',
                     'social_block' => 'Блок соц.кнопок'
                 )
             ))
