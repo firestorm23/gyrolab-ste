@@ -125,18 +125,18 @@
                         <img src="{{ render(controller('SiteBundle:Site:logoImage', {'en':en})) }}" alt="Gyrolab company">
                     </a>
                     <h1>
-                        {{ render(controller('SiteBundle:Site:headerText', {'en':en})) }}
+                        {{ render(controller('SiteBundle:Site:headerText', {'en':en}))|raw }}
                     </h1>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 padding_right search-social">
                     <span id="canvas-bar" class="fa fa-bars"></span>
                     <div class="social-icon col-md-11 col-sm-9 padding_zero">
                         {#{{ block('social_block') }}#}
-                        {{ render(controller('SiteBundle:Site:socialBlock', {'en':en})) }}
+                        {{ render(controller('SiteBundle:Site:socialBlock', {'en':en}))|raw }}
                     </div>
                     {% if en is empty %}
                         <div class="header-contacts col-md-11 col-sm-12">
-                            {{ render(controller('SiteBundle:Site:headerContactsBlock')) }}
+                            {{ render(controller('SiteBundle:Site:headerContactsBlock'))|raw }}
                         </div>
                     {% endif %}
                     {#<div class="search-box col-md-5 col-sm-6 col-xs-4">#}
