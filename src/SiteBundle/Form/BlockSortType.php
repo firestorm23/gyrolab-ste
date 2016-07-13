@@ -31,7 +31,13 @@ class BlockSortType extends AbstractType
                     'top_slider_main' => 'В верхнем слайдере на главной',
                     'middle_blocks_main' => 'Блоки "Преимущества", на главной',
 //                    'tab_main' => 'Табы на главной',
-                    'social_block' => 'Блок соц.кнопок'
+                    'social_block' => 'Блок соц.кнопок RU',
+                    'en_social_block' => 'Блок соц.кнопок EN',
+                    'english_content' => 'Контент для английской страницы',
+                    'ru_header_text' => 'Заголовок для главной RU',
+                    'en_header_text' => 'Заголовок для главной EN',
+                    'ru_header_logo' => 'Лого для главной RU',
+                    'en_header_logo' => 'Лого для главной EN',
                 )
             ))
             ->add('sort', 'text', array('label' => 'Значение сортировки'))

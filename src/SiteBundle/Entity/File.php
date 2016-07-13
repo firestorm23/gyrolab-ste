@@ -31,7 +31,7 @@ class File
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
@@ -46,28 +46,28 @@ class File
     /**
      * @var string
      *
-     * @ORM\Column(name="originalName", type="string", length=255)
+     * @ORM\Column(name="originalName", type="string", length=255, nullable=true)
      */
     private $originalName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="dirname", type="string", length=255)
+     * @ORM\Column(name="dirname", type="string", length=255, nullable=true)
      */
     private $dirname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="extension", type="string", length=255)
+     * @ORM\Column(name="extension", type="string", length=255, nullable=true)
      */
     private $extension;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mimetype", type="string", length=255)
+     * @ORM\Column(name="mimetype", type="string", length=255, nullable=true)
      */
     private $mimetype;
 

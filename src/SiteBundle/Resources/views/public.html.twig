@@ -122,20 +122,23 @@
                 <div class="col-lg-8 col-md-12 col-sm-6 col-xs-12 logo-block">
                     <a href="/">
                         <!--TODO-->
-                        <img src="/logo.jpg" alt="Fontaine HTML Template">
+                        <img src="{{ render(controller('SiteBundle:Site:logoImage', {'en':en})) }}" alt="Gyrolab company">
                     </a>
-                    <h1>Разработка и производство бесплатформенных инерциальных навигационных
-                        систем (БИНС)</h1>
+                    <h1>
+                        {{ render(controller('SiteBundle:Site:headerText', {'en':en})) }}
+                    </h1>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 padding_right search-social">
                     <span id="canvas-bar" class="fa fa-bars"></span>
                     <div class="social-icon col-md-11 col-sm-9 padding_zero">
                         {#{{ block('social_block') }}#}
-                        {{ render(controller('SiteBundle:Site:socialBlock')) }}
+                        {{ render(controller('SiteBundle:Site:socialBlock', {'en':en})) }}
                     </div>
-                    <div class="header-contacts col-md-11 col-sm-12">
-                        {{ render(controller('SiteBundle:Site:headerContactsBlock')) }}
-                    </div>
+                    {% if en is empty %}
+                        <div class="header-contacts col-md-11 col-sm-12">
+                            {{ render(controller('SiteBundle:Site:headerContactsBlock')) }}
+                        </div>
+                    {% endif %}
                     {#<div class="search-box col-md-5 col-sm-6 col-xs-4">#}
                         {#<form class="form-search">#}
                             {#<div class="input-group">#}
@@ -181,78 +184,83 @@
                     {#</div>#}
                 {#</form>#}
             {#</div>#}
-            <div class="menu-block" data-uk-sticky>
-                <nav class="navbar navbar-default">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse padding_zero" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/">О компании</a></li>
-                            <!--TODO-->
-                            <li class="dropdown">
-                                <a href="/products/" role="button" aria-haspopup="true" aria-expanded="false">Продукты</a>
-                                <i class="responsive-caret fa fa-angle-down"></i>
-                                <ul class="dropdown-menu">
-                                {{ render(controller('SiteBundle:Site:mainCategoriesMenu')) }}
-                                </ul>
-                            </li>
-                            <li><a href="/news/">Новости и статьи</a></li>
-                            <li><a href="/contacts/">Контакты</a></li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </nav>
-            </div>
+            {% if en is empty %}
+                <div class="menu-block" data-uk-sticky>
+                    <nav class="navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse padding_zero" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="/">О компании</a></li>
+                                <!--TODO-->
+                                <li class="dropdown">
+                                    <a href="/products/" role="button" aria-haspopup="true" aria-expanded="false">Продукты</a>
+                                    <i class="responsive-caret fa fa-angle-down"></i>
+                                    <ul class="dropdown-menu">
+                                    {{ render(controller('SiteBundle:Site:mainCategoriesMenu')) }}
+                                    </ul>
+                                </li>
+                                <li><a href="/news/">Новости и статьи</a></li>
+                                <li><a href="/contacts/">Контакты</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </nav>
+                </div>
+            {% endif %}
         </div>
     </div>
 
     <!-- Offcanvas Menu -->
     <!--TODO-->
-    <div id="offcanvas" class="offcanvas-box">
-        <div id="canvas" class="offcanvas-bars">
-            <div class="canvas-search">
-                <form class="form-search">
-                    <div class="input-group">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-							</span>
-                        <input type="text" class="form-control" placeholder="Search...">
-                    </div>
-                </form>
+    {% if en is empty %}
+        <div id="offcanvas" class="offcanvas-box">
+            <div id="canvas" class="offcanvas-bars">
+                <div class="canvas-search">
+                    <form class="form-search">
+                        <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                </span>
+                            <input type="text" class="form-control" placeholder="Search...">
+                        </div>
+                    </form>
+                </div>
+                <div class="offcanvas-menu">
+                    <ul class="main-menu">
+                        <li>
+                            <a href="/index_final.html">Home</a>
+                        </li>
+                        <li><a href="/">О компании</a></li>
+                        <!--TODO-->
+                        <li class="dropdown">
+                            <a href="/products/" role="button" aria-haspopup="true" aria-expanded="false">Продукты</a>
+                            <i class="responsive-caret fa fa-angle-down"></i>
+                            <ul class="sub-menu">
+                            {{ render(controller('SiteBundle:Site:mainCategoriesMenu')) }}
+                            </ul>
+                        </li>
+                        <li><a href="/news/">Новости и статьи</a></li>
+                        <li><a href="/contacts/">Контакты</a></li>
+                    </ul>
+                </div>
+                {#<div class="module-block">#}
+                    {#<h3>Offcanvas Module</h3>#}
+                    {#<p>Our themes are built on a responsive framework, which gives them a <a href="#">friendly, adaptive layout</a></p>#}
+                {#</div>#}
             </div>
-            <div class="offcanvas-menu">
-                <ul class="main-menu">
-                    <li>
-                        <a href="/index_final.html">Home</a>
-                    </li>
-                    <li><a href="/">О компании</a></li>
-                    <!--TODO-->
-                    <li class="dropdown">
-                        <a href="/products/" role="button" aria-haspopup="true" aria-expanded="false">Продукты</a>
-                        <i class="responsive-caret fa fa-angle-down"></i>
-                        <ul class="sub-menu">
-                        {{ render(controller('SiteBundle:Site:mainCategoriesMenu')) }}
-                        </ul>
-                    </li>
-                    <li><a href="/news/">Новости и статьи</a></li>
-                    <li><a href="/contacts/">Контакты</a></li>
-                </ul>
-            </div>
-            {#<div class="module-block">#}
-                {#<h3>Offcanvas Module</h3>#}
-                {#<p>Our themes are built on a responsive framework, which gives them a <a href="#">friendly, adaptive layout</a></p>#}
-            {#</div>#}
-        </div>
-    </div><!-- Offcanvas Menu -->
+        </div><!-- Offcanvas Menu -->
+    {% endif %}
 </header><!-- Header Section /- -->
 
 <!-- Container -->
+{% if en is empty %}
 <div id="main-content" class="container">
     <!-- Slider Section -->
     <div class="row">
@@ -287,6 +295,7 @@
         </div>
     </div><!-- Container -->
 </div>
+{% endif %}
 
 {{ block('blockquote_block') }}
 
@@ -425,19 +434,27 @@
                 {#</div>#}
             {#</div>#}
             <div class="footer-block padding_zero container-fluid">
-                <div class="col-md-6 col-sm-6 footer-menu-block">
-                    <nav class="navbar navbar-default">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/">О компании</a></li>
-                            <li><a href="/products/">Продукты</a></li>
-                            <li><a href="/news/">Новости</a></li>
-                            <li><a href="/contacts/">Контакты</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-md-6 col-sm-6">
+                {% if en is empty %}
+                    <div class="col-md-6 col-sm-6 footer-menu-block">
+                        <nav class="navbar navbar-default">
+                            <ul class="nav navbar-nav">
+                                <li><a href="/">О компании</a></li>
+                                <li><a href="/products/">Продукты</a></li>
+                                <li><a href="/news/">Новости</a></li>
+                                <li><a href="/contacts/">Контакты</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                {% endif %}
+                <div {% if en is empty %}class="col-md-6 col-sm-6"{% else %}class="col-md-12 col-sm-12"{% endif %}>
                     <div class="copy-right-section">
-                        <p>Компания &laquo;Гиролаб&raquo; {{ date('Y')|date('Y') }} г.</p>
+                        <p>
+                            {% if company_footer is empty %}
+                                Компания &laquo;Гиролаб&raquo;
+                            {% else %}
+                                {{ company_footer|raw }}
+                            {% endif %}
+                        </p>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,158 @@
+{% extends "SiteBundle::public.html.twig" %}
+
+
+{#{% block container_content %}#}
+    {#&#123;&#35;<div class="row">&#35;&#125;#}
+        {#<div id="slider" class="flexslider home-slider">#}
+            {#<ul class="slides">#}
+                {#{% for slide in topSliderBlocks %}#}
+                    {#&#123;&#35;{{ dump(slide) }}&#35;&#125;#}
+                    {#<li>#}
+                        {#<img src="{{ slide.image.getResize("1280x500x2")|relpath }}" alt="{{ slide.name }}" title="{{ slide.name }}"/>#}
+                        {#<div class="slider-content col-md-3 col-sm-5">#}
+                            {#<h2>{{ slide.name }}</h2>#}
+                            {#<p>{{ slide.body|raw }}</p>#}
+                            {#{% if slide.link is not empty %}#}
+                                {#<a target="_blank" href="{{ slide.link }}">Посмотреть</a>#}
+                            {#{% endif %}#}
+                        {#</div>#}
+                    {#</li>#}
+                {#{% endfor %}#}
+            {#</ul>#}
+        {#</div>#}
+    {#&#123;&#35;</div>&#35;&#125;#}
+{#{% endblock container_content %}#}
+
+{% block blockquote_block %}
+    <div id="block-quotes" class="block-quotes">
+        <div class="container">
+            <div class="row">
+                <blockquote>
+                    {{ block('blockquote') }}
+                </blockquote>
+            </div>
+        </div>
+    </div>
+{% endblock blockquote_block %}
+
+{% block blockquote %}
+    <p>
+        {{ english_content }}
+    </p>
+{% endblock blockquote %}
+
+
+{#{% block mid_grid %}#}
+    {#<div class="row row-padding-h">#}
+        {#{% for block in midGridBlocks %}#}
+            {#<div class="col-sm-4 col-xs-6 grid-box-inner">#}
+                {#<h2>{{ block.name }}</h2>#}
+                {#<div class="col-md-2 col-sm-2 col-xs-3 padding_left grid-icon">#}
+                    {#<img src="{{ block.image.getResize("52x52x2")|relpath }}">#}
+                {#</div>#}
+                {#<div class="col-md-10 col-sm-10 col-xs-9">#}
+                    {#{{ block.body|raw  }}#}
+                {#</div>#}
+            {#</div>#}
+        {#{% endfor %}#}
+    {#</div>#}
+{#{% endblock mid_grid %}#}
+
+{#{% block mid_block %}#}
+    {#<div id="grid-box" class="grid-box">#}
+        {#<div class="container">#}
+            {#{{ block('mid_grid') }}#}
+        {#</div>#}
+    {#</div>#}
+{#{% endblock mid_block %}#}
+
+{#{% block tab_block %}#}
+    {#{% if tabBlocks is not empty %}#}
+        {#<div class="work-section-inner">#}
+            {#<!-- Nav tabs -->#}
+            {#{% for block in tabBlocks %}#}
+                {#<ul class="nav nav-tabs" role="tablist">#}
+                    {#<li role="presentation" {% if loop.first %}class="active"{% endif %}><a href="#tab_index_{{ block.id }}" aria-controls="tab_index_{{ block.id }}" role="tab" data-toggle="tab">{{ block.name }}</a></li>#}
+                {#</ul>#}
+            {#{% endfor %}#}
+            {#<!-- Tab panes -->#}
+            {#<div class="tab-content tab-inner">#}
+                {#{% for block in tabBlocks %}#}
+                {#<div role="tabpanel" class="tab-pane {% if loop.first %}active{% endif %}" id="tab_index_{{ block.id }}">#}
+                    {#<div class="tab-pane-inner">#}
+                        {#<div class="col-md-8 col-sm-12">#}
+                            {#<h2>{{ block.extendedBody|raw }}</h2>#}
+                            {#<p>{{ block.body|raw }}</p>#}
+                        {#</div>#}
+                        {#<div class="col-md-4 col-sm-12 tab-img">#}
+                            {#<img src="{{ block.image.getResize('300x300x1')|relpath }}" alt="{{ block.name }}">#}
+                        {#</div>#}
+                        {#{% if block.link is not empty %}#}
+                            {#<a class="login-btn" target="_blank" href="{{ block.link }}">Подробнее</a>#}
+                        {#{% endif %}#}
+                    {#</div>#}
+                {#</div>#}
+                {#{% endfor %}#}
+            {#</div>#}
+        {#</div>#}
+    {#{% endif %}#}
+{#{% endblock tab_block %}#}
+
+{#{% block social_block %}#}
+    {#<ul>#}
+        {#{% for block in socialBlocks %}#}
+        {#<li>#}
+            {#{{ block.extendedBody|raw }}#}
+        {#</li>#}
+        {#{% endfor %}#}
+    {#</ul>#}
+{#{% endblock social_block %}#}
+
+{#{% block work_block %}#}
+    {#<!-- Work Section -->#}
+    {#<div id="work-section" class="work-section">#}
+        {#<div class="container">#}
+            {#<div class="row">#}
+                {#<div class="col-md-3 col-sm-4 col-xs-12 work-block">#}
+                    {#<div class="work-block-inner">#}
+                        {#<h2>Свяжитесь с нами</h2>#}
+                        {#<div class="col-md-2 col-sm-3 col-xs-2 padding_left">#}
+                            {#<span class="box-icon pe-7s-clock"></span>#}
+                        {#</div>#}
+                        {#<div class="col-md-10 col-sm-9	 padding_zero">#}
+                            {#<p>Пришлите нам Ваше предложение или оставьте контакт для связи. Наши специалисты ответят Вам в будни с 10.00 - 18.00 </p>#}
+                        {#</div>#}
+                        {#<a class="login-btn  pull-right" target="_blank" href="/contacts/">Прислать предложение</a>#}
+                    {#</div>#}
+                    {#<div class="work-block-inner block-client">#}
+                        {#<h6> Recent Clients</h6>#}
+                        {#<div id="partners" class="partners">#}
+                            {#<div class="item">#}
+                                {#<img src="images/client-1.png" alt="client-1">#}
+                            {#</div>#}
+                            {#<div class="item">#}
+                                {#<img src="images/client-2.png" alt="client-2">#}
+                            {#</div>#}
+                            {#<div class="item">#}
+                                {#<img src="images/client-3.png" alt="client-3">#}
+                            {#</div>#}
+                            {#<div class="item">#}
+                                {#<img src="images/client-4.png" alt="client-4">#}
+                            {#</div>#}
+                            {#<div class="item">#}
+                                {#<img src="images/client-4.png" alt="client-4">#}
+                            {#</div>#}
+                            {#<div class="item">#}
+                                {#<img src="images/client-6.png" alt="client-6">#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="col-md-9 col-sm-8 col-xs-12">#}
+                    {#{{ block('tab_block') }}#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div><!-- Work Section /- -->#}
+{#{% endblock work_block %}#}
+

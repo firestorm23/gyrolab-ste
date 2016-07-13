@@ -34,16 +34,67 @@ class BlockRepository extends \Doctrine\ORM\EntityRepository
         return $result;
     }
 
-    public function getSocialBlocks($count) {
+    public function getSocialBlocks($count, $en) {
+
+        if ($en) {
+            $code = 'en_social_block';
+        } else {
+            $code = 'social_block';
+        }
+
+
         $qb = $this->createQueryBuilder('b');
         $qb->join('b.blockSort', 'bs')
-            ->where($qb->expr()->eq('bs.code', '\'social_block\''))
+            ->where($qb->expr()->eq('bs.code', '\''.$code.'\''))
             ->andWhere($qb->expr()->isNotNull('bs.sort'))
             ->orderBy('bs.sort', 'asc')->setMaxResults($count);
 
         $result = $qb->getQuery()->getResult();
 
         return $result;
+    }
+
+    public function getHeaderText($en) {
+        if ($en) {
+            $code = 'en_header_text';
+        } else {
+            $code = 'ru_header_text';
+        }
+        $qb = $this->createQueryBuilder('b');
+        $qb->join('b.blockSort', 'bs')
+            ->where($qb->expr()->eq('bs.code', '\''.$code.'\''))
+            ->andWhere($qb->expr()->isNotNull('bs.sort'))
+            ->orderBy('bs.sort', 'asc')->setMaxResults(1);
+
+        $result = $qb->getQuery()->getResult();
+        return $result[0];
+    }
+
+    public function getLogoImage($en) {
+        if ($en) {
+            $code = 'en_header_logo';
+        } else {
+            $code = 'ru_header_logo';
+        }
+        $qb = $this->createQueryBuilder('b');
+        $qb->join('b.blockSort', 'bs')
+            ->where($qb->expr()->eq('bs.code', '\''.$code.'\''))
+            ->andWhere($qb->expr()->isNotNull('bs.sort'))
+            ->orderBy('bs.sort', 'asc')->setMaxResults(1);
+
+        $result = $qb->getQuery()->getResult();
+        return $result[0];
+    }
+
+    public function getEnglishContent() {
+        $qb = $this->createQueryBuilder('b');
+        $qb->join('b.blockSort', 'bs')
+            ->where($qb->expr()->eq('bs.code', '\'english_content\''))
+            ->andWhere($qb->expr()->isNotNull('bs.sort'))
+            ->orderBy('bs.sort', 'asc')->setMaxResults(1);
+
+        $result = $qb->getQuery()->getResult();
+        return $result[0];
     }
 
     public function getTabBlocks($count) {

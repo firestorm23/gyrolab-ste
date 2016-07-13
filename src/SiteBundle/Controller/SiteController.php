@@ -114,6 +114,28 @@ class SiteController extends Controller
         ));
     }
 
+    /**
+     *
+     * @Route("/en/", name="index_en")
+     */
+
+    public function indexEnAction() {
+
+        $english_content = $this->getDoctrine()->getRepository("SiteBundle:Block")->getEnglishContent();
+        if (method_exists($english_content, "getBody")) {
+            $english_content = $english_content->getBody();
+        } else {
+            $english_content = "";
+        }
+
+        return $this->render('SiteBundle:Site:index_en.html.twig', array(
+            'is_main' => false,
+            'en' => true,
+            'english_content' => $english_content,
+            'company_footer' => 'Gyrolab &laquo;Company&raquo;'
+        ));
+    }
+
 
     /**
      * @Route("/download/{id}/", name="download", requirements={"id" = "[0-9]*"})
@@ -367,11 +389,11 @@ class SiteController extends Controller
         return new Response(print_r($result[0]->getId(), true));
     }
 
-    public function socialBlockAction() {
+    public function socialBlockAction($en = false) {
 
         $blockRepository = $this->getDoctrine()->getRepository("SiteBundle:Block");
 
-        $socialBlocks = $blockRepository->getSocialBlocks($this->getParameter('socials.count'));
+        $socialBlocks = $blockRepository->getSocialBlocks($this->getParameter('socials.count'), $en);
 
         return $this->render('SiteBundle::social.html.twig', array(
             'socialBlocks' => $socialBlocks,
@@ -385,6 +407,33 @@ class SiteController extends Controller
         return $this->render('SiteBundle::header_contacts.html.twig', array(
             'contacts' => $contacts,
         ));
+    }
+
+    public function headerTextAction($en = false) {
+
+        $headerText = $this->getDoctrine()->getRepository("SiteBundle:Block")->getHeaderText($en);
+
+        if (method_exists($headerText, 'getBody')) {
+            $headerText = $headerText->getBody();
+        } else {
+            $headerText = "";
+        }
+
+        return new Response($headerText);
+    }
+
+    public function logoImageAction($en = false) {
+        $headerLogo = $this->getDoctrine()->getRepository("SiteBundle:Block")->getLogoImage($en);
+        /** @var $fileManager FileManager*/
+        $fileManager = $this->get('file.manager');
+
+        if (method_exists($headerLogo, 'getImage')) {
+            $headerLogo = $this->get('helper')->getFileRelPath($headerLogo->getImage()->__toString());
+        } else {
+            $headerLogo = "";
+        }
+
+        return new Response($headerLogo);
     }
 
     public function mainCategoriesMenuAction() {

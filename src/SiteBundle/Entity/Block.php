@@ -167,7 +167,12 @@ class Block implements ImageContainer
      */
     public function setImage($image)
     {
-        $this->image = $image;
+//        if (is_null($image) || is_null($image->getFile)) {
+//            $this->image = null;
+//        } else {
+            $this->image = $image;
+//        }
+
     }
 
 
