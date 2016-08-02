@@ -218,7 +218,9 @@ stfalcon_tinymce:
                  relative_urls: false
                  force_p_newlines: false
                  forced_root_block: false
-                 extended_valid_elements: "i[class],a[href|target]"
+                 extended_valid_elements: "i[class],a[href|target],span[style]"
+                 removeformat :
+                      - {selector : 'span', attributes : ['style', 'class'], remove : 'empty', split : true, expand : false, deep : true}
 
 stof_doctrine_extensions:
    default_locale: en
