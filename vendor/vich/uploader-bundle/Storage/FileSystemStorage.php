@@ -18,6 +18,7 @@ class FileSystemStorage extends AbstractStorage
     protected function doUpload(PropertyMapping $mapping, UploadedFile $file, $dir, $name)
     {
         $uploadDir = $mapping->getUploadDestination().DIRECTORY_SEPARATOR.$dir;
+
         return $file->move($uploadDir, $name);
     }
 

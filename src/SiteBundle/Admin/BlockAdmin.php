@@ -42,8 +42,8 @@ class BlockAdmin extends AbstractAdmin
         $listMapper
             ->add('id')
             ->add('name', 'string', array('label' => 'Название'))
-            ->add('body', 'string', array('label' => 'Текст блока'))
-            ->add('extendedBody', 'string', array('label' => 'Дополнительный текстовый блок'))
+            ->add('body', 'html', array('label' => 'Текст блока'))
+            ->add('extendedBody', 'html', array('label' => 'Дополнительный текстовый блок'))
             ->add('link', 'string', array('label' => 'Ссылка', 'editable' => true))
             ->add('blockSort', 'entity', array('multiple' => true, 'label' => 'Индексы сортировок'))
             ->add('_action', null, array(

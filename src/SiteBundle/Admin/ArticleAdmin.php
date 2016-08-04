@@ -44,7 +44,7 @@ class ArticleAdmin extends AbstractAdmin
             ->add('id')
             ->add('name','string' , array('editable' => true, 'label' => 'Название'))
             ->add('extendedName','string' , array('editable' => true, 'label' => 'Дополнительное название'))
-            ->add('body','string' , array('editable' => true, 'label' => 'Описание'))
+            ->add('body','html' , array('editable' => true, 'label' => 'Описание'))
             ->add('dateAdded', 'date', array('label' => 'Дата добавления'))
             ->add('dateShowStart', 'date', array('label' => 'Дата начала показа'))
             ->add('dateShowEnd', 'date', array('label' => 'Дата коца показа'))

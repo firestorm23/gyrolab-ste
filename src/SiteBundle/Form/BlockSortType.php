@@ -32,6 +32,7 @@ class BlockSortType extends AbstractType
                     'middle_blocks_main' => 'Блоки "Преимущества", на главной',
 //                    'tab_main' => 'Табы на главной',
                     'social_block' => 'Блок соц.кнопок RU',
+                    'main_text' => 'Текст "О компании" на главной',
                     'en_social_block' => 'Блок соц.кнопок EN',
                     'english_content' => 'Контент для английской страницы',
                     'ru_header_text' => 'Заголовок для главной RU',

@@ -37,7 +37,7 @@ class ContactsAdmin extends AbstractAdmin
             ->add('name', 'string', array('label' => 'Название'))
             ->add('code', 'string', array('label' => 'Код'))
             ->add('value', 'string', array('label' => 'Значение', 'editable' => true))
-            ->add('htmlValue', 'string', array('label' => 'Дополнительное HTML значение'))
+            ->add('htmlValue', 'html', array('label' => 'Дополнительное HTML значение'))
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),

@@ -47,7 +47,6 @@ class UploadListener extends BaseListener
      */
     public function preUpdate(EventArgs $event)
     {
-
         $object = $this->adapter->getObjectFromArgs($event);
 
         if (!$this->isUploadable($object)) {

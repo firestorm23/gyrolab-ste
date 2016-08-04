@@ -48,8 +48,8 @@ class ProductAdmin extends AbstractAdmin
         $listMapper
             ->add('id', 'string')
             ->add('name', 'string' ,array('label' => 'Название', 'editable' => true))
-            ->add('description', 'string' ,array('label' => 'Описание'))
-            ->add('previewDescription', 'string', array('label' => 'Короткое описание'))
+            ->add('description', 'html' ,array('label' => 'Описание'))
+            ->add('previewDescription', 'html', array('label' => 'Короткое описание'))
             ->add('sort', 'string',array('label' => 'Индекс сортировки', 'editable' => true))
             ->add('slug', 'string' ,array('label' => 'URL код', 'editable' => true))
             ->add('categories', 'entity', array('multiple' => true, 'label' => 'Категории'))
