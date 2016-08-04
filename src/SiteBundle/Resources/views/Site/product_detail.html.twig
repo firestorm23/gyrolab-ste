@@ -59,10 +59,6 @@
                             {#<i class="hover-icon pe-7s-plus"></i>#}
                         {#</a>#}
                     {#</div>#}
-                    <div class="entry-content mrg-top-20">
-                        {{ product.description|raw }}
-                    </div>
-
                     {% if product.productSpecs is not empty %}
                         <h3 class="entry-title">Характеристики</h3>
                         <div class="table-responsive contact-table">
@@ -82,6 +78,10 @@
                             </table>
                         </div>
                     {% endif %}
+
+                    <div class="entry-content mrg-top-20">
+                        {{ product.description|raw }}
+                    </div>
                 </article>
             </div>
             {% if hasDoc %}
@@ -100,7 +100,7 @@
                                         {% set downloadPath =  getDownloadPath(doc)%}
 
                                         <li><a target="_blank" href="{{ filepath }}">
-                                                Скачать {{ originalName }} [{{ filext }}, {{ filesize }}]
+                                                {{ originalName }} ge[{{ filext }}, {{ filesize }}]
                                             </a></li>
                                     {% endif %}
                             {% endfor %}

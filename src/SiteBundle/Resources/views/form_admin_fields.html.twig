@@ -20,7 +20,7 @@
                 {% if isImage(absolutePath) %}
                     <a class="admin-popup-image" href="{{ filepath }}"><img src="{{ getLazyResize(form.parent.vars.value, "200x200x2")|relpath }}" /></a>
                 {% else %}
-                    <a target="_blank" href="{{ downloadPath }}">Скачать {{ originalName }} [{{ filext }}, {{ filesize }}]</a>
+                    <a target="_blank" href="{{ downloadPath }}">{{ originalName }} [{{ filext }}, {{ filesize }}]</a>
                 {% endif %}
             {% endif %}
         {% endif %}

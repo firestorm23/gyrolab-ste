@@ -34,6 +34,19 @@ class BlockRepository extends \Doctrine\ORM\EntityRepository
         return $result;
     }
 
+    public function getMainText() {
+        $qb = $this->createQueryBuilder('b');
+
+        $qb->join('b.blockSort', 'bs')
+            ->where($qb->expr()->eq('bs.code', '\'main_text\''))
+            ->andWhere($qb->expr()->isNotNull('bs.sort'))
+            ->orderBy('bs.sort', 'asc')->setMaxResults(1);
+
+        $result = $qb->getQuery()->getOneOrNullResult();
+
+        return $result;
+    }
+
     public function getSocialBlocks($count, $en) {
 
         if ($en) {
