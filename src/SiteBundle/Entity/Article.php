@@ -59,7 +59,7 @@ class Article implements ImageContainer
     /**
      * @var string
      *
-     * @ORM\Column(name="preview_text", type="string", length=4096, nullable=true)
+     * @ORM\Column(name="preview_text", type="text", nullable=true)
      */
     private $previewText;
 
@@ -93,7 +93,7 @@ class Article implements ImageContainer
     /**
      * @var string
      *
-     * @ORM\Column(name="body", type="string", length=4096)
+     * @ORM\Column(name="body", type="text")
      */
     private $body;
 

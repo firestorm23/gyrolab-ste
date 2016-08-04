@@ -35,14 +35,14 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=4096, nullable=true)
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="preview_description", type="string", length=4096, nullable=true)
+     * @ORM\Column(name="preview_description", type="text", nullable=true)
      */
     private $previewDescription;
     /**

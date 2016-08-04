@@ -33,13 +33,13 @@ class Block implements ImageContainer
     /**
      * @var string
      *
-     * @ORM\Column(name="body", type="string", length=65535, nullable=true)
+     * @ORM\Column(name="body", type="text", nullable=true)
      */
     private $body;
     /**
      * @var string
      *
-     * @ORM\Column(name="extendedBody", type="string", length=65535, nullable=true)
+     * @ORM\Column(name="extendedBody", type="text", nullable=true)
      */
     private $extendedBody;
     /**

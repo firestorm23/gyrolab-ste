@@ -66,7 +66,7 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=1024, unique=true)
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
     /**
