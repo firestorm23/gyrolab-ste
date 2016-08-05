@@ -38,7 +38,7 @@ class CategoryAdmin extends AbstractAdmin
             ->add('name', 'string', array('label' => 'Название', 'editable' => true))
             ->add('slug', 'string', array('label' => 'URL код', 'editable' => true))
             ->add('isMain', 'boolean', array('label' => 'Главная категория', 'editable' => true))
-            ->add('description', 'html', array('label' => 'Описание'))
+//            ->add('description', 'html', array('label' => 'Описание'))
             ->add('sort', 'integer', array('label' => 'Индекс сортировки'))
             ->add('_action', null, array(
                 'actions' => array(
