@@ -48,7 +48,6 @@ class ProductAdmin extends AbstractAdmin
         $listMapper
             ->add('id', 'string')
             ->add('name', 'string' ,array('label' => 'Название', 'editable' => true))
-            ->add('shortName', 'string' ,array('label' => 'Короткое название', 'editable' => true))
 //            ->add('description', 'html' ,array('label' => 'Описание'))
 //            ->add('previewDescription', 'html', array('label' => 'Короткое описание'))
             ->add('sort', 'string',array('label' => 'Индекс сортировки', 'editable' => true))
@@ -74,7 +73,6 @@ class ProductAdmin extends AbstractAdmin
         $formMapper
             ->tab('Основные поля')
                 ->add('name', 'text' , array('label' => 'Название'))
-                ->add('shortName', 'text' , array('label' => 'Название'))
                 ->add('extendedName', 'textarea', array('required' => false, 'label' => 'Дополнительное название'))
                 ->add('previewDescription', 'textarea',array('label' => 'Короткое описание', 'attr' => array(
                     'class' => 'tinymce',

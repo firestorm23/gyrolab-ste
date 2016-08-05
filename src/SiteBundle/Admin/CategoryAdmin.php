@@ -36,6 +36,7 @@ class CategoryAdmin extends AbstractAdmin
         $listMapper
             ->add('id')
             ->add('name', 'string', array('label' => 'Название', 'editable' => true))
+            ->add('shortName', 'string' ,array('label' => 'Короткое название', 'editable' => true))
             ->add('slug', 'string', array('label' => 'URL код', 'editable' => true))
             ->add('isMain', 'boolean', array('label' => 'Главная категория', 'editable' => true))
 //            ->add('description', 'html', array('label' => 'Описание'))
@@ -57,6 +58,7 @@ class CategoryAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name', 'text', array('label' => 'Название'))
+            ->add('shortName', 'text' , array('label' => 'Название'))
             ->add('isMain', 'checkbox', array('label' => 'Главная категория'))
             ->add('slug', 'text', array('label' => 'URL код'))
             ->add('description', 'textarea', array('label' => 'Описание'))
