@@ -45,7 +45,10 @@ class SiteController extends Controller
         $topSliderBlocks = $blockRepository->getTopSliderBlocks($this->getParameter('top.slider.count'));
         $midGridBlocks = $blockRepository->getMidGridBlocks($this->getParameter('mid.grid.count'));
         $tabBlocks = $blockRepository->getTabBlocks($this->getParameter('index.tab.count'));
-        $mainContent = $blockRepository->getMainText()->getBody();
+        $mainContent = $blockRepository->getMainText();
+        if ($mainContent) {
+            $mainContent = $mainContent->getBody();
+        }
 //        print_r(count($socialBlocks));
 //        die();
 
