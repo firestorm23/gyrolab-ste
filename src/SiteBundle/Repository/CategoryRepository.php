@@ -17,7 +17,7 @@ class CategoryRepository extends EntityRepository
         $qb->join('c.products', 'p');
         $qb->where($qb->expr()->isNotNull('c.slug'))
             ->andWhere($qb->expr()->isNotNull('c.isMain'))
-            ->orderBy('c.isMain', 'desc');
+            ->addOrderBy('c.sort', 'asc');
 
         return $qb->getQuery()
             ->getResult();
@@ -27,7 +27,7 @@ class CategoryRepository extends EntityRepository
         $qb = $this->createQueryBuilder('c');
         $qb->where($qb->expr()->eq('c.slug', "'".$slug."'"))
             ->andWhere($qb->expr()->isNotNull('c.isMain'))
-            ->orderBy('c.isMain', 'desc');
+            ->addOrderBy('c.sort', 'asc');
 
         return $qb->getQuery()
             ->getResult();
