@@ -32,21 +32,21 @@ class Message
     /**
      * @var string
      *
-     * @ORM\Column(name="text", type="string", length=1024)
+     * @ORM\Column(name="text", type="text")
      */
     private $text;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=1024, nullable=false)
+     * @ORM\Column(name="name", type="text", nullable=false)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=1024, nullable=true)
+     * @ORM\Column(name="email", type="text", nullable=true)
      */
     private $email;
 

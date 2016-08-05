@@ -26,7 +26,7 @@ class Block implements ImageContainer
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=4096, nullable=true)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
@@ -45,7 +45,7 @@ class Block implements ImageContainer
     /**
      * @var string
      *
-     * @ORM\Column(name="link", type="string", length=4086, nullable=true)
+     * @ORM\Column(name="link", type="string", length=255, nullable=true)
      */
     private $link;
     /**

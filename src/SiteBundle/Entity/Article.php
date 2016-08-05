@@ -45,21 +45,21 @@ class Article implements ImageContainer
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=4096)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="extended_name", type="string", length=4096, nullable=true)
+     * @ORM\Column(name="extended_name", type="text", nullable=true)
      */
     private $extendedName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="preview_text", type="text", nullable=true)
+     * @ORM\Column(name="preview_text", type="text", length=16777215, nullable=true)
      */
     private $previewText;
 

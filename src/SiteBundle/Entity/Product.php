@@ -48,7 +48,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="extended_name", type="string", length=4096, nullable=true)
+     * @ORM\Column(name="extended_name", type="text", nullable=true)
      */
     private $extendedName;
     /**

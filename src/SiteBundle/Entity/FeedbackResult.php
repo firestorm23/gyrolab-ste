@@ -26,27 +26,27 @@ class FeedbackResult implements ContactInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=4096, nullable=true)
+     * @ORM\Column(name="name", type="text", nullable=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="subject", type="string", length=4096, nullable=true)
+     * @ORM\Column(name="subject", type="text", nullable=true)
      */
     private $subject;
     /**
      * @var string
      *
-     * @ORM\Column(name="message", type="string", length=4096, nullable=true)
+     * @ORM\Column(name="message", type="text", nullable=true)
      */
     private $message;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=4096, nullable=true)
+     * @ORM\Column(name="email", type="text", nullable=true)
      */
     private $email;
 

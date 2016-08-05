@@ -38,14 +38,14 @@ class Contacts
     /**
      * @var string
      *
-     * @ORM\Column(name="value", type="string", length=1024, nullable=true)
+     * @ORM\Column(name="value", type="text", nullable=true)
      */
     private $value;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="htmlValue", type="string", length=4096, nullable=true)
+     * @ORM\Column(name="htmlValue", type="text",  nullable=true)
      */
     private $htmlValue;
 
