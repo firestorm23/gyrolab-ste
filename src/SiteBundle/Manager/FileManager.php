@@ -47,6 +47,11 @@ class FileManager extends Manager {
 
     public function resizeImage(File $file, $sizekey, $saveFile = true) {
         $size = explode("x", $sizekey);
+
+        if (!$file->getName()) {
+            return false;
+        }
+
         $filePath = $file->getDirname()."/".$file->getName();
         $resizes = $file->getResizes();
 
