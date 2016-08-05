@@ -55,6 +55,7 @@ class HelperExtension extends \Twig_Extension
             new \Twig_SimpleFilter('up', array($this, 'toUpper')),
             new \Twig_SimpleFilter('low', array($this, 'toLower')),
             new \Twig_SimpleFilter('upfirst', array($this, 'toUcFirst')),
+            new \Twig_SimpleFilter('tel', array($this, 'telephone'))
         );
     }
 
@@ -72,6 +73,12 @@ class HelperExtension extends \Twig_Extension
 
     public function toUpper($string) {
         return mb_strtoupper($string, 'utf-8');
+    }
+
+
+
+    public function telephone($string) {
+        return preg_replace("/[^0-9+]/gu","",$string);
     }
 
     public function toUcFirst($string) {

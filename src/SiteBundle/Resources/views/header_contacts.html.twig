@@ -1,3 +1,9 @@
-<div class="header-phone">Пермь: {{ contacts.main_phone.htmlValue|raw }}</div>
-<div class="header-phone">Москва: {{ contacts.sec_phone.htmlValue|raw }}</div>
-<div class="header-email">Email: {{ contacts.main_email.htmlValue|raw }}</div>
+<div class="header-phone">
+    Москва: <a href="tel:{{ contacts.main_phone.value|tel }}">{{ contacts.main_phone.value }}</a>
+</div>
+<div class="header-phone">
+    Пермь: <a href="tel:{{ contacts.sec_phone.value|tel }}">{{ contacts.sec_phone.value }}</a>
+</div>
+<div class="header-email">
+    <a href="mailto:{{ contacts.main_email.value }}">{{ contacts.main_email.value }}</a>
+</div>
