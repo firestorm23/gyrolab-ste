@@ -47,7 +47,7 @@
                     <select name="slug" class="form-control select-filter">
                         <option value="null">Не выбрано</option>
                         {% for category in allCategories %}
-                            <option value="{{ category.slug }}" {% if slug is not empty and slug == category.slug %}selected="selected"{% endif %}>{{ category.name }}</option>
+                            <option value="{{ category.slug }}" {% if slug is not empty and slug == category.slug %}selected="selected"{% endif %}>{{ category.shortName }}</option>
                         {% endfor %}
                     </select>
                 </form>

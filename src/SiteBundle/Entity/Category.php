@@ -25,9 +25,34 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @ORM\Column(name="name", type="string", length=1024, unique=true)
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="short_name", type="string", length=255)
+     */
+    private $shortName;
+
+    /**
+     * @return string
+     */
+    public function getShortName()
+    {
+        if ($this->shortName) return $this->shortName;
+        return $this->name;
+
+    }
+
+    /**
+     * @param string $shortName
+     */
+    public function setShortName($shortName)
+    {
+        $this->shortName = $shortName;
+    }
 
     /**
      * @return string
