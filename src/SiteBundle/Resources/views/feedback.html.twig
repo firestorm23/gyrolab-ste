@@ -23,8 +23,14 @@
         <div class="contact-detail-inner">
             <h2>Контактные данные</h2>
             <ul class="icon-list">
-                <li>Телефон <i class="fa fa-phone"></i>{{ contacts.main_phone.viewValue|raw }}</li>
-                <li>Факс <i class="fa fa-fax"></i>{{ contacts.fax.viewValue|raw }}</li>
+                <li>Телефон</li>
+                <li>Москва <i class="fa fa-phone"></i> {{ contacts.main_phone.viewValue|raw }}</li>
+                <li>Пермь <i class="fa fa-phone"></i> {{ contacts.sec_phone.viewValue|raw }}</li>
+                <li>&nbsp;</li>
+                <li>Факс</li>
+                <li>Москва <i class="fa fa-fax"></i>{{ contacts.fax.viewValue|raw }}</li>
+                <li>Пермь <i class="fa fa-fax"></i>{{ contacts.sec_fax.viewValue|raw }}</li>
+                <li>&nbsp;</li>
                 <li>Email <i class="fa fa-envelope-o"></i>{{ contacts.main_email.viewValue|raw }}</li>
             </ul>
         </div>
